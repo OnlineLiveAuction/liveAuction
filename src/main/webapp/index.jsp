@@ -182,7 +182,7 @@
                       <tr>
                         <th scope="row">bike</th>
                         <td class="w-25">
-                            <img src="../resources/image/bike.jpg" class="img-fluid img-thumbnail" alt="item_type">
+                            <img src="../resources/image/bike.jpg"" class="img-fluid img-thumbnail" alt="item_type">
                         </td>
                         <td>You can try the following code to set src to the img tag in HTML from the system drive.<button type="button" class="btn btn-link">Read more..</button></td>
                         <td>bike</td>
@@ -192,7 +192,7 @@
                       <tr>
                         <th scope="row">car</th>
                         <td class="w-25">
-                            <img src="image/car.jpg" class="img-fluid img-thumbnail" alt="Sheep">
+                            <img src="../resources/image/car.jpg" class="img-fluid img-thumbnail" alt="Sheep">
                         </td>
                         <td>Bootstrap Grid can be useful<button type="button" class="btn btn-link">Read more..</button></td>
                         <td>Cristina</td>
@@ -202,7 +202,7 @@
                       <tr>
                         <th scope="row">speaker</th>
                         <td class="w-25">
-                            <img src="..image/speaker.jpg" class="img-fluid img-thumbnail" alt="item_type">
+                            <img src="../resources/image/speaker.jpg" class="img-fluid img-thumbnail" alt="item_type">
                         </td>
                         <td>You can try the following code to set src to the img tag in HTML from the system drive.</td>
                         <td>bike</td>
