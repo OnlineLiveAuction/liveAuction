@@ -33,6 +33,29 @@
     <title>Welcome!</title>
   </head>
   <body>
+   <%
+        try {
+                String n = null;
+                if (request.getParameter("authorize") != null) 
+                {
+                    n = request.getParameter("authorize");
+                    if (n.equals("yes")) 
+                    {
+       				 	%>
+        					<script>alert("Welcome");</script>
+       				 	<%
+                	}
+                    else
+                    {
+                    	%>
+    						<script>alert("Incorrect username or password");</script>
+   				 		<%
+                    }
+            	}
+            } catch (Exception e) {
+                out.println(e);
+            }
+        %>
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
         <a class="navbar-brand" href="#"> <i class="fa fa-usd text-center text-white" aria-hidden="true"></i>Online Auction</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample03" aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
@@ -73,7 +96,7 @@
 
                         </div>
                         <div class="modal-body">
-                            <form>
+                            <form action="checklogin">
                                 
                                 <div class="form-group">
                                   <label><i class="fa fa-envelope fa-2x"></i>Email:</label>
@@ -82,14 +105,14 @@
                               </div>
                                 <div class="form-group">
                                     <label><i class="fa fa-lock fa-2x"></i>Password:</label>
-                                    <input type="password" name="username" class="form-control">
+                                    <input type="password" name="password" class="form-control">
 
                                 </div>
-                                
-                              </form>
-                              <div class="text-center form-sm mt-2">
-                                <button class="btn btn-info">Sign in <i class="fa fa-sign-in ml-1"></i></button>
+                                <div class="text-center form-sm mt-2">
+                                <input type="submit" class="btn btn-info"">
                               </div>
+                              </form>
+                              
                           </div>
                           <!--
                         <div class="modal-footer justify-content-center">
