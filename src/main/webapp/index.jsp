@@ -159,7 +159,7 @@
                       <tr>
                         <th scope="row">bike</th>
                         <td class="w-25">
-                            <img src="image/bike.jpg" class="img-fluid img-thumbnail" alt="item_type">
+                            <img src="../resources/image/bike.jpg" class="img-fluid img-thumbnail" alt="item_type">
                         </td>
                         <td>You can try the following code to set src to the img tag in HTML from the system drive.<button type="button" class="btn btn-link">Read more..</button></td>
                         <td>bike</td>
