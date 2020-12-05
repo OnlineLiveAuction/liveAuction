@@ -186,11 +186,11 @@
                   <table class="table table-image table-dark table-striped">
                     <thead>
                       <tr>
-                        <th scope="col">category</th>
+                        <th scope="col">Category</th>
                         <th scope="col">Image</th>
-                        <th scope="col">description</th>
-                        <th scope="col">item_name</th>
-                        <th scope="col">bid-Price(Rs)</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Item_name</th>
+                        <th scope="col">Bid-Price(Rs)</th>
                         <th scope="col">Action</th>
                       </tr>
                     </thead>
