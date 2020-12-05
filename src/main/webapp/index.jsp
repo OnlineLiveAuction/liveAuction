@@ -52,6 +52,22 @@
    				 		<%
                     }
             	}
+                if (request.getParameter("registered") != null) 
+                {
+                    n = request.getParameter("registered");
+                    if (n.equals("true")) 
+                    {
+       				 	%>
+        					<script>alert("You are successfuly Registered!");</script>
+       				 	<%
+                	}
+                    else
+                    {
+                    	%>
+    						<script>alert("An error occurred. Please try again.");</script>
+   				 		<%
+                    }
+            	}
             } catch (Exception e) {
                 out.println(e);
             }
@@ -121,7 +137,7 @@
                       -->
                         <div class="modal-footer">
                           <div class="options text-right">
-                            <p class="pt-1">New Member? <a href="#" class="blue-text">Register</a></p>
+                            <p class="pt-1">New Member? <a href="registration.jsp" class="blue-text">Register</a></p>
                           </div>
                           <button type="button" class="btn btn-outline-info waves-effect ml-auto" data-dismiss="modal">Close</button>
                         </div>

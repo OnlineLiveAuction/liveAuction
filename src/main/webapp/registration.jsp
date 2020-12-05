@@ -14,16 +14,13 @@
   </head>
   
     <body >
-      <form action="">
+      <form action="registeruser" method="post">
         <div class="form-row">
-          <div class="col-md-6 mb-6">
-            <label for="validationDefault01">First name</label>
-            <input type="text" class="form-control" id="validationDefault01" placeholder="First name" value="Mark" required>
+          <div class="col-md-12 mb-12">
+            <label for="validationDefault01">Name</label>
+            <input type="text" name="name"  class="form-control" id="validationDefault01" placeholder="First name" required>
           </div>
-          <div class="col-md-6 mb-6">
-            <label for="validationDefault02">Last name</label>
-            <input type="text" class="form-control" id="validationDefault02" placeholder="Last name" value="Otto" required>
-          </div>
+
         </div>
         
         <div class="form-row">
@@ -33,20 +30,20 @@
               <div class="input-group-prepend">
                 <span class="input-group-text" id="inputGroupPrepend2">@</span>
               </div>
-              <input type="text" class="form-control" id="validationDefaultUsername" placeholder="Username" aria-describedby="inputGroupPrepend2" required>
+              <input type="text" name="username" class="form-control" id="validationDefaultUsername" placeholder="Username" aria-describedby="inputGroupPrepend2" required>
             </div>
             
 
           </div>
           <div class="col-md-6 mb-6">
             <label for="start-date">Birthday Date</label>
-            <input type="date" class="form-control"  placeholder="select birthday date"  required>
+            <input type="date" name="birthdate" class="form-control"  placeholder="select birthday date"  required>
           </div>
         </div>
         <div class="form-row">
           <div class="col-md-12 mb-12">
             <label for="">Address</label>
-            <input type="text" class="form-control"  placeholder="First name"  required>
+            <input type="text" name="street" class="form-control"  placeholder="Address"  required>
           </div>
           
         </div>
@@ -55,29 +52,29 @@
         <div class="form-row">
           <div class="col-md-3 mb-3">
             <label for="">Country</label>
-            <input type="text" class="form-control" placeholder="Country" required>
+            <input type="text" name="country" class="form-control" placeholder="Country" required>
           </div>
           <div class="col-md-3 mb-3">
             <label > City </label>
-            <input type="text" class="form-control" placeholder="City" required>
+            <input type="text" name="city" class="form-control" placeholder="City" required>
           </div>
           <div class="col-md-3 mb-3">
             <label for="validationDefault04">State</label>
-            <input type="text" class="form-control"  placeholder="State" required>
+            <input type="text" name="state" ' class="form-control"  placeholder="State" required>
           </div>
           <div class="col-md-3 mb-3">
             <label for="validationDefault05">Pincode</label>
-            <input type="text" class="form-control"  placeholder="Zip" required>
+            <input type="text" name="pincode" class="form-control"  placeholder="Zip" required>
           </div>
         </div>
         <div class="form-row">
           <div class="col-md-6 mb-6">
             <label for="validationDefault01">Contact Number</label>
-            <input type="number" class="form-control"  placeholder="First name" value="9462990899" required>
+            <input type="number" name="contactno" class="form-control"  placeholder="Contact No." required>
           </div>
           <div class="form-group col-md-6">
             <label for="inputEmail4">Email</label>
-            <input type="email" class="form-control"  placeholder="Email">
+            <input type="email" name="email" class="form-control"  placeholder="Email">
           </div>
           
           
@@ -85,12 +82,12 @@
         <div class="form-row">
           <div class="form-group col-md-6">
             <label for="inputPassword4">Password</label>
-            <input type="password" class="form-control"  placeholder="Password">
+            <input type="password" name="password" class="form-control"  placeholder="Password">
           </div>
         
           <div class="form-group col-md-6">
             <label for="inputPassword4">ConfirmPassword</label>
-            <input type="password" class="form-control" placeholder="Password">
+            <input type="password" name="cpassword" class="form-control" placeholder="Password">
           </div>
         
           

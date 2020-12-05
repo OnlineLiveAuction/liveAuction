@@ -10,8 +10,18 @@
   	<description></description>
   	<servlet-class>controller.UserController</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>registerController</servlet-name>
+  	<display-name>registerController</display-name>
+  	<description></description>
+  	<servlet-class>controller.registerController</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>UserController</servlet-name>
   	<url-pattern>/checklogin</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>registerController</servlet-name>
+  	<url-pattern>/registeruser</url-pattern>
   </servlet-mapping>
 </web-app>
