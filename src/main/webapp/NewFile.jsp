@@ -94,7 +94,7 @@
         
 
         
-        <form action="addproduct" method="post" >
+        <form action="addproduct" method="post" enctype="multipart/form-data">
             <div class="form-row">
                 <div class="col-md-6 mb-6">
                   <label for="validationDefault01">Product name</label>
@@ -132,7 +132,10 @@
                 <label> Select Bidding date</label>
                 <input type="text" name="biddingdate" class="form-control" required>    
               </div>
-              
+              <div class="form-group">
+                <label for="exampleFormControlFile1">Upload picture of product</label>
+                <input name="productpicture" type="file" class="form-control-file" id="exampleFormControlFile1" accept="image/png, image/jpeg, image/jpg">
+              </div>
               <input type="hidden" name="username" value="<%out.print((String)session.getAttribute("username")); %>">
             <button type="submit" class="btn btn-primary">Submit</button>
           </form>

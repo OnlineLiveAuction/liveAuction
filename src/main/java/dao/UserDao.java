@@ -1,7 +1,14 @@
 package dao;
 
+import java.io.InputStream;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
+
+import model.Product;
 import model.User;
-import java.sql.*;
 
 public class UserDao {
 	
@@ -30,7 +37,6 @@ public class UserDao {
 		         ResultSet rs = stat.executeQuery("Select * from userprofile where userName = '"+ username +"' and password = '"+password+"'");
 		         if(rs.next())
 		         {
-		        	 //System.out.pront()
 		        	 return true;
 		         }
 		         else
@@ -43,18 +49,51 @@ public class UserDao {
 		         return false;
 		      }
 	}
-	public void registeruser(User user)
+	public int getUserId(String username)
+	{
+		try {
+	         
+	         Statement stat = con.createStatement();
+	         System.out.println("username");
+	         ResultSet rs = stat.executeQuery("Select * from userprofile where userName = '"+ username +"'");
+	         if(rs.next())
+	         {
+	        	 return rs.getInt("userId");
+	         }
+	         else
+	         {
+	        	 return -1;
+	         }
+	      }
+	      catch(Exception e) {
+	         e.printStackTrace();
+	         return -1;
+	      }
+	}
+	public int getCategoryID(String categoryname)
+	{
+		try {
+	         
+	         Statement stat = con.createStatement();
+	         ResultSet rs = stat.executeQuery("Select categoryID from category where categoryName = '"+ categoryname +"'");
+	         if(rs.next())
+	         {
+	        	 return (int)rs.getInt("categoryID");
+	         }
+	         else
+	         {
+	        	 return -1;
+	         }
+	      }
+	      catch(Exception e) {
+	         e.printStackTrace();
+	         return -1;
+	      }
+	}
+	public int registeruser(User user)
 	{
 		try
 		{
-			/*Connection con = null;
-			 String JdbcURL = "jdbc:mysql://localhost:3306/onlineauction";
-			 String dbusername = "root";
-			 String dbpassword = "";
-			 String driver = "com.mysql.jdbc.Driver";
-			 System.out.println("Connecting to database..............."+JdbcURL);
-	         Class.forName(driver);
-	         con = DriverManager.getConnection(JdbcURL, dbusername, dbpassword);*/
 			String query = "Insert into userprofile (Name, password, pincode, country, state, city, street, birthdate, contactNo, email, userName) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
 			PreparedStatement ps = con.prepareStatement(query);
 			ps.setString(1, user.getName());
@@ -70,12 +109,51 @@ public class UserDao {
 			ps.setString(11, user.getUsername());
 			
 			int result = ps.executeUpdate();
-			System.out.println(result);
+			return result;
 		}catch(Exception e)
 		{
 			e.printStackTrace();
+			return 0;
 		}
 	}
-
+	public int addproduct(Product product)
+	{
+		System.out.println(product);
+		try
+		{
+			String query = "Insert into product (sellerID, productName, productDescription, startTime, bidCount, productcol, productStatus, categoryID, productMinPrice, biddingDate) VALUES (?,?,?,?,?,?,?,?,?,?)";
+			PreparedStatement ps = con.prepareStatement(query);
+			ps.setInt(1, product.getSellerId() );
+			System.out.println(product.getSellerId());
+			ps.setString(2, product.getProductName());
+			ps.setString(3, product.getProductDescription());
+			ps.setString(4, product.getStartTime());
+			ps.setInt(5, product.getBidCount());
+			ps.setString(6, product.getProductcol());
+			ps.setString(7, product.getProductStatus());
+			ps.setInt(8, product.getCategoryID());
+			ps.setInt(9, product.getProductMinPrice());
+			ps.setString(10, product.getBiddingDate());
+			
+			
+			
+			
+			
+			
+			
+			//InputStream is = product.getProductPicture().getInputStream();
+			//ps.setBlob(9, is);
+			
+			
+			
+			
+			int result = ps.executeUpdate();
+			return result;
+		}catch(Exception e)
+		{
+			e.printStackTrace();
+			return 0;
+		}
+	}
 }
 
