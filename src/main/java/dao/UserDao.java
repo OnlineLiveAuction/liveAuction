@@ -43,7 +43,97 @@ public class UserDao {
 		         return false;
 		      }
 	}
+<<<<<<< Updated upstream
 	public void registeruser(User user)
+||||||| constructed merge base
+	public int getUserId(String username)
+	{
+		try {
+	         
+	         Statement stat = con.createStatement();
+	         System.out.println("username");
+	         ResultSet rs = stat.executeQuery("Select * from userprofile where userName = '"+ username +"'");
+	         if(rs.next())
+	         {
+	        	 return rs.getInt("userId");
+	         }
+	         else
+	         {
+	        	 return -1;
+	         }
+	      }
+	      catch(Exception e) {
+	         e.printStackTrace();
+	         return -1;
+	      }
+	}
+	public int getCategoryID(String categoryname)
+	{
+		try {
+	         
+	         Statement stat = con.createStatement();
+	         ResultSet rs = stat.executeQuery("Select categoryID from category where categoryName = '"+ categoryname +"'");
+	         if(rs.next())
+	         {
+	        	 return (int)rs.getInt("categoryID");
+	         }
+	         else
+	         {
+	        	 return -1;
+	         }
+	      }
+	      catch(Exception e) {
+	         e.printStackTrace();
+	         return -1;
+	      }
+	}
+	public int registeruser(User user)
+=======
+	public int getUserId(String username)
+	{
+		try {
+	         
+	         Statement stat = con.createStatement();
+	         System.out.println(username);
+	         ResultSet rs = stat.executeQuery("Select * from userprofile where userName = '"+ username +"'");
+	         if(rs.next())
+	         {
+	        	 int x = rs.getInt("userId");
+	        	 System.out.println("getUserId UserDao"+x);
+	        	 return x;
+	         }
+	         else
+	         {
+	        	 return -1;
+	         }
+	      }
+	      catch(Exception e) {
+	         e.printStackTrace();
+	         return -1;
+	      }
+	}
+	public int getCategoryID(String categoryname)
+	{
+		try {
+	         
+	         Statement stat = con.createStatement();
+	         ResultSet rs = stat.executeQuery("Select categoryID from category where categoryName = '"+ categoryname +"'");
+	         if(rs.next())
+	         {
+	        	 return (int)rs.getInt("categoryID");
+	         }
+	         else
+	         {
+	        	 return -1;
+	         }
+	      }
+	      catch(Exception e) {
+	         e.printStackTrace();
+	         return -1;
+	      }
+	}
+	public int registeruser(User user)
+>>>>>>> Stashed changes
 	{
 		try
 		{

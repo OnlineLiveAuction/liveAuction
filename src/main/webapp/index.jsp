@@ -41,8 +41,10 @@
                     n = request.getParameter("authorize");
                     if (n.equals("yes")) 
                     {
+                    	System.out.println("username"+(String)session.getAttribute("username"));
        				 	%>
         					<script>alert("Welcome");</script>
+        					
        				 	<%
                 	}
                     else
