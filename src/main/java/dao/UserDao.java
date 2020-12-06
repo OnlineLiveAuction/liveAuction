@@ -5,17 +5,27 @@ import java.sql.*;
 
 public class UserDao {
 	
+	private Connection con = null;
+	private String JdbcURL = "jdbc:mysql://localhost:3306/onlineauction";
+	private String dbusername = "root";
+	private String dbpassword = "";
+	private String driver = "com.mysql.jdbc.Driver";
+	public UserDao()
+	{
+		 try
+		 {
+			 System.out.println("Connecting to database..............."+JdbcURL);
+	         Class.forName(driver);
+	         con = DriverManager.getConnection(JdbcURL, dbusername, dbpassword);
+		 }catch(Exception e)
+		 {
+			 e.printStackTrace();
+		 }
+	}
 	public boolean checklogin(String username, String password)
 	{
-		Connection con = null;
-		 String JdbcURL = "jdbc:mysql://localhost:3306/onlineauction";
-		 String dbusername = "root";
-		 String dbpassword = "";
-		 String driver = "com.mysql.jdbc.Driver";
 			try {
-		         System.out.println("Connecting to database..............."+JdbcURL);
-		         Class.forName(driver);
-		         con = DriverManager.getConnection(JdbcURL, dbusername, dbpassword);
+		         
 		         Statement stat = con.createStatement();
 		         ResultSet rs = stat.executeQuery("Select * from userprofile where userName = '"+ username +"' and password = '"+password+"'");
 		         if(rs.next())
@@ -37,14 +47,14 @@ public class UserDao {
 	{
 		try
 		{
-			Connection con = null;
+			/*Connection con = null;
 			 String JdbcURL = "jdbc:mysql://localhost:3306/onlineauction";
 			 String dbusername = "root";
 			 String dbpassword = "";
 			 String driver = "com.mysql.jdbc.Driver";
 			 System.out.println("Connecting to database..............."+JdbcURL);
 	         Class.forName(driver);
-	         con = DriverManager.getConnection(JdbcURL, dbusername, dbpassword);
+	         con = DriverManager.getConnection(JdbcURL, dbusername, dbpassword);*/
 			String query = "Insert into userprofile (Name, password, pincode, country, state, city, street, birthdate, contactNo, email, userName) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
 			PreparedStatement ps = con.prepareStatement(query);
 			ps.setString(1, user.getName());
