@@ -197,28 +197,11 @@
       </nav>
       <jsp:include page="/GetProducts" />
       <%
-                     	System.out.println("dghgdf"); 
-                     	List<Product> productList = (List<Product>)request.getAttribute("productList");
-                     	System.out.println(productList); %>
-                     	<div class="container">
-                     	<table>
-                     	 <%
-                     	 	
-                     	 	for(int i = 0; i < productList.size(); i++)
-                     	 	{
-                     	 		Product product = (Product)productList.get(i);
-                     	 		%>
-                     	 				 <tr>
-                     	 				 	<td><% out.print(product.getCategoryName()); %></td>
-								            <td><% out.print(product.getProductName()); %></td>
-								            <td><% out.print(product.getProductDescription()); %></td>
-								            <td><% out.print(product.getProductMinPrice()); %></td>
-								        </tr>
-                     	 		<% 
-                     	 	}
-                     	 %>
-				    </table>
-				    </div>
+       System.out.println("dghgdf"); 
+       List<Product> productList = (List<Product>)request.getAttribute("productList");
+       System.out.println(productList); %>
+                    
+
       <div class="container">
         <div class="md-form mt-0">
           <input class="form-control" type="text"placeholder="Search" aria-label="Search">
@@ -244,36 +227,30 @@
                     <tbody>
                    
                    
-                      <tr>
-                        <th scope="row">bike</th>
-                        <td class="w-25">
-                            <img src="../resources/image/bike.jpg"" class="img-fluid img-thumbnail" alt="item_type">
-                        </td>
-                        <td>You can try the following code to set src to the img tag in HTML from the system drive.<button type="button" class="btn btn-link">Read more..</button></td>
-                        <td>bike</td>
-                        <td>78000</td>
-                        <td> <button class="btn btn-primary " >Register</button></td>
-                      </tr>
-                      <tr>
-                        <th scope="row">car</th>
-                        <td class="w-25">
-                            <img src="../resources/image/car.jpg" class="img-fluid img-thumbnail" alt="Sheep">
-                        </td>
-                        <td>Bootstrap Grid can be useful<button type="button" class="btn btn-link">Read more..</button></td>
-                        <td>Cristina</td>
-                        <td>1.434</td>
-                        <td><button class="btn btn-success " >Participate</button></td>
-                      </tr>
-                      <tr>
-                        <th scope="row">speaker</th>
-                        <td class="w-25">
-                            <img src="../resources/image/speaker.jpg" class="img-fluid img-thumbnail" alt="item_type">
-                        </td>
-                        <td>You can try the following code to set src to the img tag in HTML from the system drive.</td>
-                        <td>bike</td>
-                        <td>78000</td>
-                        <td> <button class="btn btn-primary " >Register</button></td>
-                      </tr>
+                   		<%
+                     	 	
+                     	 	for(int i = 0; i < productList.size(); i++)
+                     	 	{
+                     	 		Product product = (Product)productList.get(i);
+                     	 		%>
+                     	 		
+                     	 				<tr>
+					                        <th scope="row"><% out.print(product.getCategoryName()); %></th>
+					                        <td class="w-25">
+					                            <img src="../resources/image/bike.jpg"" class="img-fluid img-thumbnail" alt="item_type">
+					                        </td>
+					                        <td><% out.print(product.getProductDescription()); %></button></td>
+					                        <td><% out.print(product.getProductName()); %></td>
+					                        <td><% out.print(product.getProductMinPrice()); %></td>
+					                        <td> <button class="btn btn-primary " >Register</button></td>
+					                      </tr>
+                     	 		
+                     	 		
+           
+                     	 		<% 
+                     	 	}
+                     	 %>
+                   
                     </tbody>
                   </table>   
               </div>
