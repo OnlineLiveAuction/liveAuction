@@ -158,8 +158,11 @@ public class UserDao {
 			{
 				Product product = new Product();
 				product.setProductName(rs.getString("productName"));
+				//System.out.println("name"+product.getProductName());
 				product.setProductDescription(rs.getString("productDescription"));
-				product.setProductMinPrice(rs.getInt("prouctMinPrice"));
+				//System.out.println("description"+product.getProductDescription());
+				product.setProductMinPrice(rs.getInt("productMinPrice"));
+				//System.out.println("minprice"+product.getProductMinPrice());
 				productList.add(product);
 			}
 			

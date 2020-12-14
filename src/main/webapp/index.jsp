@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    <%@ page import="java.util.List" %>
+    <%@ page import="model.Product" %>
+    <%@ page import="java.util.ArrayList" %>
 <!doctype html>
 <html lang="en">
   <head>
@@ -180,7 +183,41 @@
             
           </form>-->
         </div>
+        
+        
+        
+                     
+        
+        
+        
+        
+        
+        
+        
       </nav>
+      <jsp:include page="/GetProducts" />
+      <%
+                     	System.out.println("dghgdf"); 
+                     	List<Product> productList = (List<Product>)request.getAttribute("productList");
+                     	System.out.println(productList); %>
+                     	<div class="container">
+                     	<table>
+                     	 <%
+                     	 	
+                     	 	for(int i = 0; i < productList.size(); i++)
+                     	 	{
+                     	 		Product product = (Product)productList.get(i);
+                     	 		%>
+                     	 				 <tr>
+								            <td><% out.print(product.getProductName()); %></td>
+								            <td><% out.print(product.getProductDescription()); %></td>
+								            <td><% out.print(product.getProductMinPrice()); %></td>
+								        </tr>
+                     	 		<% 
+                     	 	}
+                     	 %>
+				    </table>
+				    </div>
       <div class="container">
         <div class="md-form mt-0">
           <input class="form-control" type="text"placeholder="Search" aria-label="Search">
@@ -204,6 +241,8 @@
                     
                     
                     <tbody>
+                   
+                   
                       <tr>
                         <th scope="row">bike</th>
                         <td class="w-25">

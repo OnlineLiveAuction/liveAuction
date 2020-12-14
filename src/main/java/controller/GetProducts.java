@@ -31,8 +31,10 @@ public class GetProducts extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		UserDao dbcon = new UserDao();
+		System.out.println("getproductscalled");
 		List<Product> productList = dbcon.getProducts();
 		request.setAttribute("productList", productList);
+		System.out.println(productList);
 	}
 
 	/**
