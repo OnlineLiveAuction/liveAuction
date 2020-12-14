@@ -156,6 +156,7 @@ public class UserDao {
 			ResultSet rs = ps.executeQuery();
 			while(rs.next())
 			{
+				System.out.println("result set useradao");
 				Product product = new Product();
 				product.setProductName(rs.getString("productName"));
 				//System.out.println("name"+product.getProductName());
@@ -163,6 +164,14 @@ public class UserDao {
 				//System.out.println("description"+product.getProductDescription());
 				product.setProductMinPrice(rs.getInt("productMinPrice"));
 				//System.out.println("minprice"+product.getProductMinPrice());
+				int categoryID = rs.getInt("categoryID");
+				PreparedStatement psCat = con.prepareStatement("Select categoryname from category where categoryID = '"+ categoryID +"'");
+				ResultSet category = psCat.executeQuery();
+				if(category.next())
+				{
+					product.setCategoryName(category.getString("categoryName"));
+				}
+				
 				productList.add(product);
 			}
 			

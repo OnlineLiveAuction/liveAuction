@@ -209,6 +209,7 @@
                      	 		Product product = (Product)productList.get(i);
                      	 		%>
                      	 				 <tr>
+                     	 				 	<td><% out.print(product.getCategoryName()); %></td>
 								            <td><% out.print(product.getProductName()); %></td>
 								            <td><% out.print(product.getProductDescription()); %></td>
 								            <td><% out.print(product.getProductMinPrice()); %></td>

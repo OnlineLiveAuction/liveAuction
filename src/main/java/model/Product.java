@@ -22,6 +22,8 @@ public class Product {
 	private int productID;
 	private int sellerId;
 	private String biddingDate;
+	private String categoryName;
+	
 	public int getProductMinPrice() {
 		return productMinPrice;
 	}
@@ -112,7 +114,12 @@ public class Product {
 	public void setBiddingDate(String biddingDate) {
 		this.biddingDate = biddingDate;
 	}
-	
+	public String getCategoryName() {
+		return categoryName;
+	}
+	public void setCategoryName(String categoryName) {
+		this.categoryName = categoryName;
+	}
 	
 
 }
