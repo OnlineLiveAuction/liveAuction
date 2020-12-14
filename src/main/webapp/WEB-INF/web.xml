@@ -22,6 +22,12 @@
   	<description></description>
   	<servlet-class>controller.productController</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>GetProducts</servlet-name>
+  	<display-name>GetProducts</display-name>
+  	<description></description>
+  	<servlet-class>controller.GetProducts</servlet-class>
+  </servlet>
   	
   <servlet-mapping>
   	<servlet-name>UserController</servlet-name>
@@ -34,6 +40,10 @@
   <servlet-mapping>
   	<servlet-name>productController</servlet-name>
   	<url-pattern>/addproduct</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>GetProducts</servlet-name>
+  	<url-pattern>/GetProducts</url-pattern>
   </servlet-mapping>
   
 </web-app>

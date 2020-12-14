@@ -5,6 +5,8 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 import model.Product;
 import model.User;
@@ -143,6 +145,33 @@ public class UserDao {
 			e.printStackTrace();
 			return 0;
 		}
+	}
+	public List<Product> getProducts()
+	{
+		List<Product> productList = new ArrayList<>();
+		try
+		{
+			String query = "Select * from product";         // add where productStatus = not sold
+			PreparedStatement ps = con.prepareStatement(query);
+			ResultSet rs = ps.executeQuery();
+			while(rs.next())
+			{
+				Product product = new Product();
+				product.setProductName(rs.getString("productName"));
+				product.setProductDescription(rs.getString("productDescription"));
+				product.setProductMinPrice(rs.getInt("prouctMinPrice"));
+				productList.add(product);
+			}
+			
+			return productList;
+		}catch(Exception e)
+		{
+			e.printStackTrace();
+			return productList;
+		}
+		
+		
+		
 	}
 }
 
