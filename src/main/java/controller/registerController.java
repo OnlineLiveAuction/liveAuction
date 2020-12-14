@@ -67,12 +67,19 @@ public class registerController extends HttpServlet {
 		user.setUsername(username);
 		
 		UserDao dbcon = new UserDao();
-		dbcon.registeruser(user);
+		int result = dbcon.registeruser(user);
 		
 		HttpSession session = request.getSession();
 		session.setAttribute("username", username);
-		
-		RequestDispatcher dispatch = request.getRequestDispatcher("index.jsp?registered=true");
+		RequestDispatcher dispatch;
+		if(result < 1)
+		{
+			dispatch = request.getRequestDispatcher("index.jsp?registered=false");
+		}
+		else
+		{
+			dispatch = request.getRequestDispatcher("index.jsp?registered=true");
+		}
 		dispatch.forward(request, response);
 	}
 
