@@ -42,6 +42,7 @@
   </head>
   <body>
    <%
+   			System.out.println(session.getAttribute("username"));
         try {
                 String n = null;
                 if (request.getParameter("authorize") != null) 
@@ -82,6 +83,31 @@
                 out.println(e);
             }
         %>
+        
+        
+        
+    <script>
+    
+    $(document).ready(function()
+            {
+          var s="HGHG";     
+           s="<%out.print(session.getAttribute("username"));%>";
+           console.log(s);
+                if(s=="null")
+                {
+                    //alert("ksd");
+                    document.getElementById("signinbutton").style.display="inline";
+                }
+                else    
+               	{
+                   document.getElementById("signinbutton").style.display="none";
+                    document.getElementById("drop").style.display="inline";
+                    
+                }
+            });
+    
+    
+    </script>
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
         <a class="navbar-brand" href="#"> <i class="fa fa-usd text-center text-white" aria-hidden="true"></i>Online Auction</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample03" aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
@@ -102,13 +128,30 @@
                 <a class="nav-link" href="#"><i class="fa fa-product-hunt" aria-hidden="true"></i>roduct List <span class="sr-only">(current)</span></a>
               </li>
               <li class="nav-item mr-auto">
-                <button class="btn btn-outline-info mr-1 "><i class="fa fa-plus-circle" aria-hidden="true"></i><a href="addproduct.jsp">Add product</a></button>
+                <button class="btn btn-outline-info mr-1 "><i class="fa fa-plus-circle" aria-hidden="true"></i><a href="addproduct.jsp">Add product</a></button>  </li>
                   
-                  </li>
+                 
+                  
+                  
+                  
+                 
           </ul>
                   <ul class="navbar-nav ml-auto">
+                  
+               
+                   <li>    <div class="dropdown show" id="drop"   style="display:none;">
+                        <a class="btn btn-secondary dropdown-toggle" href="#" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                         Hi <% out.println(session.getAttribute("username"));%>
+                     </a>
+
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                          <a class="dropdown-item" href="#">My Profile</a>
+                         <a class="dropdown-item" href="#">Logout</a>
+                            </div>
+                        </div></li>
+                  
             <li class="nav-item ml-auto" >
-              <button class="btn btn-success  " data-target="#mymodel" data-toggle="modal">login/signup</button>
+              <button class="btn btn-success"   id="signinbutton" data-target="#mymodel" data-toggle="modal"  style="display:none;">Login/Signup</button>
             </li>
           </ul>
           
@@ -140,11 +183,6 @@
                               </form>
                               
                           </div>
-                          <!--
-                        <div class="modal-footer justify-content-center">
-                            <button class="btn btn-danger " data-dismiss="modal">Signup</button>
-                        </div>
-                      -->
                         <div class="modal-footer">
                           <div class="options text-right">
                             <p class="pt-1">New Member? <a href="registration.jsp" class="blue-text">Register</a></p>
@@ -157,31 +195,12 @@
                 </div>
               
             </div>
-          
-            <!---
-            <li class="nav-item">
-              <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="dropdown03" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
-              <div class="dropdown-menu" aria-labelledby="dropdown03">
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <a class="dropdown-item" href="#">Something else here</a>
-              </div>
-            </li>
-            
-        --> 
         
     </li>
+    
     </ul>
           </ul>
-          <!--
-          <form class="form-inline my-2 my-md-0">
-            
-            <input class="form-control" type="text" placeholder="Search">
-            
-          </form>-->
+         
         </div>
         
         

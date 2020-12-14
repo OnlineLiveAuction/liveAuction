@@ -123,7 +123,7 @@
                 </select>
               </div>
               <div class="form-group">
-                <label for="exampleFormControlSelect1"> Select Bidding time (bidding will be for 2 minutes)</label>
+                <label for="exampleFormControlSelect1"> Select Bidding time (bidding will be for 5 minutes)</label>
                 <input type="time" name="starttime" class="form-control" >
                   
               </div>
