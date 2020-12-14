@@ -129,7 +129,7 @@
               </div>
               <div class="form-group">
                 <label> Select Bidding date</label>
-                <input type="text" name="biddingdate" class="form-control" required>    
+                <input type="date" name="biddingdate" class="form-control" required>    
               </div>
               
               <input type="hidden" name="username" value="<%out.print((String)session.getAttribute("username")); %>">

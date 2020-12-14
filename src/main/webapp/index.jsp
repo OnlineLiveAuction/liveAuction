@@ -79,6 +79,24 @@
    				 		<%
                     }
             	}
+                
+                if (request.getParameter("prodreg") != null) 
+                {
+                    n = request.getParameter("prodreg");
+                    if (n.equals("true")) 
+                    {
+       				 	%>
+        					<script>alert("Product Added Successfully!");</script>
+       				 	<%
+                	}
+                    else
+                    {
+                    	%>
+    						<script>alert("An error occurred. Please try again.");</script>
+   				 		<%
+                    }
+            	}
+                
             } catch (Exception e) {
                 out.println(e);
             }
