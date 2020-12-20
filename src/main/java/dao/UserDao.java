@@ -24,7 +24,6 @@ public class UserDao {
 		 {
 			 System.out.println("Connecting to database..............."+JdbcURL);
 	         Class.forName(driver);
-	         System.out.println("cfsgdsdhgjh");
 	         con = DriverManager.getConnection(JdbcURL, dbusername, dbpassword);
 		 }catch(Exception e)
 		 {
