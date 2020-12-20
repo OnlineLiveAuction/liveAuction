@@ -10,28 +10,25 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <link href="..\resources\css\registration.css" rel="stylesheet">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" type="text/css">
     <title>Registration</title>
   </head>
   
     <body >
-    <div class="container">
       <form action="registeruser" method="post">
         <div class="form-row">
           <div class="col-md-12 mb-12">
             <label for="validationDefault01">Name</label>
-            <input type="text" name="name"  class="form-control" id="validationDefault01" placeholder="First Name" required>
+            <input type="text" name="name"  class="form-control" id="validationDefault01" placeholder="First name" required>
           </div>
 
         </div>
         
         <div class="form-row">
           <div class="col-md-6 mb-3">
-            
             <label for="validationDefaultUsername">Username</label>
             <div class="input-group">
               <div class="input-group-prepend">
-                <span class="input-group-text" id="inputGroupPrepend2"><i class="fa fa-at"></i></span>
+                <span class="input-group-text" id="inputGroupPrepend2">@</span>
               </div>
               <input type="text" name="username" class="form-control" id="validationDefaultUsername" placeholder="Username" aria-describedby="inputGroupPrepend2" required>
             </div>
@@ -39,15 +36,8 @@
 
           </div>
           <div class="col-md-6 mb-6">
-            
             <label for="start-date">Birthday Date</label>
-            <div class="input-group">
-          	   <div class="input-group-prepend">
-                <span class="input-group-text" id="bdaycake"><i class="fa fa-birthday-cake fa"></i></span>
-              </div>
-            <input type="date" name="birthdate" class="form-control"  placeholder="Select Birthday Date" aria-describedby="bdaycake" required>
-          </div>
-          
+            <input type="date" name="birthdate" class="form-control"  placeholder="select birthday date"  required>
           </div>
         </div>
         <div class="form-row">
@@ -70,14 +60,13 @@
           </div>
           <div class="col-md-3 mb-3">
             <label for="validationDefault04">State</label>
-            <input type="text" name="state" class="form-control"  placeholder="State" required>
+            <input type="text" name="state" ' class="form-control"  placeholder="State" required>
           </div>
           <div class="col-md-3 mb-3">
-            <label for="validationDefault05">Pin Code</label>
+            <label for="validationDefault05">Pincode</label>
             <input type="text" name="pincode" class="form-control"  placeholder="Zip" required>
           </div>
         </div>
-        
         <div class="form-row">
           <div class="col-md-6 mb-6">
             <label for="validationDefault01">Contact Number</label>
@@ -97,7 +86,7 @@
           </div>
         
           <div class="form-group col-md-6">
-            <label for="inputPassword4">Confirm Password</label>
+            <label for="inputPassword4">ConfirmPassword</label>
             <input type="password" name="cpassword" class="form-control" placeholder="Password">
           </div>
         
@@ -112,10 +101,9 @@
             </label>
           </div>
         </div>
-        <button class="btn btn-primary" type="submit">Create Account</button>
-      </form>
-      </div>
-       </body>
+        <button class="btn btn-primary" type="submit">Submit form</button>
+      </form> </body>
+   <!-- Optional JavaScript; choose one of the two! -->
    
    <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
