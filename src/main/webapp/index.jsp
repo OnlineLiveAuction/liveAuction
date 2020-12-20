@@ -127,7 +127,7 @@
     
     </script>
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
-        <a class="navbar-brand" href="#"> <i class="fa fa-usd text-center text-white" aria-hidden="true"></i> Online Auction</a>
+        <a class="navbar-brand" href="#"> <i class="fa fa-usd text-center text-white" aria-hidden="true"></i>Online Auction</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample03" aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -137,16 +137,16 @@
           <ul class="navbar-nav  mr-auto">
             
             <li class="nav-item active mr-auto">
-              <a class="nav-link" href="#"><i class="fa fa-home" aria-hidden="true"></i> Home <span class="sr-only">(current)</span></a>
+              <a class="nav-link" href="#"><i class="fa fa-home" aria-hidden="true"></i>Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item active mr-auto">
-                <a class="nav-link" href="#"><i class="fa fa-legal" aria-hidden="true"></i> Upcoming Bids <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="#"><i class="fa fa-list" aria-hidden="true"></i>Bidding List <span class="sr-only">(current)</span></a>
               </li>
               <li class="nav-item active mr-auto">
-                <a class="nav-link" href="#"><i class="fa fa-list" aria-hidden="true"></i> Product List <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="#"><i class="fa fa-product-hunt" aria-hidden="true"></i>roduct List <span class="sr-only">(current)</span></a>
               </li>
               <li class="nav-item mr-auto">
-                <button class="btn btn-outline-info mr-1 "><i class="fa fa-plus-circle" aria-hidden="true"></i><a href="addproduct.jsp"> Add product</a></button>  </li>
+                <button class="btn btn-outline-info mr-1 "><i class="fa fa-plus-circle" aria-hidden="true"></i><a href="addproduct.jsp">Add product</a></button>  </li>
                   
                  
                   
@@ -169,7 +169,7 @@
                         </div></li>
                   
             <li class="nav-item ml-auto" >
-              <button class="btn btn-success"   id="signinbutton" data-target="#mymodel" data-toggle="modal"  style="display:none;">Login/SignUp</button>
+              <button class="btn btn-success"   id="signinbutton" data-target="#mymodel" data-toggle="modal"  style="display:none;">Login/Signup</button>
             </li>
           </ul>
           
@@ -186,17 +186,17 @@
                             <form action="checklogin">
                                 
                                 <div class="form-group">
-                                  <label><i class="fa fa-user fa-lg" aria-hidden="true"></i> Username</label>
-                                  <input type="text" name="username" class="form-control" placeholder="Username">
+                                  <label><i class="fa fa-envelope fa-2x"></i>Email:</label>
+                                  <input type="text" name="username" class="form-control">
 
                               </div>
                                 <div class="form-group">
-                                    <label><i class="fa fa-lock fa-lg" aria-hidden="true"></i> Password</label>
-                                    <input type="password" name="password" class="form-control" placeholder="Password">
+                                    <label><i class="fa fa-lock fa-2x"></i>Password:</label>
+                                    <input type="password" name="password" class="form-control">
 
                                 </div>
                                 <div class="text-center form-sm mt-2">
-                                <input type="submit" class="btn btn-info">
+                                <input type="submit" class="btn btn-info"">
                               </div>
                               </form>
                               
@@ -213,7 +213,24 @@
                 </div>
               
             </div>
-           
+        
+    </li>
+    
+    </ul>
+          </ul>
+         
+        </div>
+        
+        
+        
+                     
+        
+        
+        
+        
+        
+        
+        
       </nav>
       <jsp:include page="/GetProducts" />
       <%
@@ -237,7 +254,7 @@
                         <th scope="col">Category</th>
                         <th scope="col">Image</th>
                         <th scope="col">Description</th>
-                        <th scope="col">Item</th>
+                        <th scope="col">Item_name</th>
                         <th scope="col">Bid-Price(Rs)</th>
                         <th scope="col">Action</th>
                       </tr>
@@ -257,9 +274,9 @@
                      	 				<tr>
 					                        <th scope="row"><% out.print(product.getCategoryName()); %></th>
 					                        <td class="w-25">
-					                            <img src="../resources/image/bike.jpg" class="img-fluid img-thumbnail" alt="item_type">
+					                            <img src="../resources/image/bike.jpg"" class="img-fluid img-thumbnail" alt="item_type">
 					                        </td>
-					                        <td><% out.print(product.getProductDescription()); %></td>
+					                        <td><% out.print(product.getProductDescription()); %></button></td>
 					                        <td><% out.print(product.getProductName()); %></td>
 					                        <td><% out.print(product.getProductMinPrice()); %></td>
 					                        <td> <button class="btn btn-primary " >Register</button></td>
