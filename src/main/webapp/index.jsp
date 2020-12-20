@@ -37,7 +37,7 @@
       </style>
       <!-- Custom styles for this template -->
       
-    <link href="..\resources\css\navbar.css" rel="stylesheet">
+    <link href="css\navbar.css" rel="stylesheet">
     <title>Welcome!</title>
   </head>
   <body>
