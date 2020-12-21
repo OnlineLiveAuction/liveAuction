@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <link href="resources/css/addproduct.css" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" type="text/css">
-	<link rel="stylesheet" href="css/addproduct.css">
+	<link rel="stylesheet" href="addproduct.css">
 	
 	
 	
@@ -67,11 +67,11 @@
                         <form action="checklogin">
                             
                             <div class="form-group">
-                              <label><i class="fa fa-envelope fa-2x"></i>Email:</label>
+                              <label class="modallabel"><i class="fa fa-envelope fa-2x"></i>Username:</label>
                               <input type="text" name="username" class="form-control">
                           </div>
                             <div class="form-group">
-                                <label><i class="fa fa-lock fa-2x"></i>Password:</label>
+                                <label class="modallabel"><i class="fa fa-lock fa-2x "></i>Password:</label>
                                 <input type="password" name="password" class="form-control">
                             </div>
                             <div class="text-center form-sm mt-2">
@@ -93,7 +93,7 @@
     	
         
         
-        <form action="addproduct" method="post" >
+        <form action="addproduct" method="post"  >
             <div class="form-row">
                 <div class="col-md-6 mb-6">
                   <label for="validationDefault01">Product name</label>
@@ -115,15 +115,14 @@
               <div class="form-group">
                 <label for="exampleFormControlSelect1">Product Category</label>
                 <select class="form-control" name="categoryID" id="exampleFormControlSelect1">
-                  <option>bike</option>
-                  <option>2</option>
-                  <option>3</option>
-                  <option>4</option>
-                  <option>5</option>
+                  <option>Vehicle</option>
+                  <option>Antiques</option>
+                  <option>Electronics</option>
+                  
                 </select>
               </div>
               <div class="form-group">
-                <label for="exampleFormControlSelect1"> Select Bidding time (bidding will be for 5 minutes)</label>
+                <label for="exampleFormControlSelect1"> Select Bidding time (bidding will be for 10 minutes)</label>
                 <input type="time" name="starttime" class="form-control" >
                   
               </div>
@@ -131,6 +130,7 @@
                 <label> Select Bidding date</label>
                 <input type="date" name="biddingdate" class="form-control" required>    
               </div>
+              
               
               <input type="hidden" name="username" value="<%out.print((String)session.getAttribute("username")); %>">
             <button type="submit" class="btn btn-primary">Submit</button>

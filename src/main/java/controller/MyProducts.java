@@ -1,25 +1,21 @@
 package controller;
 
 import java.io.IOException;
-
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
-import dao.UserDao;
-import model.User;
 
 /**
- * Servlet implementation class UserController
+ * Servlet implementation class MyProducts
  */
-public class UserController extends HttpServlet {
+public class MyProducts extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+       
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public UserController() {
+    public MyProducts() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -29,24 +25,7 @@ public class UserController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String username = (String)request.getParameter("username");
-		String password = (String)request.getParameter("password");
-		System.out.println(username+" "+password);
-		
-		UserDao dbcon  = new UserDao();
-		boolean authorized = dbcon.checklogin(username, password);
-		
-		if(authorized)
-		{
-			HttpSession session = request.getSession();
-			session.setAttribute("username", username);
-			
-			response.sendRedirect("index.jsp?authorize=yes");
-		}
-		else
-		{
-			response.sendRedirect("index.jsp?authorize=no");
-		}
+		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**
@@ -58,29 +37,3 @@ public class UserController extends HttpServlet {
 	}
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

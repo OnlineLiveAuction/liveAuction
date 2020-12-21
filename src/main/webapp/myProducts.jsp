@@ -38,7 +38,7 @@
       <!-- Custom styles for this template -->
       
     <link href="css\navbar.css" rel="stylesheet">
-    <title>My Products</title>
+    <title>Welcome!</title>
   </head>
   <body>
    <%
@@ -137,13 +137,13 @@
           <ul class="navbar-nav  mr-auto">
             
             <li class="nav-item active mr-auto">
-              <a class="nav-link" href="#"><i class="fa fa-home" aria-hidden="true"></i>Home <span class="sr-only">(current)</span></a>
+              <a class="nav-link" href="index.jsp"><i class="fa fa-home" aria-hidden="true"></i>Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item active mr-auto">
-                <a class="nav-link" href="#"><i class="fa fa-list" aria-hidden="true"></i>Upcoming Bids <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="#"><i class="fa fa-list" aria-hidden="true"></i>Bidding List <span class="sr-only">(current)</span></a>
               </li>
               <li class="nav-item active mr-auto">
-                <a href="myProducts.jsp" class="nav-link" href="#">My<i class="fa fa-product-hunt" aria-hidden="true"></i>roduct List <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="#"><i class="fa fa-product-hunt" aria-hidden="true"></i>roduct List <span class="sr-only">(current)</span></a>
               </li>
               <li class="nav-item mr-auto">
                 <button class="btn btn-outline-info mr-1 "><i class="fa fa-plus-circle" aria-hidden="true"></i><a href="addproduct.jsp">Add product</a></button>  </li>
@@ -232,10 +232,13 @@
         
         
       </nav>
-      <jsp:include page="/GetProducts" />
+      <%
+      String currentUser = (String)session.getAttribute("username");
+      request.setAttribute("currentUser",currentUser); %>
+      <jsp:include page="/viewmyproducts" />
       <%
        System.out.println("dghgdf"); 
-       List<Product> productList = (List<Product>)request.getAttribute("productList");
+       List<Product> productList = (List<Product>)request.getAttribute("myProductList");
        System.out.println(productList); %>
                     
 
@@ -276,17 +279,19 @@
                      	 				<tr>
 					                        <th scope="row"><% out.print(product.getCategoryName()); %></th>
 					                        <td class="w-25">
-					                            <img src="bike.jpg"" class="img-fluid img-thumbnail" alt="item_type">
+					                            <img src="image.jpg"" class="img-fluid img-thumbnail" alt="item_type">
 					                        </td>
 					                        <td><% out.print(product.getProductName()); %></td>
 					                        
 					                        <td><% out.print(product.getProductDescription()); %></td>
 					                        <td><% out.print(product.getProductMinPrice()); %></td>
-					                        <td><% out.print(product.getBiddingDate()); %></td>
+					                         <td><% out.print(product.getBiddingDate()); %></td>
 					                        <td><% out.print(product.getStartTime()); %></td>
 					                        <td> <button class="btn btn-primary " >Register</button></td>
 					                      </tr>
                      	 		
+                     	 		
+           
                      	 		<% 
                      	 	}
                      	 %>

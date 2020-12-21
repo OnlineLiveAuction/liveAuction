@@ -163,6 +163,8 @@ public class UserDao {
 				product.setProductDescription(rs.getString("productDescription"));
 				//System.out.println("description"+product.getProductDescription());
 				product.setProductMinPrice(rs.getInt("productMinPrice"));
+				product.setStartTime(rs.getString("startTime"));
+				product.setBiddingDate(rs.getString("biddingDate"));
 				//System.out.println("minprice"+product.getProductMinPrice());
 				int categoryID = rs.getInt("categoryID");
 				PreparedStatement psCat = con.prepareStatement("Select categoryname from category where categoryID = '"+ categoryID +"'");
@@ -180,6 +182,50 @@ public class UserDao {
 		{
 			e.printStackTrace();
 			return productList;
+		}
+		
+		
+		
+	}
+	public List<Product> getMyProducts(String username)
+	{
+		System.out.println(username);
+		List<Product> myProductList = new ArrayList<>();
+		try
+		{
+			int userId = getUserId(username);
+			System.out.println("getmyproducts"+userId);
+			String query = "Select * from product where sellerID = "+userId+"";         // add where productStatus = not sold
+			PreparedStatement ps = con.prepareStatement(query);
+			ResultSet rs = ps.executeQuery();
+			while(rs.next())
+			{
+				System.out.println("result set useradao");
+				Product product = new Product();
+				product.setProductName(rs.getString("productName"));
+				//System.out.println("name"+product.getProductName());
+				product.setProductDescription(rs.getString("productDescription"));
+				//System.out.println("description"+product.getProductDescription());
+				product.setProductMinPrice(rs.getInt("productMinPrice"));
+				product.setStartTime(rs.getString("startTime"));
+				product.setBiddingDate(rs.getString("biddingDate"));
+				//System.out.println("minprice"+product.getProductMinPrice());
+				int categoryID = rs.getInt("categoryID");
+				PreparedStatement psCat = con.prepareStatement("Select categoryname from category where categoryID = '"+ categoryID +"'");
+				ResultSet category = psCat.executeQuery();
+				if(category.next())
+				{
+					product.setCategoryName(category.getString("categoryName"));
+				}
+				
+				myProductList.add(product);
+			}
+			
+			return myProductList;
+		}catch(Exception e)
+		{
+			e.printStackTrace();
+			return myProductList;
 		}
 		
 		

@@ -34,6 +34,13 @@
   	<description></description>
   	<servlet-class>controller.Logout</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>MyPostedProducts</servlet-name>
+  	<display-name>MyPostedProducts</display-name>
+  	<description></description>
+  	<servlet-class>controller.MyPostedProducts</servlet-class>
+  </servlet>
+
   	
   <servlet-mapping>
   	<servlet-name>UserController</servlet-name>
@@ -54,6 +61,10 @@
   <servlet-mapping>
   	<servlet-name>Logout</servlet-name>
   	<url-pattern>/logout</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>MyPostedProducts</servlet-name>
+  	<url-pattern>/viewmyproducts</url-pattern>
   </servlet-mapping>
   
 </web-app>
