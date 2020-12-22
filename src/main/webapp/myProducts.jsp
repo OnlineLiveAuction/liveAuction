@@ -261,7 +261,6 @@
                         <th scope="col">Bid-Price(Rs)</th>
                         <th scope="col">Bidding Date</th>
                         <th scope="col">Start Time</th>
-                        <th scope="col">Action</th>
                       </tr>
                     </thead>
                     
@@ -287,7 +286,6 @@
 					                        <td><% out.print(product.getProductMinPrice()); %></td>
 					                         <td><% out.print(product.getBiddingDate()); %></td>
 					                        <td><% out.print(product.getStartTime()); %></td>
-					                        <td> <button class="btn btn-primary " >Register</button></td>
 					                      </tr>
                      	 		
                      	 		

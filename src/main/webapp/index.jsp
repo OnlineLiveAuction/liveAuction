@@ -38,7 +38,7 @@
       <!-- Custom styles for this template -->
       
     <link href="css\navbar.css" rel="stylesheet">
-    <title>My Products</title>
+    <title>Welcome!</title>
   </head>
   <body>
    <%
