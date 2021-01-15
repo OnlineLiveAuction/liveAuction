@@ -3,7 +3,6 @@
     <%@ page import="java.util.List" %>
     <%@ page import="model.Product" %>
     <%@ page import="java.util.ArrayList" %>
-    <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!doctype html>
 <html lang="en">
   <head>
@@ -15,8 +14,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
@@ -42,15 +39,7 @@
       
     <link href="css\navbar.css" rel="stylesheet">
     <title>Welcome!</title>
-    
-
-	
-	
-    
   </head>
-  
-  
-  
   <body>
    <%
    			System.out.println(session.getAttribute("username"));
@@ -137,30 +126,6 @@
     
     
     </script>
-    
-    <script type="text/javascript">
-        function disableButtonsOnStart() {
-        	var s="<%out.print(session.getAttribute("username"));%>"; 
-            
-        	if(s=="null")
-            {
-        		for(var i=1;i<100;i++)
-            	{
-            		var btnSubmit = document.getElementById(String(i));
-                	btnSubmit.disabled = true;
-            	}	
-            }
-        	
-        }
-        window.onload = disableButtonsOnStart;
-    </script>
-    
-    
-    
-    
-	
-    
-    
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
         <a class="navbar-brand" href="#"> <i class="fa fa-usd text-center text-white" aria-hidden="true"></i>Online Auction</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample03" aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
@@ -172,13 +137,13 @@
           <ul class="navbar-nav  mr-auto">
             
             <li class="nav-item active mr-auto">
-              <a class="nav-link" href="#"><i class="fa fa-home" aria-hidden="true"></i>Home <span class="sr-only">(current)</span></a>
+              <a class="nav-link" href="index.jsp"><i class="fa fa-home" aria-hidden="true"></i>Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item active mr-auto">
-                <a class="nav-link" a href="upcomingBids.jsp"><i class="fa fa-list" aria-hidden="true"></i>Upcoming Bids <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="#"><i class="fa fa-list" aria-hidden="true"></i>Bidding List <span class="sr-only">(current)</span></a>
               </li>
               <li class="nav-item active mr-auto">
-                <a href="myProducts.jsp" class="nav-link" href="#">My<i class="fa fa-product-hunt" aria-hidden="true"></i>roduct List <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="#"><i class="fa fa-product-hunt" aria-hidden="true"></i>roduct List <span class="sr-only">(current)</span></a>
               </li>
               <li class="nav-item mr-auto">
                 <button class="btn btn-outline-info mr-1 "><i class="fa fa-plus-circle" aria-hidden="true"></i><a href="addproduct.jsp">Add product</a></button>  </li>
@@ -256,20 +221,25 @@
          
         </div>
         
-		
+        
+        
+                     
+        
+        
+        
+        
+        
+        
         
       </nav>
-      <jsp:include page="/GetProducts" />
       <%
-       List<Product> productList = (List<Product>)request.getAttribute("productList");
-       System.out.println(productList);
-       int userID = -1;
-       if(session.getAttribute("userID") != null)
-       {
-    	   userID = (Integer)session.getAttribute("userID");
-       }
-       	
-       %>
+      String currentUser = (String)session.getAttribute("username");
+      request.setAttribute("currentUser",currentUser); %>
+      <jsp:include page="/MyUpcomingBids" />
+      <%
+      System.out.println("Kaito");
+       List<Product> productList = (List<Product>)request.getAttribute("myUpcomingBids");
+       System.out.println(productList); %>
                     
 
       <div class="container">
@@ -291,7 +261,6 @@
                         <th scope="col">Bid-Price(Rs)</th>
                         <th scope="col">Bidding Date</th>
                         <th scope="col">Start Time</th>
-                        <th scope="col">Action</th>
                       </tr>
                     </thead>
                     
@@ -309,45 +278,21 @@
                      	 				<tr>
 					                        <th scope="row"><% out.print(product.getCategoryName()); %></th>
 					                        <td class="w-25">
-					                            <img src="bike.jpg"" class="img-fluid img-thumbnail" alt="item_type">
+					                            <img src="image.jpg"" class="img-fluid img-thumbnail" alt="item_type">
 					                        </td>
 					                        <td><% out.print(product.getProductName()); %></td>
+					                        
 					                        <td><% out.print(product.getProductDescription()); %></td>
 					                        <td><% out.print(product.getProductMinPrice()); %></td>
-					                        <td><% out.print(product.getBiddingDate()); %></td>
+					                         <td><% out.print(product.getBiddingDate()); %></td>
 					                        <td><% out.print(product.getStartTime()); %></td>
-					                        <jsp:include page="/RegisteredProductList">
-					                        	<jsp:param name="userID" value="<%=session.getAttribute(\"username\")%>" />
-					                        </jsp:include>
-					                        
-					                        <%
-						                        List<Integer> regProductList = (List<Integer>)request.getAttribute("registeredProductID");
-						                        
-					                        	if(regProductList.contains(product.getProductID()))
-					                        	{
-					                        %>
-					                        <td>
-												<button class="btn btn-primary" disabled="disabled">Registered</button>					                   			
-					                        </td>
-					                        <% } else if(product.getSellerId() == userID) { %>
-					                        <td>
-												<button class="btn btn-primary" disabled="disabled">Own Product</button>					                   			
-					                        </td>
-					                        <% } else { %>
-					                        	<td>
-												<form action = "RegForProducts" method="post">
-					                        		<button class="btn btn-primary" id="<%=product.getProductID()%>">Register</button>
-					                        		<input type='hidden' name='productID' value="<%=product.getProductID()%>">
-					                        	</form>						                   			
-					                        </td>
-					                        
-					                        <% } %>
 					                      </tr>
+                     	 		
+                     	 		
+           
                      	 		<% 
                      	 	}
                      	 %>
-                     	 
-                     	
                    
                     </tbody>
                   </table>   

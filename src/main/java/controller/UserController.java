@@ -40,6 +40,9 @@ public class UserController extends HttpServlet {
 		{
 			HttpSession session = request.getSession();
 			session.setAttribute("username", username);
+			int userID = dbcon.getUserId(username);
+			session.setAttribute("userID", userID);
+			
 			
 			response.sendRedirect("index.jsp?authorize=yes");
 		}

@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
@@ -158,6 +159,7 @@ public class UserDao {
 			{
 				System.out.println("result set useradao");
 				Product product = new Product();
+				product.setProductID(rs.getInt(1));
 				product.setProductName(rs.getString("productName"));
 				//System.out.println("name"+product.getProductName());
 				product.setProductDescription(rs.getString("productDescription"));
@@ -165,6 +167,7 @@ public class UserDao {
 				product.setProductMinPrice(rs.getInt("productMinPrice"));
 				product.setStartTime(rs.getString("startTime"));
 				product.setBiddingDate(rs.getString("biddingDate"));
+				product.setSellerId(rs.getInt("sellerID"));
 				//System.out.println("minprice"+product.getProductMinPrice());
 				int categoryID = rs.getInt("categoryID");
 				PreparedStatement psCat = con.prepareStatement("Select categoryname from category where categoryID = '"+ categoryID +"'");
@@ -231,6 +234,95 @@ public class UserDao {
 		
 		
 	}
+	
+	public int addRegisterationRecord(int bidderID, int productID) 
+	{
+		System.out.print(bidderID + "  " + productID);
+		String query = "Insert into productregistration VALUES (?,?)";
+		PreparedStatement ps;
+		try {
+			ps = con.prepareStatement(query);
+			ps.setInt(1, bidderID);
+			ps.setInt(2, productID);
+			int result = ps.executeUpdate();
+			return result;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return -1;
+		}
+		
+	}
+	
+	public List<Integer> getRegisteredProductID(String username)
+	{
+		int userId = getUserId(username);
+		System.out.print("CRG " + username + " " + userId);
+		String query = "Select productID from productregistration where bidderID = "+userId; 
+		List<Integer> registeredProductID = new ArrayList<Integer>();
+		PreparedStatement ps;
+		try {
+			ps = con.prepareStatement(query);
+			ResultSet rs = ps.executeQuery();
+			while(rs.next())
+			{
+				registeredProductID.add(rs.getInt("productID"));
+			}
+			return registeredProductID;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
+	public List<Product> getRegisteredProducts(String username)
+	{
+		List<Product> productList = new ArrayList<>();
+		try
+		{
+			int userId = getUserId(username);
+			String query = "select * from product where productID in (select productID from productregistration WHERE bidderID = "+userId+")" ;       // add where productStatus = not sold
+			System.out.print("CRG1" + query);
+			
+			PreparedStatement ps = con.prepareStatement(query);
+			ResultSet rs = ps.executeQuery();
+			while(rs.next())
+			{
+				System.out.println("result set useradao");
+				Product product = new Product();
+				product.setProductID(rs.getInt(1));
+				product.setProductName(rs.getString("productName"));
+				//System.out.println("name"+product.getProductName());
+				product.setProductDescription(rs.getString("productDescription"));
+				//System.out.println("description"+product.getProductDescription());
+				product.setProductMinPrice(rs.getInt("productMinPrice"));
+				product.setStartTime(rs.getString("startTime"));
+				product.setBiddingDate(rs.getString("biddingDate"));
+				product.setSellerId(rs.getInt("sellerID"));
+				//System.out.println("minprice"+product.getProductMinPrice());
+				int categoryID = rs.getInt("categoryID");
+				PreparedStatement psCat = con.prepareStatement("Select categoryname from category where categoryID = '"+ categoryID +"'");
+				ResultSet category = psCat.executeQuery();
+				if(category.next())
+				{
+					product.setCategoryName(category.getString("categoryName"));
+				}
+				
+				productList.add(product);
+			}
+			
+			return productList;
+		}catch(Exception e)
+		{
+			e.printStackTrace();
+			return productList;
+		}
+		
+	}
+	
+	
+	
 }
 
 
