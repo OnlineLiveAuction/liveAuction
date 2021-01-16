@@ -167,6 +167,7 @@ public class UserDao {
 				//System.out.println("description"+product.getProductDescription());
 				product.setProductMinPrice(rs.getInt("productMinPrice"));
 				product.setStartTime(rs.getString("startTime"));
+				product.setStopTime(rs.getString("stopTime"));
 				product.setBiddingDate(rs.getString("biddingDate"));
 				product.setSellerId(rs.getInt("sellerID"));
 				//System.out.println("minprice"+product.getProductMinPrice());
@@ -212,6 +213,7 @@ public class UserDao {
 				//System.out.println("description"+product.getProductDescription());
 				product.setProductMinPrice(rs.getInt("productMinPrice"));
 				product.setStartTime(rs.getString("startTime"));
+				product.setStopTime(rs.getString("stopTime"));
 				product.setBiddingDate(rs.getString("biddingDate"));
 				//System.out.println("minprice"+product.getProductMinPrice());
 				int categoryID = rs.getInt("categoryID");
@@ -299,6 +301,7 @@ public class UserDao {
 				//System.out.println("description"+product.getProductDescription());
 				product.setProductMinPrice(rs.getInt("productMinPrice"));
 				product.setStartTime(rs.getString("startTime"));
+				product.setStopTime(rs.getString("stopTime"));
 				product.setBiddingDate(rs.getString("biddingDate"));
 				product.setSellerId(rs.getInt("sellerID"));
 				//System.out.println("minprice"+product.getProductMinPrice());

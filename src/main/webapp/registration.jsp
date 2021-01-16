@@ -36,7 +36,7 @@
 
           </div>
           <div class="col-md-6 mb-6">
-            <label for="start-date">Birthday Date</label>
+            <label for="start-date">Birth Date</label>
             <input type="date" name="birthdate" class="form-control"  placeholder="select birthday date"  required>
           </div>
         </div>

@@ -3,6 +3,9 @@
     <%@ page import="java.util.List" %>
     <%@ page import="model.Product" %>
     <%@ page import="java.util.ArrayList" %>
+    <%@ page import="java.time.LocalTime" %>
+    <%@ page import="java.text.SimpleDateFormat" %>
+    <%@ page import="java.util.Date" %>
 <!doctype html>
 <html lang="en">
   <head>
@@ -143,7 +146,7 @@
                 <a class="nav-link" href="upcomingBids.jsp"><i class="fa fa-list" aria-hidden="true"></i>Bidding List <span class="sr-only">(current)</span></a>
               </li>
               <li class="nav-item active mr-auto">
-                <a class="nav-link" href="myProducts.jsps"><i class="fa fa-product-hunt" aria-hidden="true"></i>roduct List <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="myProducts.jsp"><i class="fa fa-product-hunt" aria-hidden="true"></i>roduct List <span class="sr-only">(current)</span></a>
               </li>
               <li class="nav-item mr-auto">
                 <button class="btn btn-outline-info mr-1 "><i class="fa fa-plus-circle" aria-hidden="true"></i><a href="addproduct.jsp">Add product</a></button>  </li>
@@ -239,7 +242,14 @@
       <%
       System.out.println("Kaito");
        List<Product> productList = (List<Product>)request.getAttribute("myUpcomingBids");
-       System.out.println(productList); %>
+       System.out.println(productList);
+       LocalTime currTime = LocalTime.now();
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");  
+	    Date date = new Date();  
+	    System.out.println(formatter.format(date));
+		System.out.println("current time "+currTime);
+       
+       %>
                     
 
       <div class="container">
@@ -277,13 +287,26 @@
                     <label class="category mt-md-3"><b>Bidding date:</b></label> <label class="category"><% out.print(product.getBiddingDate()); %></label><br>
                     <label class="category mt-md-3"><b>Start Time:</b></label> <label class="category"><% out.print(product.getStartTime()); %></label><br>
                     
-				        
+				     <%   
         
-                     	 	
+                     if(formatter.format(date).toString().equals(product.getBiddingDate()))
+					                        	{
+					                        		LocalTime start = LocalTime.parse(product.getStartTime());
+					                        		LocalTime stop = LocalTime.parse(product.getStopTime());
+					                        		if((start.compareTo(currTime)) < 0 && (stop.compareTo(currTime) > 0))
+					                        		{
+					                        			%>
+					                        			<form action="biddingPage.jsp">
+					                        				<button class="btn btn-danger  mt-md-3">Enter Auction</button>
+					                        				<input type="hidden" value="<%=product.getProductID()%>" name="productID">
+					                        			</form>
+					                        			<%
+					                        		}
+					                        	}	 	
                      	 		
                      	 		
            
-                     	 		
+				     %>  		
                    
                       
               </div>

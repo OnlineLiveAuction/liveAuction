@@ -4,6 +4,8 @@
     <%@ page import="model.Product" %>
     <%@ page import="java.util.ArrayList" %>
     <%@ page import="java.time.LocalTime" %>
+    <%@ page import="java.text.SimpleDateFormat" %>
+    <%@ page import="java.util.Date" %>
     
 <!doctype html>
 <html lang="en">
@@ -271,6 +273,11 @@
        {
     	   userID = (Integer)session.getAttribute("userID");
        }
+       LocalTime currTime = LocalTime.now();
+ 		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");  
+ 	    Date date = new Date();  
+ 	    System.out.println(formatter.format(date));
+ 		System.out.println("current time "+currTime);
        	
        %>
                     
@@ -294,6 +301,7 @@
                      	 	
                      	 	for(int i = 0; i < productList.size(); i++)
                      	 	{
+                     	 		
                      	 		Product product = (Product)productList.get(i);
                      	 		%>
                      	 		<div class="card mt-3 shadow p-3 mb-5 bg-white rounded" >
@@ -305,7 +313,7 @@
             <div class="col-md-5 ">
                 <div class="container">
                     <label class="category"><b>Name:</b></label> <label ><% out.print(product.getProductName()); %></label><br>
-                    <label class="category"><b>Category:</b></label> <label class="category"><% out.print(product.getProductName()); %></label><br>
+                    <label class="category"><b>Category:</b></label> <label class="category"><% out.print(product.getCategoryName()); %></label><br>
                     
                     <label class="category "><b>Description:</b></label> <div style='overflow:auto; width:400px;height:120px;'><% out.print(product.getProductDescription()); %></div>                
                   </div>
@@ -320,13 +328,28 @@
 					                        	<jsp:param name="userID" value="<%=session.getAttribute(\"username\")%>" />
 					                        </jsp:include>
 					                        
-					                        
+					                       
+					                        <button  style="display:none" class ="btn btn-primary mt-md-3">Enter Auction</button>
 					                        
 					                        
 					                        <%
-						                        List<Integer> regProductList = (List<Integer>)request.getAttribute("registeredProductID");
+					                        	List<Integer> regProductList = (List<Integer>)request.getAttribute("registeredProductID");
+						                        LocalTime start = LocalTime.parse(product.getStartTime());
+				                        		LocalTime stop = LocalTime.parse(product.getStopTime());
+				                        		System.out.println(start+" stop"+stop);
+					                        	if((formatter.format(date).toString().equals(product.getBiddingDate()))   &&   ((start.compareTo(currTime)) < 0 && (stop.compareTo(currTime) > 0)))
+					                        	{
+					                        		
+					                        			%>
+					                        				<form action="biddingPage.jsp">
+						                        				<button class="btn btn-danger  mt-md-3">Enter Auction</button>
+						                        				<input type="hidden" value="<%=product.getProductID()%>" name="productID">
+					                        				</form>
+					                        			<%
+					                        	}
+					              
 						                        
-					                        	if(regProductList.contains(product.getProductID()))
+					                        	else if(regProductList.contains(product.getProductID()))
 					                        	{
 					                        %>
 					                       

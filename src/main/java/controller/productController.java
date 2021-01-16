@@ -82,13 +82,15 @@ public class productController extends HttpServlet {
 			product.setSellerId(sellerID);
 			product.setProductStatus(productStatus);
 			dbcon.addproduct(product);
-			RequestDispatcher dispatch = request.getRequestDispatcher("index.jsp?prodreg=true");
-			dispatch.forward(request, response);
+			response.sendRedirect("index.jsp?prodreg=true");
+			//RequestDispatcher dispatch = request.getRequestDispatcher("index.jsp?prodreg=true");
+			//dispatch.forward(request, response);
 		}
 		else
 		{
-			RequestDispatcher dispatch = request.getRequestDispatcher("index.jsp?prodreg=false");
-			dispatch.forward(request, response);
+			response.sendRedirect("index.jsp?prodreg=false");
+			//RequestDispatcher dispatch = request.getRequestDispatcher("index.jsp?prodreg=false");
+			//dispatch.forward(request, response);
 		}
 		
 		
