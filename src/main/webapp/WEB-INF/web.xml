@@ -40,8 +40,27 @@
   	<description></description>
   	<servlet-class>controller.MyPostedProducts</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>RegForProducts</servlet-name>
+  	<display-name>RegForProducts</display-name>
+  	<description></description>
+  	<servlet-class>controller.RegForProducts</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>RegisteredProductList</servlet-name>
+  	<display-name>RegisteredProductList</display-name>
+  	<description></description>
+  	<servlet-class>controller.RegisteredProductList</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>MyUpcomingBids</servlet-name>
+  	<display-name>MyUpcomingBids</display-name>
+  	<description></description>
+  	<servlet-class>controller.MyUpcomingBids</servlet-class>
+  </servlet>
+  
+  
 
-  	
   <servlet-mapping>
   	<servlet-name>UserController</servlet-name>
   	<url-pattern>/checklogin</url-pattern>
@@ -66,5 +85,23 @@
   	<servlet-name>MyPostedProducts</servlet-name>
   	<url-pattern>/viewmyproducts</url-pattern>
   </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>RegForProducts</servlet-name>
+  	<url-pattern>/RegForProducts</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>RegisteredProductList</servlet-name>
+  	<url-pattern>/RegisteredProductList</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>MyUpcomingBids</servlet-name>
+  	<url-pattern>/MyUpcomingBids</url-pattern>
+  </servlet-mapping>
+  	
+  
+
+  
+  
+  
   
 </web-app>
