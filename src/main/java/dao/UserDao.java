@@ -127,18 +127,19 @@ public class UserDao {
 		System.out.println(product);
 		try
 		{
-			String query = "Insert into product (sellerID, productName, productDescription, startTime, bidCount, productcol, productStatus, categoryID, productMinPrice, biddingDate) VALUES (?,?,?,?,?,?,?,?,?,?)";
+			String query = "Insert into product (sellerID, productName, productDescription, startTime, stopTime, bidCount, productcol, productStatus, categoryID, productMinPrice, biddingDate) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
 			PreparedStatement ps = con.prepareStatement(query);
 			ps.setInt(1, product.getSellerId() );
 			ps.setString(2, product.getProductName());
 			ps.setString(3, product.getProductDescription());
 			ps.setString(4, product.getStartTime());
-			ps.setInt(5, product.getBidCount());
-			ps.setString(6, product.getProductcol());
-			ps.setString(7, product.getProductStatus());
-			ps.setInt(8, product.getCategoryID());
-			ps.setInt(9, product.getProductMinPrice());
-			ps.setString(10, product.getBiddingDate());
+			ps.setString(5, product.getStopTime());
+			ps.setInt(6, product.getBidCount());
+			ps.setString(7, product.getProductcol());
+			ps.setString(8, product.getProductStatus());
+			ps.setInt(9, product.getCategoryID());
+			ps.setInt(10, product.getProductMinPrice());
+			ps.setString(11, product.getBiddingDate());
 			int result = ps.executeUpdate();
 			return result;
 		}catch(Exception e)

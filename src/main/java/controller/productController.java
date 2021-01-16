@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.sql.Time;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalTime;
 import java.util.Date;
 
 import javax.servlet.RequestDispatcher;
@@ -55,6 +56,9 @@ public class productController extends HttpServlet {
 		String productcol = (String)request.getParameter("productcol");
 		int bidCount = 0;
 		String startTime = (String)request.getParameter("starttime");
+		LocalTime start = LocalTime.parse(startTime);
+		String stopTime = start.plusMinutes(10).toString();
+	    System.out.println("stopTime"+stopTime);
 		String productDescription = (String)request.getParameter("productdescription");
 		//Part productPicture = (Part)request.getPart("productpicture");
 		String productName = (String)request.getParameter("productname");
@@ -74,6 +78,7 @@ public class productController extends HttpServlet {
 			product.setProductName(productName);
 			//product.setProductPicture(productPicture);
 			product.setStartTime(startTime);
+			product.setStopTime(stopTime);
 			product.setSellerId(sellerID);
 			product.setProductStatus(productStatus);
 			dbcon.addproduct(product);

@@ -3,6 +3,7 @@
     <%@ page import="java.util.List" %>
     <%@ page import="model.Product" %>
     <%@ page import="java.util.ArrayList" %>
+    <%@ page import="java.time.LocalTime" %>
     
 <!doctype html>
 <html lang="en">
@@ -52,6 +53,8 @@
   
   
   <body>
+  <%LocalTime myObj = LocalTime.now();
+  System.out.println(myObj); %>
    <%
    			System.out.println(session.getAttribute("username"));
         try {
@@ -178,7 +181,7 @@
                 <a class="nav-link" a href="upcomingBids.jsp"><i class="fa fa-list" aria-hidden="true"></i>Upcoming Bids <span class="sr-only">(current)</span></a>
               </li>
               <li class="nav-item active mr-auto">
-                <a href="myProducts.jsp" class="nav-link" href="#">My<i class="fa fa-product-hunt" aria-hidden="true"></i>roduct List <span class="sr-only">(current)</span></a>
+                <a href="myProducts.jsp" class="nav-link" >My<i class="fa fa-product-hunt" aria-hidden="true"></i>roduct List <span class="sr-only">(current)</span></a>
               </li>
               <li class="nav-item mr-auto">
                 <button class="btn btn-outline-info mr-1 "><i class="fa fa-plus-circle" aria-hidden="true"></i><a href="addproduct.jsp">Add product</a></button>  </li>
@@ -309,13 +312,16 @@
                   </div>
                   <div class="col-md-3 ">
                     <div class="container">
-                        
+                   
                         <label class="category" ><b>Bid-price:</b></label> <label class="category"><% out.print(product.getProductMinPrice()); %></label><br>
                         <label class="category mt-md-3"><b>Bidding date:</b></label> <label class="category"><% out.print(product.getBiddingDate()); %></label><br>
                         <label class="category mt-md-3"><b>Start Time:</b></label> <label class="category"><% out.print(product.getStartTime()); %></label><br>
                         <jsp:include page="/RegisteredProductList">
 					                        	<jsp:param name="userID" value="<%=session.getAttribute(\"username\")%>" />
 					                        </jsp:include>
+					                        
+					                        
+					                        
 					                        
 					                        <%
 						                        List<Integer> regProductList = (List<Integer>)request.getAttribute("registeredProductID");
