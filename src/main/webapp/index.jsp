@@ -226,7 +226,7 @@
                             <form action="checklogin">
                                 
                                 <div class="form-group">
-                                  <label><i class="fa fa-envelope fa-2x"></i>Email:</label>
+                                  <label><i class="fa fa-envelope fa-2x"></i>Username:</label>
                                   <input type="text" name="username" class="form-control">
 
                               </div>
