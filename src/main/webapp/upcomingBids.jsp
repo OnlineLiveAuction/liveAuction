@@ -247,58 +247,52 @@
           <input class="form-control" type="text"placeholder="Search" aria-label="Search">
         </div>
       </div>
-      <div class="product-info">
-        <div class="container">
-            <div class="row">
-              <div class="col-12">
-                  <table class="table table-image table-dark table-striped">
-                    <thead>
-                      <tr>
-                        <th scope="col">Category</th>
-                        <th scope="col">Image</th>
-                        <th scope="col">Name</th>
-                        <th scope="col">Description</th>
-                        <th scope="col">Bid-Price(Rs)</th>
-                        <th scope="col">Bidding Date</th>
-                        <th scope="col">Start Time</th>
-                      </tr>
-                    </thead>
-                    
-                    
-                    <tbody>
-                   
+            <div class="container">
                    
                    		<%
+                   		
+                 	 	
+                 	 	for(int i = 0; i < productList.size(); i++)
+                 	 	{
+                 	 		Product product = (Product)productList.get(i);
+                 	 		%>
+                 	 		<div class="card mt-3 shadow p-3 mb-5 bg-white rounded" >
+        <div class="row">
+            <div class="col-md-4">
+                <img class="card-img-top" src="image/bike.jpg" alt="Card image cap" >
+            </div>
+        
+        <div class="col-md-5 ">
+            <div class="container">
+                <label class="category"><b>Name:</b></label> <label ><% out.print(product.getProductName()); %></label><br>
+                <label class="category"><b>Category:</b></label> <label class="category"><% out.print(product.getProductName()); %></label><br>
+                
+                <label class="category "><b>Description:</b></label> <div style='overflow:auto; width:400px;height:120px;'><% out.print(product.getProductDescription()); %></div>                
+              </div>
+              </div>
+              <div class="col-md-3 ">
+                <div class="container">
+                    
+                    <label class="category" ><b>Bid-price:</b></label> <label class="category"><% out.print(product.getProductMinPrice()); %></label><br>
+                    <label class="category mt-md-3"><b>Bidding date:</b></label> <label class="category"><% out.print(product.getBiddingDate()); %></label><br>
+                    <label class="category mt-md-3"><b>Start Time:</b></label> <label class="category"><% out.print(product.getStartTime()); %></label><br>
+                    
+				        
+        
                      	 	
-                     	 	for(int i = 0; i < productList.size(); i++)
-                     	 	{
-                     	 		Product product = (Product)productList.get(i);
-                     	 		%>
-                     	 		
-                     	 				<tr>
-					                        <th scope="row"><% out.print(product.getCategoryName()); %></th>
-					                        <td class="w-25">
-					                            <img src="image.jpg"" class="img-fluid img-thumbnail" alt="item_type">
-					                        </td>
-					                        <td><% out.print(product.getProductName()); %></td>
-					                        
-					                        <td><% out.print(product.getProductDescription()); %></td>
-					                        <td><% out.print(product.getProductMinPrice()); %></td>
-					                         <td><% out.print(product.getBiddingDate()); %></td>
-					                        <td><% out.print(product.getStartTime()); %></td>
-					                      </tr>
                      	 		
                      	 		
            
-                     	 		<% 
-                     	 	}
-                     	 %>
+                     	 		
                    
-                    </tbody>
-                  </table>   
+                      
               </div>
             </div>
           </div></div>
+          <% 
+                     	 	}
+                     	 %>
+                     	 </div>
 
   
    <!-- Optional JavaScript; choose one of the two! -->

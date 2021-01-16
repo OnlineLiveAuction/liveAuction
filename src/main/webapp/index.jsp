@@ -3,7 +3,7 @@
     <%@ page import="java.util.List" %>
     <%@ page import="model.Product" %>
     <%@ page import="java.util.ArrayList" %>
-    <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    
 <!doctype html>
 <html lang="en">
   <head>
@@ -281,22 +281,10 @@
         <div class="container">
             <div class="row">
               <div class="col-12">
-                  <table class="table table-image table-dark table-striped">
-                    <thead>
-                      <tr>
-                        <th scope="col">Category</th>
-                        <th scope="col">Image</th>
-                        <th scope="col">Name</th>
-                        <th scope="col">Description</th>
-                        <th scope="col">Bid-Price(Rs)</th>
-                        <th scope="col">Bidding Date</th>
-                        <th scope="col">Start Time</th>
-                        <th scope="col">Action</th>
-                      </tr>
-                    </thead>
+                  
                     
                     
-                    <tbody>
+                    
                    
                    
                    		<%
@@ -305,18 +293,27 @@
                      	 	{
                      	 		Product product = (Product)productList.get(i);
                      	 		%>
-                     	 		
-                     	 				<tr>
-					                        <th scope="row"><% out.print(product.getCategoryName()); %></th>
-					                        <td class="w-25">
-					                            <img src="bike.jpg"" class="img-fluid img-thumbnail" alt="item_type">
-					                        </td>
-					                        <td><% out.print(product.getProductName()); %></td>
-					                        <td><% out.print(product.getProductDescription()); %></td>
-					                        <td><% out.print(product.getProductMinPrice()); %></td>
-					                        <td><% out.print(product.getBiddingDate()); %></td>
-					                        <td><% out.print(product.getStartTime()); %></td>
-					                        <jsp:include page="/RegisteredProductList">
+                     	 		<div class="card mt-3 shadow p-3 mb-5 bg-white rounded" >
+            <div class="row">
+                <div class="col-md-4">
+                    <img class="card-img-top" src="image/bike.jpg" alt="Card image cap" >
+                </div>
+            
+            <div class="col-md-5 ">
+                <div class="container">
+                    <label class="category"><b>Name:</b></label> <label ><% out.print(product.getProductName()); %></label><br>
+                    <label class="category"><b>Category:</b></label> <label class="category"><% out.print(product.getProductName()); %></label><br>
+                    
+                    <label class="category "><b>Description:</b></label> <div style='overflow:auto; width:400px;height:120px;'><% out.print(product.getProductDescription()); %></div>                
+                  </div>
+                  </div>
+                  <div class="col-md-3 ">
+                    <div class="container">
+                        
+                        <label class="category" ><b>Bid-price:</b></label> <label class="category"><% out.print(product.getProductMinPrice()); %></label><br>
+                        <label class="category mt-md-3"><b>Bidding date:</b></label> <label class="category"><% out.print(product.getBiddingDate()); %></label><br>
+                        <label class="category mt-md-3"><b>Start Time:</b></label> <label class="category"><% out.print(product.getStartTime()); %></label><br>
+                        <jsp:include page="/RegisteredProductList">
 					                        	<jsp:param name="userID" value="<%=session.getAttribute(\"username\")%>" />
 					                        </jsp:include>
 					                        
@@ -326,31 +323,35 @@
 					                        	if(regProductList.contains(product.getProductID()))
 					                        	{
 					                        %>
-					                        <td>
-												<button class="btn btn-primary" disabled="disabled">Registered</button>					                   			
-					                        </td>
+					                       
+												<button class="btn btn-danger  mt-md-3" disabled="disabled">Registered</button>					                   			
+					                        
 					                        <% } else if(product.getSellerId() == userID) { %>
-					                        <td>
-												<button class="btn btn-primary" disabled="disabled">Own Product</button>					                   			
-					                        </td>
+					                        
+												<button class="btn btn-primary  mt-md-3" disabled="disabled">Own Product</button>					                   			
+					                        
 					                        <% } else { %>
-					                        	<td>
+					                        	
 												<form action = "RegForProducts" method="post">
-					                        		<button class="btn btn-primary" id="<%=product.getProductID()%>">Register</button>
+					                         		<button class="btn btn-success  mt-md-3" id="<%=product.getProductID()%> ">Register</button>
 					                        		<input type='hidden' name='productID' value="<%=product.getProductID()%>">
 					                        	</form>						                   			
-					                        </td>
+					                        
 					                        
 					                        <% } %>
-					                      </tr>
+					        
+                      </div>
+                      </div>
+            </div>
+            
+          </div>
                      	 		<% 
                      	 	}
                      	 %>
                      	 
                      	
                    
-                    </tbody>
-                  </table>   
+                      
               </div>
             </div>
           </div></div>
