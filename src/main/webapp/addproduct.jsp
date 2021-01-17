@@ -1,5 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix = "c" %>
+    <%@ page import="java.util.List" %>
+    <%@ page import="dao.UserDao" %>
+    <%@ page import="java.util.ArrayList" %>
+    <%@ page import="java.util.Date" %>
+    
 <!doctype html>
 <html lang="en">
   <head>
@@ -114,11 +120,17 @@
                 </div>
               <div class="form-group">
                 <label for="exampleFormControlSelect1">Product Category</label>
+                <%
+                	
+                	UserDao newUser = new UserDao();
+                	List<String> categoryList = newUser.getCategories();
+                	
+                	%>
+                
                 <select class="form-control" name="categoryID" id="exampleFormControlSelect1">
-                  <option>Vehicle</option>
-                  <option>Antiques</option>
-                  <option>Electronics</option>
-                  
+                  <c:forEach items="categoryList" var="categoryName">
+                  	<option>${categoryName}</option>
+                  </c:forEach>    
                 </select>
               </div>
               <div class="form-group">

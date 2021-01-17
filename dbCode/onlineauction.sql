@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 15, 2021 at 01:59 PM
+-- Generation Time: Jan 17, 2021 at 06:21 PM
 -- Server version: 10.4.17-MariaDB
--- PHP Version: 8.0.0
+-- PHP Version: 7.2.34
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -37,7 +37,9 @@ CREATE TABLE `category` (
 --
 
 INSERT INTO `category` (`categoryID`, `categoryName`) VALUES
-(1, 'Vehicle');
+(1, 'Vehicle'),
+(2, 'Antiques'),
+(3, 'Electronics');
 
 -- --------------------------------------------------------
 
@@ -68,11 +70,7 @@ CREATE TABLE `product` (
 --
 
 INSERT INTO `product` (`productID`, `sellerID`, `productName`, `productPicture`, `productDescription`, `startTime`, `stopTime`, `bidCount`, `productcol`, `winnerID`, `closingPrice`, `productStatus`, `categoryID`, `productMinPrice`, `biddingDate`) VALUES
-(1, 1, '123', NULL, 'sfdsdfds', '00:34', NULL, 0, '12', NULL, NULL, 'not sold', 1, 123, '2021-01-04'),
-(2, 1, '12', NULL, 'QWER', '00:34', NULL, 0, 'WErr', NULL, NULL, 'not sold', 1, 123, '2018-06-21'),
-(3, 1, 'Point', NULL, 'sdjfbsdjf', '00:23', NULL, 0, 'CXolo', NULL, NULL, 'not sold', 1, 123, '2020-10-14'),
-(4, 2, 'QWEProd', NULL, 'sdhfkj', '00:21', NULL, 0, 'sdfinds', NULL, NULL, 'not sold', 1, 12333, '2021-01-20'),
-(5, 1, 'ABCProd', NULL, 'asdas', '12:22', NULL, 0, 'asdas', NULL, NULL, 'not sold', 1, 121, '2021-01-04');
+(20, 1, 'ty', NULL, 'rtg', '16:35', '16:45', 0, 'yur', NULL, NULL, 'not sold', 1, 65, '2021-01-29');
 
 -- --------------------------------------------------------
 
@@ -168,19 +166,19 @@ ALTER TABLE `userprofile`
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
-  MODIFY `categoryID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `categoryID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `productID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `productID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `userprofile`
 --
 ALTER TABLE `userprofile`
-  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Constraints for dumped tables

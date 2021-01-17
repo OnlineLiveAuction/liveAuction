@@ -93,6 +93,31 @@ public class UserDao {
 	         return -1;
 	      }
 	}
+	
+	public List<String> getCategories()
+	{
+		List<String> categoryList = new ArrayList<>();
+		
+		try
+		{
+			String query = "Select * from category";   
+			PreparedStatement ps = con.prepareStatement(query);
+			ResultSet rs = ps.executeQuery();
+			while(rs.next())
+			{
+				String categoryName = new String();
+			
+				categoryName = rs.getString("categoryName");				
+				categoryList.add(categoryName);
+			}
+			
+			return categoryList;
+		}catch(Exception e)
+		{
+			e.printStackTrace();
+			return categoryList;
+		}
+	}
 	public int registeruser(User user)
 	{
 		try
