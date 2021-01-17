@@ -71,16 +71,14 @@ public class registerController extends HttpServlet {
 		
 		HttpSession session = request.getSession();
 		session.setAttribute("username", username);
-		RequestDispatcher dispatch;
 		if(result < 1)
 		{
-			dispatch = request.getRequestDispatcher("index.jsp?registered=false");
+			response.sendRedirect("index.jsp?registered=false");
 		}
 		else
 		{
-			dispatch = request.getRequestDispatcher("index.jsp?registered=true");
+			response.sendRedirect("index.jsp?registered=true");
 		}
-		dispatch.forward(request, response);
 	}
 
 }
