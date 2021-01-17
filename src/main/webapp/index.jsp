@@ -143,22 +143,6 @@
     
     </script>
     
-    <script type="text/javascript">
-        function disableButtonsOnStart() {
-        	var s="<%out.print(session.getAttribute("username"));%>"; 
-            
-        	if(s=="null")
-            {
-        		for(var i=1;i<100;i++)
-            	{
-            		var btnSubmit = document.getElementById(String(i));
-                	btnSubmit.disabled = true;
-            	}	
-            }
-        	
-        }
-        window.onload = disableButtonsOnStart;
-    </script>
     
     
     
@@ -315,7 +299,7 @@
                     <label class="category"><b>Name:</b></label> <label ><% out.print(product.getProductName()); %></label><br>
                     <label class="category"><b>Category:</b></label> <label class="category"><% out.print(product.getCategoryName()); %></label><br>
                     
-                    <label class="category "><b>Description:</b></label> <div style='overflow:auto; width:400px;height:120px;'><% out.print(product.getProductDescription()); %></div>                
+                    <label class="category "><b>Description:</b></label> <div style='overflow:auto; width:400px;height:80px;'><% out.print(product.getProductDescription()); %></div>                
                   </div>
                   </div>
                   <div class="col-md-3 ">
@@ -359,13 +343,17 @@
 					                        
 												<button class="btn btn-primary  mt-md-3" disabled="disabled">Own Product</button>					                   			
 					                        
-					                        <% } else { %>
+					                        <% } else if(session.getAttribute("username") != null) { %>
 					                        	
 												<form action = "RegForProducts" method="post">
 					                         		<button class="btn btn-success  mt-md-3" id="<%=product.getProductID()%> ">Register</button>
 					                        		<input type='hidden' name='productID' value="<%=product.getProductID()%>">
 					                        	</form>						                   			
 					                        
+					                        
+					                        <% } else { %>
+					                        
+					                        	<button class="btn btn-danger  mt-md-3" disabled="disabled">Register</button>
 					                        
 					                        <% } %>
 					        
