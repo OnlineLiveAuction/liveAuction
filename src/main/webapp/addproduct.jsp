@@ -128,9 +128,9 @@
                 	%>
                 
                 <select class="form-control" name="categoryID" id="exampleFormControlSelect1">
-                  <c:forEach items="categoryList" var="categoryName">
-                  	<option>${categoryName}</option>
-                  </c:forEach>    
+                  <%for (int i=0;i<categoryList.size();i++){%>
+        			<option><%out.print(categoryList.get(i));%></option>
+   				 <%}%>   
                 </select>
               </div>
               <div class="form-group">
