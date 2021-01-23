@@ -371,6 +371,35 @@ public class UserDao {
 		
 	}
 	
+	public int addNewCategory(String categoryName)
+	{
+		List<String> categoryList = getCategories();
+		if(categoryList.contains(categoryName))
+		{
+			return -2;
+		}
+		else 
+		{
+			String query = "Insert into category (categoryName) VALUES (?)";
+			PreparedStatement ps;
+			try {
+				ps = con.prepareStatement(query);
+				ps.setString(1, categoryName);
+				int result = ps.executeUpdate();
+				return result;
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				return -1;
+			}
+			
+		}
+		
+		
+		
+		
+	}
+	
 	
 	
 }

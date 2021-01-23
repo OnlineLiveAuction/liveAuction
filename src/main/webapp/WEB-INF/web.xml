@@ -58,6 +58,14 @@
   	<description></description>
   	<servlet-class>controller.MyUpcomingBids</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>AddNewCategory</servlet-name>
+  	<display-name>AddNewCategory</display-name>
+  	<description></description>
+  	<servlet-class>controller.AddNewCategory</servlet-class>
+  </servlet>
+  
+  
   
   
 
@@ -96,6 +104,10 @@
   <servlet-mapping>
   	<servlet-name>MyUpcomingBids</servlet-name>
   	<url-pattern>/MyUpcomingBids</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>AddNewCategory</servlet-name>
+  	<url-pattern>/addCategory</url-pattern>
   </servlet-mapping>
   	
   
