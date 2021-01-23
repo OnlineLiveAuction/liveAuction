@@ -1,10 +1,13 @@
 package model;
 
 import java.sql.Time;
+
 import java.util.Date;
 
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.Part;
 
+@MultipartConfig
 public class Product {
 	
 	private int productMinPrice;

@@ -1,5 +1,7 @@
 package controller;
+import java.io.IOException;
 
+import java.io.InputStream;
 import java.io.IOException;
 import java.sql.Time;
 import java.text.ParseException;
@@ -9,6 +11,7 @@ import java.util.Date;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -20,6 +23,7 @@ import model.Product;
 /**
  * Servlet implementation class productController
  */
+@MultipartConfig
 public class productController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -60,12 +64,16 @@ public class productController extends HttpServlet {
 		String stopTime = start.plusMinutes(10).toString();
 	    System.out.println("stopTime"+stopTime);
 		String productDescription = (String)request.getParameter("productdescription");
-		//Part productPicture = (Part)request.getPart("productpicture");
 		String productName = (String)request.getParameter("productname");
 		String username = (String)request.getParameter("username");
 		System.out.println("product"+username);
 		int sellerID = dbcon.getUserId(username);
 		System.out.println("productContoller seller ID"+sellerID);
+		
+		// code for image upload 
+		Part productPicture = (Part)request.getPart("productpicture");
+
+		
 		if(sellerID > -1)
 		{
 			Product product = new Product();
@@ -76,7 +84,7 @@ public class productController extends HttpServlet {
 			product.setProductDescription(productDescription);
 			product.setProductMinPrice(productMinPrice);
 			product.setProductName(productName);
-			//product.setProductPicture(productPicture);
+			product.setProductPicture(productPicture);
 			product.setStartTime(startTime);
 			product.setStopTime(stopTime);
 			product.setSellerId(sellerID);

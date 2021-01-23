@@ -90,7 +90,7 @@
                     <div class="modal-footer">
                       <div class="options text-right">
                         <p class="pt-1">New Member? <a href="registration.jsp" class="blue-text">Register</a></p>
-                        <button type="button" class="btn btn-outline-info waves-effect ml-auto" ><a href="index.jsp">Close</a></button>
+                        <a href="index.jsp"><button type="button" class="btn btn-outline-info waves-effect ml-auto" >Close</button></a>
                       </div>
                     </div>
                   </div>
@@ -99,7 +99,7 @@
     	
         
         
-        <form action="addproduct" method="post"  >
+        <form action="addproduct" enctype="multipart/form-data" method="post"  >
             <div class="form-row">
                 <div class="col-md-6 mb-6">
                   <label for="validationDefault01">Product name</label>
@@ -114,10 +114,16 @@
                 <label for="exampleFormControlTextarea1">Product Description</label>
                 <textarea class="form-control" name="productdescription" id="exampleFormControlTextarea1" rows="3"></textarea>
               </div>
+            <div class="form-row">
               <div class="col-md-6 mb-6">
                   <label for="validationDefault01">Product Color</label>
                   <input type="text" name="productcol"  class="form-control" required>
                 </div>
+              <div class="col-md-6 mb-6">
+                  <label for="validationDefault01">Image</label>
+                  <input type="file" name="productpicture"  class="form-control" required>
+                </div>
+            </div>
               <div class="form-group">
                 <label for="exampleFormControlSelect1">Product Category</label>
                 <%

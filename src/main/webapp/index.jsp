@@ -151,7 +151,7 @@
     
     
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
-        <a class="navbar-brand" href="#"> <i class="fa fa-usd text-center text-white" aria-hidden="true"></i>Online Auction</a>
+        <a class="navbar-brand" href="#"> <i class="fa fa-usd text-center text-white" aria-hidden="true"></i> Online Auction </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample03" aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -161,16 +161,17 @@
           <ul class="navbar-nav  mr-auto">
             
             <li class="nav-item active mr-auto">
-              <a class="nav-link" href="#"><i class="fa fa-home" aria-hidden="true"></i>Home <span class="sr-only">(current)</span></a>
+              <a class="nav-link" href="#"><i class="fa fa-home" aria-hidden="true"></i> Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item active mr-auto">
-                <a class="nav-link" a href="upcomingBids.jsp"><i class="fa fa-list" aria-hidden="true"></i>Upcoming Bids <span class="sr-only">(current)</span></a>
+                <a class="nav-link" a href="upcomingBids.jsp"><i class="fa fa-list" aria-hidden="true"></i> Upcoming Bids <span class="sr-only">(current)</span></a>
               </li>
               <li class="nav-item active mr-auto">
                 <a href="myProducts.jsp" class="nav-link" >My<i class="fa fa-product-hunt" aria-hidden="true"></i>roduct List <span class="sr-only">(current)</span></a>
               </li>
               <li class="nav-item mr-auto">
-                <button class="btn btn-outline-info mr-1 "><i class="fa fa-plus-circle" aria-hidden="true"></i><a href="addproduct.jsp">Add product</a></button>  </li>
+                <a href="addproduct.jsp"><button class="btn btn-outline-info mr-1 "><i class="fa fa-plus-circle" aria-hidden="true"></i> Add product</button></a>  
+               </li>
                   
                  
                   
@@ -193,7 +194,7 @@
                         </div></li>
                   
             <li class="nav-item ml-auto" >
-              <button class="btn btn-success"   id="signinbutton" data-target="#mymodel" data-toggle="modal"  style="display:none;">Login/Signup</button>
+              <button class="btn btn-success"   id="signinbutton" data-target="#mymodel" data-toggle="modal"  style="display:none;">Login/SignUp</button>
             </li>
           </ul>
           
@@ -291,7 +292,7 @@
                      	 		<div class="card mt-3 shadow p-3 mb-5 bg-white rounded" >
             <div class="row">
                 <div class="col-md-4">
-                    <img class="card-img-top" src="image/bike.jpg" alt="Card image cap" >
+                    <img class="card-img-top" src="getImage.jsp?id=<% out.print(product.getProductID()); %>" alt="Card image cap" >
                 </div>
             
             <div class="col-md-5 ">
