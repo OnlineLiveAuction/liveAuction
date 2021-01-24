@@ -143,10 +143,10 @@
               <a class="nav-link" href="index.jsp"><i class="fa fa-home" aria-hidden="true"></i> Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item active mr-auto">
-                <a class="nav-link" href="upcomingBids.jsp"><i class="fa fa-list" aria-hidden="true"></i> Bidding List <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="upcomingBids.jsp"><i class="fa fa-gavel" aria-hidden="true"></i> Upcoming Bids <span class="sr-only">(current)</span></a>
               </li>
               <li class="nav-item active mr-auto">
-                <a class="nav-link" href="myProducts.jsp"><i class="fa fa-product-hunt" aria-hidden="true"></i>roduct List <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="myProducts.jsp">My <i class="fa fa-product-hunt" aria-hidden="true"></i>roduct List <span class="sr-only">(current)</span></a>
               </li>
               <li class="nav-item mr-auto">
                 <a href="addproduct.jsp"><button class="btn btn-outline-info mr-1 "><i class="fa fa-plus-circle" aria-hidden="true"></i> Add product</button></a>  </li>

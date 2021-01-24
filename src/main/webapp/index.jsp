@@ -164,10 +164,10 @@
               <a class="nav-link" href="#"><i class="fa fa-home" aria-hidden="true"></i> Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item active mr-auto">
-                <a class="nav-link" a href="upcomingBids.jsp"><i class="fa fa-list" aria-hidden="true"></i> Upcoming Bids <span class="sr-only">(current)</span></a>
+                <a class="nav-link" a href="upcomingBids.jsp"><i class="fa fa-gavel" aria-hidden="true"></i> Upcoming Bids <span class="sr-only">(current)</span></a>
               </li>
               <li class="nav-item active mr-auto">
-                <a href="myProducts.jsp" class="nav-link" >My<i class="fa fa-product-hunt" aria-hidden="true"></i>roduct List <span class="sr-only">(current)</span></a>
+                <a href="myProducts.jsp" class="nav-link" >My <i class="fa fa-product-hunt" aria-hidden="true"></i>roduct List <span class="sr-only">(current)</span></a>
               </li>
               <li class="nav-item mr-auto">
                 <a href="addproduct.jsp"><button class="btn btn-outline-info mr-1 "><i class="fa fa-plus-circle" aria-hidden="true"></i> Add product</button></a>  
@@ -211,17 +211,17 @@
                             <form action="checklogin">
                                 
                                 <div class="form-group">
-                                  <label><i class="fa fa-envelope fa-2x"></i>Username:</label>
+                                  <label><i class="fa fa-envelope fa-sm"></i> Username:</label>
                                   <input type="text" name="username" class="form-control">
 
                               </div>
                                 <div class="form-group">
-                                    <label><i class="fa fa-lock fa-2x"></i>Password:</label>
+                                    <label><i class="fa fa-lock fa-sm"></i> Password:</label>
                                     <input type="password" name="password" class="form-control">
 
                                 </div>
                                 <div class="text-center form-sm mt-2">
-                                <input type="submit" class="btn btn-info"">
+                                <button type="submit" class="btn btn-info">Login <i class="fa fa-arrow-right"></i></button>
                               </div>
                               </form>
                               

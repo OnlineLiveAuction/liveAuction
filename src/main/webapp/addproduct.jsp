@@ -17,12 +17,12 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bs-custom-file-input/dist/bs-custom-file-input.min.js"></script>
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-    <link href="resources/css/addproduct.css" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" type="text/css">
-	<link rel="stylesheet" href="addproduct.css">
+	<link rel="stylesheet" href="addproduct.css" rel="stylesheet">
 	
 	
 	
@@ -174,15 +174,15 @@
                         <form action="checklogin">
                             
                             <div class="form-group">
-                              <label class="modallabel"><i class="fa fa-envelope fa-2x"></i>Username:</label>
+                              <label class="modallabel"><i class="fa fa-user fa-sm"></i> Username:</label>
                               <input type="text" name="username" class="form-control">
                           </div>
                             <div class="form-group">
-                                <label class="modallabel"><i class="fa fa-lock fa-2x "></i>Password:</label>
+                                <label class="modallabel"><i class="fa fa-lock  "></i> Password:</label>
                                 <input type="password" name="password" class="form-control">
                             </div>
                             <div class="text-center form-sm mt-2">
-                            <input type="submit" class="btn btn-info">
+                            <button type="submit" class="btn btn-info">Login <i class="fa fa-arrow-right"></i></button>
                           </div>
                           </form>
                           
@@ -216,9 +216,7 @@
                             <input type="submit" value="Submit Category" class="btn btn-info" >
                           </div>
                           </form>
-                          
-                          
-                          
+                      
                       </div>
                       
                     
@@ -230,53 +228,72 @@
         <form action="addproduct" enctype="multipart/form-data" method="post"  >
             <div class="form-row">
                 <div class="col-md-6 mb-6">
-                  <label for="validationDefault01">Product name</label>
-                  <input type="text" name="productname" id="productname" class="form-control" required>
+                  <label for="validationDefault01">Product Name</label>
+                  <input type="text" name="productname" id="productname" class="form-control" placeholder="e.g. Watch, Jewellery" required>
                 </div>
                 <div class="col-md-6 mb-6">
-                  <label for="validationDefault02">Min_bid price</label>
-                  <input type="number" name="productminprice" id="productminprice" class="form-control" id="validationDefault02" required>
+                  <label for="validationDefault02">Initial Bid Price</label>
+                  <input type="number" name="productminprice" class="form-control" id="validationDefault02" placeholder="Enter Price" required>
                 </div>
               </div>
+              <br>
               <div class="form-group">
                 <label for="exampleFormControlTextarea1">Product Description</label>
-                <textarea class="form-control" name="productdescription" id="exampleFormControlTextarea1" rows="3"></textarea>
+                <textarea class="form-control" name="productdescription" id="exampleFormControlTextarea1" placeholder="e.g. Very good condition. Model No. 7985" rows="3"></textarea>
               </div>
-            <div class="form-row">
-              <div class="col-md-6 mb-6">
-                  <label for="validationDefault01">Product Color</label>
-                  <input type="text" name="productcol" id="productcol" class="form-control" required>
-                </div>
-              <div class="col-md-6 mb-6">
-                  <label for="validationDefault01">Image</label>
-                  <input type="file" name="productpicture" id="productpicture"  class="form-control" required>
-                </div>
+            <div class="form-group">
+            
+                  <label for="productcol">Product Color</label>
+                  <input type="text" name="productcol" id="productcol" class="form-control" placeholder="Crimson Red" required>
+           </div>
+                <br>
+            <div class="form-group">
+              <div class="col-md-auto custom-file">
+
+                  <label class="custom-file-label" for="imagefile">Choose Product Image...</label>
+                  <input type="file" id="imagefile" name="productpicture"  class=" custom-file-input" required>
+               </div>
             </div>
-              <div class="form-group">
-                <label for="exampleFormControlSelect1">Product Category</label>
+               <br>
+            <div class="form-group">
+                  <label id="previewImageLabel" for="preview" hidden>Selected Image</label>
+                  <img id="previewImage" src="#" alt="product image" height="200px" width="200" hidden/>
+               
+            </div>
+			
+            <div class="form-row">
+            
+              <div class="input-group col-md-7">
+              	<div class="input-group-prepend">
+                	<div class="input-group-text">
+                		Category
+                	</div>
+              	</div>
                 <%
                 	
                 	UserDao newUser = new UserDao();
                 	List<String> categoryList = newUser.getCategories();
                 	
-                	%>
-                
+                	%>     
                 	             
-                <select class="form-control" name="categoryID" id="exampleFormControlSelect1" onchange="changeFunc(value);">
+                <select class="custom-select" name="categoryID" id="exampleFormControlSelect1" onchange="changeFunc(value);">
                   <%for (int i=0;i<categoryList.size();i++){%>
         			<option><%out.print(categoryList.get(i));%></option>
    				 <%}%>
                 </select>
-                
+                </div>
+   				 	
+              	<div class="input-group col-md-5">
+                	<button type="button" class="btn btn-primary" id="addCategoryButton" >Add New Category?</button>
+                </div>
+              </div>
                 <br>
                 
-                <div><button type="button" class="btn btn-primary" id="addCategoryButton" >Add New Category?</button></div>
-                
-                
-              </div>
+              
+             
               <div class="form-group">
                 <label for="exampleFormControlSelect1"> Select Bidding time (bidding will be for 10 minutes)</label>
-                <input type="time" name="starttime" id="starttime" class="form-control" >
+                <input type="time" name="starttime" id="starttime" class="form-control" min="" value="">
                   
               </div>
               <div class="form-group">
@@ -286,15 +303,13 @@
               
               
               <input type="hidden" name="username" value="<%out.print((String)session.getAttribute("username")); %>">
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary">Add the Product <i class="fa fa-plus-circle"></i></button>
           </form>
           
           
   
 </body>
-<!-- Optional JavaScript; choose one of the two! -->
-<div style="height:400px"></div>
-<!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="addProduct.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
 </html>

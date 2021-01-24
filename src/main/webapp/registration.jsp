@@ -9,6 +9,7 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" type="text/css">
     <link href="addproduct.css" rel="stylesheet">
     <title>Registration</title>
   </head>
@@ -64,7 +65,7 @@
           </div>
           <div class="col-md-3 mb-3">
             <label for="validationDefault05">Pincode</label>
-            <input type="text" name="pincode" class="form-control"  placeholder="Zip" required>
+            <input type="number" name="pincode" class="form-control"  placeholder="Zip" required>
           </div>
         </div>
         <div class="form-row">
@@ -101,7 +102,7 @@
             </label>
           </div>
         </div>
-        <button class="btn btn-primary" type="submit">Submit form</button>
+        <button class="btn btn-primary" type="submit">Register <i class="fa fa-check"></button>
       </form> </body>
    <!-- Optional JavaScript; choose one of the two! -->
    
