@@ -1,5 +1,10 @@
 Manifest-Version: 1.0
+<<<<<<< Updated upstream
 Built-By: srishti
 Build-Jdk: 14.0.2
+=======
+Built-By: ansad
+Build-Jdk: 15.0.1
+>>>>>>> Stashed changes
 Created-By: Maven Integration for Eclipse
 
