@@ -87,7 +87,7 @@
 	    	var saveMinPrice = $("#productminprice").val();
 	    	var saveDesc = $("#exampleFormControlTextarea1").val();
 	    	var saveCol = $("#productcol").val();
-	    	var savePicture = $("#productpicture").val();
+	    	//var savePicture = $("#productpicture").val();
 	    	var saveTime = $("#starttime").val();
 	    	var saveDate = $("#biddingdate").val();
 	    	
@@ -98,7 +98,7 @@
 	    	localStorage.setItem("saveMinPrice", saveMinPrice);
 			localStorage.setItem("saveDesc", saveDesc);
 			localStorage.setItem("saveCol", saveCol);
-			localStorage.setItem("savePicture", savePicture);
+			//localStorage.setItem("savePicture", savePicture);
 			localStorage.setItem("saveTime", saveTime);
 			localStorage.setItem("saveDate", saveDate);
 	    	
@@ -117,7 +117,7 @@
 	    
 	    if(rld == 1)
 	    {
-	    	alert("Reload");
+	    	//alert("Reload");
 	    	load();
 	    }
 	    
@@ -138,7 +138,7 @@
 		saveMinPrice = localStorage.getItem("saveMinPrice");
 		saveDesc = localStorage.getItem("saveDesc");
 		saveCol = localStorage.getItem("saveCol");
-		savePicture = localStorage.getItem("savePicture");
+		//savePicture = localStorage.getItem("savePicture");
 		saveTime = localStorage.getItem("saveTime");
 		saveDate = localStorage.getItem("saveDate");
 	
@@ -147,7 +147,7 @@
 		document.getElementById("productminprice").value = saveMinPrice;
 		document.getElementById("exampleFormControlTextarea1").value = saveDesc;
 		document.getElementById("productcol").value = saveCol;
-		document.getElementById("productpicture").value = savePicture;
+		//document.getElementById("productpicture").value = savePicture;
 		document.getElementById("starttime").value = saveTime;
 		document.getElementById("biddingdate").value = saveDate;
 		};
@@ -233,7 +233,7 @@
                 </div>
                 <div class="col-md-6 mb-6">
                   <label for="validationDefault02">Initial Bid Price</label>
-                  <input type="number" name="productminprice" class="form-control" id="validationDefault02" placeholder="Enter Price" required>
+                  <input type="number" name="productminprice" id="productminprice" class="form-control" id="validationDefault02" placeholder="Enter Price" required>
                 </div>
               </div>
               <br>
