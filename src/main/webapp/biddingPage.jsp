@@ -298,11 +298,11 @@
                     </p>
                     
                     
-                    <p id="some_div">
+                    
                      
 						      <div>
 						      		<h4 class="timer-text">Current Bid Slot Countdown</h4>
-						            <p id = "countdown2" class = "timer" style="color:red;">
+						            <p id = "countdown2" class = "timer" style="color:black;">
 						            </p>
 						        </div>
 						
@@ -329,7 +329,7 @@
 										            }, 1000); //to run this function in seconds not milliseconds
 									            }
 						        </script> 
-                    </p>
+                   
                     
                     
 
@@ -341,7 +341,7 @@
                     <div >
                 <label class="category "><b>Description:</b></label> <div style='overflow:auto; width:400px;height:217px;'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magni, explicabo unde! Aliquid, veniam magni tempora nulla ut distinctio ipsam illo ullam incidunt culpa deserunt vel velit nesciunt dolore quasi harum veritatis? Voluptatum ad illum corrupti, illo sequi itaque quae soluta.</div>                
             </div>
-                <div  class="mt-lg-5" style = "font-size:19px; color: red" >
+                <div  class="mt-lg-5" style = "font-size:19px;" >
                     <label class="category"><b>Current-Price:</b></label> <label class="category">14000</label><br>
                 </div>
                  <script>
@@ -359,10 +359,10 @@
     </script>
 
                 <div  class="btn-toolbar mt-lg-5" >
-                        <button type="button" class="btn btn-success " id="percent1">+20%</button>
-                        <button type="button" class="btn btn-success ml-3 "id="percent2">+50%</button>
+                        <button type="button" class="btn btn-success " id="percent1" style="width:25%;">+20%</button>
+                        <button type="button" class="btn btn-success ml-lg-4 "id="percent2" style="width:25%;" >+50%</button>
                         
-                        <button type="button" class="btn btn-success ml-3" id="showTextArea">custom</button>
+                        <button type="button" class="btn btn-success ml-lg-4" id="showTextArea" style="width:25%;">custom</button>
                         <input type="number" id="bidTextArea" style="display:none;" class="ml-3" placeholder="Enter_bid_amount"></input>
                         
                             
@@ -374,18 +374,18 @@
                           
                     </div>
                     <div  class="mt-lg-3">
-                        <button type="button" class="btn btn-primary " style="height:70px; width: 240px;">Lock your Bid</button></div>
+                        <button type="button" class="btn btn-primary " style="width:100%;">Lock your Bid</button></div>
                 </div>
                   
                 
                   </div>
                   <div class="col-md-3 ">
                     <div class="container">
-                        <div style="border-style: groove; border-width: 2px;">
-                        <label class="category" ><b style = "color: blue;">Product Price:</label> <label class="category">10000</label></b><br>
+                        <div style=" border-width: 2px;">
+                        <label class="category" ><b style = "color: blue; font-size:25 px;" >Product Price:</label> <label class="category">10000</label></b><br>
                         </div><br>
-                        <div style="border-style: groove; border-width: 2px;">
-                        <label class="category" ><b style="color: blue;">Current Highest Bid:</label> <label class="category">14000</label></b><br>
+                        <div style=" border-width: 2px;">
+                        <label class="category" ><b style="color: blue;font-size:25 px;">Current Highest Bid:</label> <label class="category">14000</label></b><br>
                         </div>
                          <div id="bidRankList " style='overflow:auto; height:400px;' class="mt-md-3">
                             <div>
@@ -397,7 +397,7 @@
                                       Rank
                                     </th>
                                     <th scope="col" data-sortable="true" style="width: 50%">
-                                      Top Bids
+                                      Top sunt
                                     </th>
                                   </tr>
                                 </thead>
