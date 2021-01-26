@@ -34,6 +34,34 @@
             font-size: 3.5rem;
           }
         }
+        
+        .timer{
+        		
+        		height: 60px;
+                width: 360px;
+                background-image: linear-gradient(#16bffd, #49c9bd);
+                /* box-shadow: inset 0 0 10px #0000000; */
+                color: white;
+                line-height: 60px;
+                text-align:center;
+                font-size: 40px;
+                /* margin-top: 0px; */
+                /* box-shadow: 1px 1px 0px #000,
+                2px 2px 0px #000,
+                3px 3px 0px #000,
+                4px 4px 0px #000,
+                5px 5px 0px #000,
+                6px 6px 0px #000; */
+        }
+        
+        .partition1{
+        	height: 49px;   
+        }
+        .timer-text{
+        	font-size: 20px;
+        	text-align:center;
+        }
+        
       </style>
       <!-- Custom styles for this template -->
       
@@ -239,11 +267,68 @@
                     <div>
                     <img class="card-img-top" src="image/bike.jpg" alt="Card image cap" >
                     </div>
+                    <div class = "partition1"></div> <!-- partition between image and timer boxes   -->
                      <p id="some_div">
-                        Timer1
+						      <div>
+						      		<h4 class="timer-text">Bid Countdown</h4>
+						            <p id = "countdown1" , class = "timer"></p>
+						        </div>
+						
+						        <script>
+						            document.getElementById("countdown1").innerHTML = "BID COUNTDOWN";
+						            var countdownUpto = new Date("Jan 26, 2021 21:00:00").getTime(); /*add bid time here*/
+						            if (countdownUpto == (new Date("Jan 26, 2021 21:00:00").getTime()))
+									            { var automaticCountdown = setInterval(function(){
+										            var currentDate = new Date().getTime();  /*current time*/
+										            var differenceInDate = countdownUpto - currentDate; /*in milli seconds*/ 
+										            /*console.log(differenceInDate); inspect - console and see */
+										            var cDays = Math.floor(differenceInDate/(1000*60*60*24));
+										            console.log(cDays);
+										            var cHours = Math.floor((differenceInDate%(1000*60*60*24))/(1000*60*60));
+										            console.log(cHours);
+										            var cMinutes = Math.floor((differenceInDate%(1000*60*60))/(1000*60));
+										            console.log(cMinutes);
+										            var cSeconds = Math.floor((differenceInDate%(1000*60))/1000);
+										            console.log(cSeconds);
+										            document.getElementById("countdown1").innerHTML = cDays + "d, " + cHours + "hrs: " + cMinutes + "m: "+ cSeconds + "s";
+										
+										            }, 1000); //to run this function in seconds not milliseconds
+									            }
+						        </script> 
                     </p>
+                    
+                    
                     <p id="some_div">
-                        Timer2
+                     
+						      <div>
+						      		<h4 class="timer-text">Current Bid Slot Countdown</h4>
+						            <p id = "countdown2" class = "timer" style="color:red;">
+						            </p>
+						        </div>
+						
+						        <script>
+						            document.getElementById("countdown2").innerHTML = "BID COUNTDOWN";
+						            var countdownUpto = new Date("Jan 26, 2021 21:00:00").getTime(); /*add bid time here*/
+						            
+						            if (countdownUpto == (new Date("Jan 26, 2021 21:00:00").getTime()))
+						            	/* if (((countdownUpto == (new Date("Jan 26, 2021 10:00:00")%30) == 0).getTime())) */
+									            { var automaticCountdown = setInterval(function(){
+										            var currentDate = new Date().getTime();  /*current time*/
+										            var differenceInDate = countdownUpto - currentDate; /*in milli seconds*/ 
+										            /*console.log(differenceInDate); inspect - console and see */
+										            var cDays = Math.floor(differenceInDate/(1000*60*60*24));
+										            console.log(cDays);
+										            var cHours = Math.floor((differenceInDate%(1000*60*60*24))/(1000*60*60));
+										            console.log(cHours);
+										            var cMinutes = Math.floor((differenceInDate%(1000*60*60))/(1000*60));
+										            console.log(cMinutes);
+										            var cSeconds = Math.floor((differenceInDate%(1000*60))/1000);
+										            console.log(cSeconds);
+										            document.getElementById("countdown2").innerHTML = cSeconds + "s";
+										
+										            }, 1000); //to run this function in seconds not milliseconds
+									            }
+						        </script> 
                     </p>
                     
                     
@@ -254,10 +339,10 @@
             <div class="col-md-5 ">
                 <div class="container">
                     <div >
-                <label class="category "><b>Description:</b></label> <div style='overflow:auto; width:400px;height:120px;'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magni, explicabo unde! Aliquid, veniam magni tempora nulla ut distinctio ipsam illo ullam incidunt culpa deserunt vel velit nesciunt dolore quasi harum veritatis? Voluptatum ad illum corrupti, illo sequi itaque quae soluta.</div>                
+                <label class="category "><b>Description:</b></label> <div style='overflow:auto; width:400px;height:217px;'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magni, explicabo unde! Aliquid, veniam magni tempora nulla ut distinctio ipsam illo ullam incidunt culpa deserunt vel velit nesciunt dolore quasi harum veritatis? Voluptatum ad illum corrupti, illo sequi itaque quae soluta.</div>                
             </div>
-                <div  class="mt-lg-5">
-                    <label class="category" ><b>Bid-price:</b></label> <label class="category">1000000</label><br>
+                <div  class="mt-lg-5" style = "font-size:19px; color: red" >
+                    <label class="category"><b>Current-Price:</b></label> <label class="category">14000</label><br>
                 </div>
                  <script>
     
@@ -289,15 +374,18 @@
                           
                     </div>
                     <div  class="mt-lg-3">
-                        <button type="button" class="btn btn-primary ">Lock your Bid</button></div>
+                        <button type="button" class="btn btn-primary " style="height:70px; width: 240px;">Lock your Bid</button></div>
                 </div>
                   
                 
                   </div>
                   <div class="col-md-3 ">
                     <div class="container">
-                        <div style="border-style: groove;">
-                        <label class="category" ><b>Bid-price:</b></label> <label class="category">1000000</label><br>
+                        <div style="border-style: groove; border-width: 2px;">
+                        <label class="category" ><b style = "color: blue;">Product Price:</label> <label class="category">10000</label></b><br>
+                        </div><br>
+                        <div style="border-style: groove; border-width: 2px;">
+                        <label class="category" ><b style="color: blue;">Current Highest Bid:</label> <label class="category">14000</label></b><br>
                         </div>
                          <div id="bidRankList " style='overflow:auto; height:400px;' class="mt-md-3">
                             <div>
