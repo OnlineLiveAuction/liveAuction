@@ -167,7 +167,7 @@
                 <a class="nav-link" a href="upcomingBids.jsp"><i class="fa fa-gavel" aria-hidden="true"></i> Upcoming Bids <span class="sr-only">(current)</span></a>
               </li>
               <li class="nav-item active mr-auto">
-                <a href="myProducts.jsp" class="nav-link" >My <i class="fa fa-product-hunt" aria-hidden="true"></i>roduct List <span class="sr-only">(current)</span></a>
+                <a href="myProducts.jsp" class="nav-link" >My <i class="fa fa-product-hunt" aria-hidden="true"></i>Product List <span class="sr-only">(current)</span></a>
               </li>
               <li class="nav-item mr-auto">
                 <a href="addproduct.jsp"><button class="btn btn-outline-info mr-1 "><i class="fa fa-plus-circle" aria-hidden="true"></i> Add product</button></a>  
