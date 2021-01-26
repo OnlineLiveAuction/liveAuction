@@ -34,6 +34,7 @@ public class RegisteredProductList extends HttpServlet {
 		
 		
 		List<Integer> registeredProductID = dbcon.getRegisteredProductID(request.getParameter("userID"));
+		System.out.println("check error registered products"+registeredProductID);
 		request.setAttribute("registeredProductID", registeredProductID);
 	
 	}

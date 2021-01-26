@@ -1,6 +1,5 @@
 package dao;
 
-import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -10,15 +9,12 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.servlet.http.Part;
-
 import model.Product;
 import model.User;
 
 public class UserDao {
 	
 	private Connection con = null;
-	//private String JdbcURL = "jdbc:mysql://localhost:3307/onlineauction";
 	private String JdbcURL = "jdbc:mysql://localhost:3306/onlineauction";
 	private String dbusername = "root";
 	private String dbpassword = "";
@@ -35,6 +31,7 @@ public class UserDao {
 			 e.printStackTrace();
 		 }
 	}
+	
 	public boolean checklogin(String username, String password)
 	{
 			try {
@@ -139,8 +136,7 @@ public class UserDao {
 			ps.setString(9, user.getContactNo());
 			ps.setString(10, user.getEmail() );
 			ps.setString(11, user.getUsername());
-
-
+			
 			int result = ps.executeUpdate();
 			return result;
 		}catch(Exception e)
@@ -157,7 +153,7 @@ public class UserDao {
 		System.out.println(product);
 		try
 		{
-			String query = "Insert into product (sellerID, productName, productDescription, startTime, stopTime, bidCount, productcol, productStatus, categoryID, productMinPrice, biddingDate, productPicture) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
+			String query = "Insert into product (sellerID, productName, productDescription, startTime, stopTime, bidCount, productcol, productStatus, categoryID, productMinPrice, biddingDate) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
 			PreparedStatement ps = con.prepareStatement(query);
 			ps.setInt(1, product.getSellerId() );
 			ps.setString(2, product.getProductName());
@@ -170,22 +166,7 @@ public class UserDao {
 			ps.setInt(9, product.getCategoryID());
 			ps.setInt(10, product.getProductMinPrice());
 			ps.setString(11, product.getBiddingDate());
-			//code for image upload
-			Part productPicture = product.getProductPicture();
-			InputStream inputStream = null; // input stream of the upload file
-			if (productPicture != null) {
-	            System.out.println("Name of Image"+productPicture.getName());
-	            System.out.println("Size of Image:"+productPicture.getSize());
-	            System.out.println("Content Type"+productPicture.getContentType());
-	            inputStream = productPicture.getInputStream();
-	        }
-	        if (inputStream != null) {
-	            ps.setBlob(12, inputStream);
-	        }			
 			int result = ps.executeUpdate();
-            if (result > 0) {
-                System.out.println("File uploaded and saved into database");
-            }
 			return result;
 		}catch(Exception e)
 		{
@@ -253,7 +234,6 @@ public class UserDao {
 				System.out.println("result set useradao");
 				Product product = new Product();
 				product.setProductName(rs.getString("productName"));
-				product.setProductID(rs.getInt("productID"));
 				//System.out.println("name"+product.getProductName());
 				product.setProductDescription(rs.getString("productDescription"));
 				//System.out.println("description"+product.getProductDescription());
@@ -370,7 +350,88 @@ public class UserDao {
 		}
 		
 	}
-	
+	public List<Product> applyFilter(List<String> selectedCategories, int price, String search)
+	{
+		
+		List<Product> productList = new ArrayList<>();
+		try
+		{
+			System.out.println("applyFiltercalled");
+			String query = "Select * from product ";
+			String categories = "(";
+			for(int i = 0; i < selectedCategories.size(); i++)
+			{
+				if(i == selectedCategories.size()-1)
+					categories = categories+""+getCategoryID(selectedCategories.get(i));
+				else	
+					categories = categories+""+getCategoryID(selectedCategories.get(i))+",";
+			}
+			categories = categories+") ";
+			int flag = 0;
+			if(!categories.equals("() "))
+			{
+				query = query + "where categoryID IN "+categories;
+				flag = 1;
+			}
+			if(flag == 0)
+			{
+				query = query + "where productMinPrice BETWEEN 0 AND "+price+" ";
+				flag = 1;
+			}
+			else
+			{
+				query = query + "AND productMinPrice BETWEEN 0 AND "+price+" ";
+			}
+			if(!search.equals(""))
+			{
+				if(flag == 0)
+				{
+					query = query + "where productName='"+ search +"'";
+				}
+				else
+				{
+					query = query + "AND productName='"+ search +"'";
+				}
+			}
+			System.out.println("categories"+categories);
+			System.out.println("price"+price);
+			System.out.println("search"+search);
+			System.out.println("query"+query);
+			PreparedStatement ps = con.prepareStatement(query);
+			ResultSet rs = ps.executeQuery();
+			while(rs.next())
+			{
+				System.out.println("result set useradao");
+				Product product = new Product();
+				product.setProductID(rs.getInt(1));
+				product.setProductName(rs.getString("productName"));
+				//System.out.println("name"+product.getProductName());
+				product.setProductDescription(rs.getString("productDescription"));
+				//System.out.println("description"+product.getProductDescription());
+				product.setProductMinPrice(rs.getInt("productMinPrice"));
+				product.setStartTime(rs.getString("startTime"));
+				product.setStopTime(rs.getString("stopTime"));
+				product.setBiddingDate(rs.getString("biddingDate"));
+				product.setSellerId(rs.getInt("sellerID"));
+				//System.out.println("minprice"+product.getProductMinPrice());
+				int categoryID = rs.getInt("categoryID");
+				PreparedStatement psCat = con.prepareStatement("Select categoryname from category where categoryID = '"+ categoryID +"'");
+				ResultSet category = psCat.executeQuery();
+				if(category.next())
+				{
+					product.setCategoryName(category.getString("categoryName"));
+				}
+				
+				productList.add(product);
+			}
+			
+			return productList;
+		}catch(Exception e)
+		{
+			e.printStackTrace();
+			return productList;
+		}
+	}
 	public int addNewCategory(String categoryName)
 	{
 		List<String> categoryList = getCategories();
@@ -399,8 +460,6 @@ public class UserDao {
 		
 		
 	}
-	
-	
 	
 }
 

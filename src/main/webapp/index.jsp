@@ -6,6 +6,8 @@
     <%@ page import="java.time.LocalTime" %>
     <%@ page import="java.text.SimpleDateFormat" %>
     <%@ page import="java.util.Date" %>
+    <%@ page import="java.util.HashSet" %>
+    <%@ page import="dao.UserDao" %>
     
 <!doctype html>
 <html lang="en">
@@ -44,7 +46,58 @@
       <!-- Custom styles for this template -->
       
     <link href="css\navbar.css" rel="stylesheet">
-    <title>Welcome!</title>
+    
+     <style>
+    
+    
+		  .sidenav {
+		  height: 100%; /* Full-height: remove this if you want "auto" height */
+		  width: 15%; /* Set the width of the sidebar */
+		  position: fixed;  /*Fixed Sidebar (stay in place on scroll) */
+		  top: 0; /* Stay at the top */
+		  left: 0;
+		  background-color: #202020; /* Black */
+		  overflow-x: hidden; /* Disable horizontal scroll */
+		  padding-top: 20px;
+		  color:white;
+		  padding:1%;
+		  padding-top:5%;
+		}
+		.product-info{
+				  	margin-left:15%;
+				  }
+				  .searchbutton
+				  {
+				  	margin-left:15%;
+				  }
+				  .slidecontainer {
+				  width: 100%;
+				}
+
+
+    </style>
+    
+    
+    
+    
+    <script type="text/javascript">
+	    $(document).ready(function(){
+	    var slider = document.getElementById('myRange');
+	    
+	    var output = document.getElementById('demo');
+	    console.log("value"+output);
+	    output.innerHTML = "0 - "+slider.value; // Display the default slider value
+	
+	    // Update the current slider value (each time you drag the slider handle)
+	    slider.oninput = function() {
+	      var val="0 - "+this.value;	
+	      output.innerHTML = val;
+	    }
+	    });
+    </script>
+    
+    
+    <title>Online Auction</title>
     
 
 	
@@ -145,13 +198,10 @@
     
     
     
-    
-    
-	
-    
-    
+   
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
         <a class="navbar-brand" href="#"> <i class="fa fa-usd text-center text-white" aria-hidden="true"></i> Online Auction </a>
+
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample03" aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -199,19 +249,20 @@
           </ul>
           
             
-            <div class="modal fade" id="mymodel">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
+            <div class="modal fade modal_overlap" id="mymodel">
+                <div class="modal-dialog ">
+                    <div class="modal-content ">
+                        <div class="modal-header ">
                             <h3 class="text-center text-primary">Login</h3>
 
 
                         </div>
-                        <div class="modal-body">
+                        <div class="modal-body ">
                             <form action="checklogin">
                                 
                                 <div class="form-group">
                                   <label><i class="fa fa-envelope fa-sm"></i> Username:</label>
+
                                   <input type="text" name="username" class="form-control">
 
                               </div>
@@ -226,7 +277,7 @@
                               </form>
                               
                           </div>
-                        <div class="modal-footer">
+                        <div class="modal-footer ">
                           <div class="options text-right">
                             <p class="pt-1">New Member? <a href="registration.jsp" class="blue-text">Register</a></p>
                           </div>
@@ -246,10 +297,27 @@
          
         </div>
         
-		
+        
+        
+                     
+        
+        
+        
+        
+        
+        
         
       </nav>
-      <jsp:include page="/GetProducts" />
+      <% if(request.getParameter("applyfilter") == null)
+    	{
+    	  HashSet<String> hs = new HashSet<>();
+    	  request.setAttribute("filteredPrice",100000);
+    	  request.setAttribute("filteredCategories",hs);
+    	  %>
+      		<jsp:include page="/GetProducts" />
+      	<%
+      	System.out.println("inside if ");
+      	} %>
       <%
        List<Product> productList = (List<Product>)request.getAttribute("productList");
        System.out.println(productList);
@@ -265,13 +333,57 @@
  		System.out.println("current time "+currTime);
        	
        %>
-                    
-
+      <div style="display:inline"> 
+      <form action="ApplyFilter">             
+		<div class="sidenav">
+		  	<h4>Filters</h4>
+		  	
+		   	<label class="sidenav_labels" for="exampleFormControlSelect1">Product Category</label><br><br>
+                <%
+                	
+                	UserDao newUser = new UserDao();
+                	List<String> categoryList = newUser.getCategories();
+                	HashSet<String> filteredCategories = (HashSet<String>)request.getAttribute("filteredCategories");
+                	%>
+                
+                  <%for (int i=0;i<categoryList.size();i++){
+                  	if(filteredCategories.contains(categoryList.get(i)))
+                  	{%>
+                  		<label><input type="checkbox" class="sidenav_names" id="<%out.print(categoryList.get(i));%>" name="<%out.print(categoryList.get(i));%>" value="<%out.print(categoryList.get(i));%>" checked><%out.print(categoryList.get(i));%></label><br>
+   				 	<%}
+   				 	else
+   				 	{%>
+   				 		<label><input type="checkbox" class="sidenav_names" id="<%out.print(categoryList.get(i));%>" name="<%out.print(categoryList.get(i));%>" value="<%out.print(categoryList.get(i));%>"><%out.print(categoryList.get(i));%></label><br>
+   				 	
+   				    <%
+   				    } %> 
+   				 <%} %><br><br>
+   			<label class="sidenav_labels" for="exampleFormControlSelect1">Price</label><br><br>	 
+   				 <div class="slidecontainer tex-center">
+					  <input type="range" min="1" max="100000" value="<%out.print((int)request.getAttribute("filteredPrice"));%>"  id="myRange" name="priceSlider">
+					  <p class="sidenav_names" id="demo" style="color:white"></p>
+					</div><br><br>
+					<div class="text-center">
+					<button class="btn btn-danger">Apply</button>
+					<button class="btn btn-danger" name="clearFilters">Clear</button>
+					</div>
+		</div>
+		
       <div class="container">
-        <div class="md-form mt-0">
-          <input class="form-control" type="text"placeholder="Search" aria-label="Search">
+        <div class="md-form mt-0 searchbutton">
+        <%if(request.getAttribute("filterNameSearch") != null)
+        { %>
+          	<input class="form-control" type="text"placeholder="Search" aria-label="Search" value=<%out.print(request.getAttribute("filteredNameSearch")); %> name="search">
+          <%}
+        else 
+        {%>
+        	<input class="form-control" type="text"placeholder="Search" aria-label="Search" name="search">
+        <%
+        } %>
+          <button class="btn btn-danger">Search</button>
         </div>
       </div>
+      </form>
       <div class="product-info">
         <div class="container">
             <div class="row">
@@ -363,6 +475,7 @@
             </div>
             
           </div>
+                     	 		
                      	 		<% 
                      	 	}
                      	 %>
@@ -372,7 +485,7 @@
                       
               </div>
             </div>
-          </div></div>
+          </div></div></div>
 
   
    <!-- Optional JavaScript; choose one of the two! -->

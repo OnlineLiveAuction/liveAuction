@@ -71,6 +71,8 @@ public class registerController extends HttpServlet {
 		
 		HttpSession session = request.getSession();
 		session.setAttribute("username", username);
+		int userID = dbcon.getUserId(username);
+		session.setAttribute("userID", userID);
 		if(result < 1)
 		{
 			response.sendRedirect("index.jsp?registered=false");
