@@ -9,6 +9,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="refresh" content="35">
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
@@ -276,30 +277,30 @@
 						
 						        <script>
 						            document.getElementById("countdown1").innerHTML = "BID COUNTDOWN";
-						            var countdownUpto = new Date("Jan 26, 2021 21:00:00").getTime(); /*add bid time here*/
-						            if (countdownUpto == (new Date("Jan 26, 2021 21:00:00").getTime()))
-									            { var automaticCountdown = setInterval(function(){
-										            var currentDate = new Date().getTime();  /*current time*/
-										            var differenceInDate = countdownUpto - currentDate; /*in milli seconds*/ 
+						            var countdown1Upto = new Date("Jan 27, 2021 18:40:00").getTime(); /*add bid time here*/
+						            
+									             var automaticCountdown1 = setInterval(function(){
+										            var currentDate1 = new Date().getTime();  /*current time*/
+										            var differenceInDate1 = countdown1Upto - currentDate1; /*in milli seconds*/ 
 										            /*console.log(differenceInDate); inspect - console and see */
-										            var cDays = Math.floor(differenceInDate/(1000*60*60*24));
-										            console.log(cDays);
-										            var cHours = Math.floor((differenceInDate%(1000*60*60*24))/(1000*60*60));
-										            console.log(cHours);
-										            var cMinutes = Math.floor((differenceInDate%(1000*60*60))/(1000*60));
-										            console.log(cMinutes);
-										            var cSeconds = Math.floor((differenceInDate%(1000*60))/1000);
-										            console.log(cSeconds);
-										            document.getElementById("countdown1").innerHTML = cDays + "d, " + cHours + "hrs: " + cMinutes + "m: "+ cSeconds + "s";
+										            var cDays1 = Math.floor(differenceInDate1/(1000*60*60*24));
+										            console.log(cDays1);
+										            var cHours1 = Math.floor((differenceInDate1%(1000*60*60*24))/(1000*60*60));
+										            console.log(cHours1);
+										            var cMinutes1 = Math.floor((differenceInDate1%(1000*60*60))/(1000*60));
+										            console.log(cMinutes1);
+										            var cSeconds1 = Math.floor((differenceInDate1%(1000*60))/1000);
+										            console.log(cSeconds1);
+										            document.getElementById("countdown1").innerHTML = cDays1 + "d, " + cHours1 + "hrs: " + cMinutes1 + "m: "+ cSeconds1 + "s";
 										
 										            }, 1000); //to run this function in seconds not milliseconds
-									            }
+									            
 						        </script> 
                     </p>
                     
+                   
                     
-                    
-                     
+                    <!--  < % if(differenceInDate1 < = 900000){ %>  ----- implementing a hide-able timer 2 -->
 						      <div>
 						      		<h4 class="timer-text">Current Bid Slot Countdown</h4>
 						            <p id = "countdown2" class = "timer" style="color:black;">
@@ -308,33 +309,31 @@
 						
 						        <script>
 						            document.getElementById("countdown2").innerHTML = "BID COUNTDOWN";
-						            var countdownUpto = new Date("Jan 26, 2021 21:00:00").getTime(); /*add bid time here*/
+						            var currentTime2 = new Date().getTime();
+						            var countdown2Upto = currentTime2 + 37000; /*add bid time here*/
 						            
-						            if (countdownUpto == (new Date("Jan 26, 2021 21:00:00").getTime()))
+						            
 						            	/* if (((countdownUpto == (new Date("Jan 26, 2021 10:00:00")%30) == 0).getTime())) */
-									            { var automaticCountdown = setInterval(function(){
-										            var currentDate = new Date().getTime();  /*current time*/
-										            var differenceInDate = countdownUpto - currentDate; /*in milli seconds*/ 
+									             var automaticCountdown2 = setInterval(function(){
+										            var currentDate2 = new Date().getTime();  /*current time*/
+										            var differenceInDate2 = countdown2Upto - currentDate2; /*in milli seconds*/ 
 										            /*console.log(differenceInDate); inspect - console and see */
-										            var cDays = Math.floor(differenceInDate/(1000*60*60*24));
-										            console.log(cDays);
-										            var cHours = Math.floor((differenceInDate%(1000*60*60*24))/(1000*60*60));
-										            console.log(cHours);
-										            var cMinutes = Math.floor((differenceInDate%(1000*60*60))/(1000*60));
-										            console.log(cMinutes);
-										            var cSeconds = Math.floor((differenceInDate%(1000*60))/1000);
-										            console.log(cSeconds);
-										            document.getElementById("countdown2").innerHTML = cSeconds + "s";
+										            var cDays2 = Math.floor(differenceInDate2/(1000*60*60*24));
+										            console.log(cDays2);
+										            var cHours2 = Math.floor((differenceInDate2%(1000*60*60*24))/(1000*60*60));
+										            console.log(cHours2);
+										            var cMinutes2 = Math.floor((differenceInDate2%(1000*60*60))/(1000*60));
+										            console.log(cMinutes2);
+										            var cSeconds2 = Math.floor((differenceInDate2%(1000*60))/1000);
+										            console.log(cSeconds2);
+										            document.getElementById("countdown2").innerHTML = cSeconds2 + "s";
 										
 										            }, 1000); //to run this function in seconds not milliseconds
-									            }
+									            
 						        </script> 
-                   
-                    
-                    
-
-
+               <!--  < % } %> --> 
                 </div>
+
             
             <div class="col-md-5 ">
                 <div class="container">
