@@ -1,3 +1,4 @@
+<%@page import="dao.UserDao"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     <%@ page import="java.util.List" %>   
@@ -9,7 +10,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta http-equiv="refresh" content="35">
+    <!-- <meta http-equiv="refresh" content="35"> -->
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
@@ -131,7 +132,29 @@
             }
         %>
         
-        
+    <%
+	    int productID = 0;
+    	Product product;
+    	String pName="";
+    	String pDesc="";
+    	int bBasePrice=0;
+    	String pEndTime="";
+		if (request.getParameter("productID") != null)
+	    {  
+	          productID = Integer.valueOf(request.getParameter("productID"));
+	          UserDao userDao = new UserDao();
+	          product = userDao.getProductInfo(productID);
+	          pName = product.getProductName();
+	          pDesc = product.getProductDescription();
+	          bBasePrice = product.getProductMinPrice();
+	          pEndTime = product.getStopTime();
+	   }
+    	
+    %>    
+    
+   
+    
+    
         
     <script>
     
@@ -151,6 +174,18 @@
                     document.getElementById("drop").style.display="inline";
                     
                 }
+                
+                //Product Info Set
+                var prodName="<%out.print(pName);%>";
+                var prodDesc="<%out.print(pDesc);%>";
+                var prodBasePrice=<%out.print(bBasePrice);%>
+                $('#prodNameBox').text(prodName);
+                $('#prodDescBox').text(prodDesc);
+                $('#basePriceBox').text(prodBasePrice);
+                
+                //alert("<%out.print(pEndTime);%>");
+               
+                
             });
     
     
@@ -266,7 +301,7 @@
             <div class="row">
                 <div class="col-md-4">
                     <div>
-                    <img class="card-img-top" src="image/bike.jpg" alt="Card image cap" >
+                    <img class="card-img-top" src="getImage.jsp?id=<% out.print(productID); %>" alt="Card image cap" >
                     </div>
                     <div class = "partition1"></div> <!-- partition between image and timer boxes   -->
                      <p id="some_div">
@@ -336,9 +371,12 @@
 
             
             <div class="col-md-5 ">
+                
+                <label id="prodNameBox" class="category">Product Name</label>
                 <div class="container">
                     <div >
-                <label class="category "><b>Description:</b></label> <div style='overflow:auto; width:400px;height:217px;'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magni, explicabo unde! Aliquid, veniam magni tempora nulla ut distinctio ipsam illo ullam incidunt culpa deserunt vel velit nesciunt dolore quasi harum veritatis? Voluptatum ad illum corrupti, illo sequi itaque quae soluta.</div>                
+                <label class="category "><b>Description:</b></label> 
+                <div id="prodDescBox" style='overflow:auto; width:400px;height:217px;'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magni, explicabo unde! Aliquid, veniam magni tempora nulla ut distinctio ipsam illo ullam incidunt culpa deserunt vel velit nesciunt dolore quasi harum veritatis? Voluptatum ad illum corrupti, illo sequi itaque quae soluta.</div>                
             </div>
                 <div  class="mt-lg-5" style = "font-size:19px;" >
                     <label class="category"><b>Current-Price:</b></label> <label class="category">14000</label><br>
@@ -381,7 +419,7 @@
                   <div class="col-md-3 ">
                     <div class="container">
                         <div style=" border-width: 2px;">
-                        <label class="category" ><b style = "color: blue; font-size:25 px;" >Product Price:</label> <label class="category">10000</label></b><br>
+                        <label class="category" ><b style = "color: blue; font-size:25 px;" >Base Price:</label> <label id="basePriceBox" class="category">10000</label></b><br>
                         </div><br>
                         <div style=" border-width: 2px;">
                         <label class="category" ><b style="color: blue;font-size:25 px;">Current Highest Bid:</label> <label class="category">14000</label></b><br>

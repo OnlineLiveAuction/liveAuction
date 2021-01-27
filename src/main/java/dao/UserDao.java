@@ -484,6 +484,35 @@ public class UserDao {
 		
 	}
 	
+	public Product getProductInfo(int productID)
+	{
+		String query = "Select * from product where productID = "+productID;
+		PreparedStatement ps;
+		try {
+			ps = con.prepareStatement(query);
+			ResultSet rs = ps.executeQuery();
+			while(rs.next())
+			{
+				Product product = new Product();
+				product.setProductID(rs.getInt(1));
+				product.setProductName(rs.getString("productName"));
+				//System.out.println("name"+product.getProductName());
+				product.setProductDescription(rs.getString("productDescription"));
+				//System.out.println("description"+product.getProductDescription());
+				product.setProductMinPrice(rs.getInt("productMinPrice"));
+				product.setStartTime(rs.getString("startTime"));
+				product.setStopTime(rs.getString("stopTime"));
+				product.setBiddingDate(rs.getString("biddingDate"));
+				product.setSellerId(rs.getInt("sellerID"));
+				return product;
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
 }
 
 
