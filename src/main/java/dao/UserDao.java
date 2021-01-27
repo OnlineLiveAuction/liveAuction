@@ -513,6 +513,25 @@ public class UserDao {
 		return null;
 	}
 	
+	public int getProductRegistrationCount(int productID)
+	{
+		String query = "select count(*) from productregistration where productID="+productID;
+		PreparedStatement ps;
+		int ans=0;
+		try {
+			ps = con.prepareStatement(query);
+			ResultSet rs = ps.executeQuery();
+			while(rs.next())
+			{
+				ans=rs.getInt(1);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return ans;
+	}
+	
 }
 
 

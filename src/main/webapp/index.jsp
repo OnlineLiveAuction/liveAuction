@@ -411,8 +411,9 @@
                 <div class="container">
                     <label class="category"><b>Name:</b></label> <label ><% out.print(product.getProductName()); %></label><br>
                     <label class="category"><b>Category:</b></label> <label class="category"><% out.print(product.getCategoryName()); %></label><br>
-                    
-                    <label class="category "><b>Description:</b></label> <div style='overflow:auto; width:400px;height:80px;'><% out.print(product.getProductDescription()); %></div>                
+                    <label class="category"><b>Registered Users:</b></label> <label class="category"><%=newUser.getProductRegistrationCount(product.getProductID())%></label><br>
+                    <label class="category "><b>Description:</b></label> <div style='overflow:auto; width:400px;height:80px;'><% out.print(product.getProductDescription()); %></div>
+                                    
                   </div>
                   </div>
                   <div class="col-md-3 ">
@@ -421,6 +422,7 @@
                         <label class="category" ><b>Bid-price:</b></label> <label class="category"><% out.print(product.getProductMinPrice()); %></label><br>
                         <label class="category mt-md-3"><b>Bidding date:</b></label> <label class="category"><% out.print(product.getBiddingDate()); %></label><br>
                         <label class="category mt-md-3"><b>Start Time:</b></label> <label class="category"><% out.print(product.getStartTime()); %></label><br>
+                        
                         <jsp:include page="/RegisteredProductList">
 					                        	<jsp:param name="userID" value="<%=session.getAttribute(\"username\")%>" />
 					                        </jsp:include>
@@ -444,8 +446,13 @@
 					                        				</form>
 					                        			<%
 					                        	}
-					              
-						                        
+					                        	else if((formatter.format(date).toString().compareTo(product.getBiddingDate())) > 0 || ((formatter.format(date).toString().equals(product.getBiddingDate())) && stop.compareTo(currTime) < 0))
+					                        	{
+					                        		%>
+					                        		<button class="btn btn-danger  mt-md-3" disabled="disabled">Auction Ended</button>	
+					                        	<% 
+					                        	}
+					                        	
 					                        	else if(regProductList.contains(product.getProductID()))
 					                        	{
 					                        %>
