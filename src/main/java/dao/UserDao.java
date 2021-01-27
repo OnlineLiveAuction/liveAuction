@@ -256,6 +256,7 @@ public class UserDao {
 				System.out.println("result set useradao");
 				Product product = new Product();
 				product.setProductName(rs.getString("productName"));
+				product.setProductID(rs.getInt("productID"));
 				//System.out.println("name"+product.getProductName());
 				product.setProductDescription(rs.getString("productDescription"));
 				//System.out.println("description"+product.getProductDescription());
