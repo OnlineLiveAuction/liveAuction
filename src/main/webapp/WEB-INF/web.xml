@@ -116,9 +116,7 @@
   	<servlet-name>AddNewCategory</servlet-name>
   	<url-pattern>/addCategory</url-pattern>
    </servlet-mapping>	
-  
-  
-  
+   
  <servlet-mapping> 
   	<servlet-name>ApplyFilter</servlet-name>
   	<url-pattern>/ApplyFilter</url-pattern>

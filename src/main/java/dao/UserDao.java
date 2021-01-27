@@ -1,5 +1,6 @@
 package dao;
 
+import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -8,6 +9,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.servlet.http.Part;
 
 import model.Product;
 import model.User;
@@ -153,7 +156,8 @@ public class UserDao {
 		System.out.println(product);
 		try
 		{
-			String query = "Insert into product (sellerID, productName, productDescription, startTime, stopTime, bidCount, productcol, productStatus, categoryID, productMinPrice, biddingDate) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
+			//String query = "Insert into product (sellerID, productName, productDescription, startTime, stopTime, bidCount, productcol, productStatus, categoryID, productMinPrice, biddingDate) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
+			String query = "Insert into product (sellerID, productName, productDescription, startTime, stopTime, bidCount, productcol, productStatus, categoryID, productMinPrice, biddingDate, productPicture) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
 			PreparedStatement ps = con.prepareStatement(query);
 			ps.setInt(1, product.getSellerId() );
 			ps.setString(2, product.getProductName());
@@ -166,7 +170,24 @@ public class UserDao {
 			ps.setInt(9, product.getCategoryID());
 			ps.setInt(10, product.getProductMinPrice());
 			ps.setString(11, product.getBiddingDate());
+			
+			Part productPicture = product.getProductPicture();
+			InputStream inputStream = null; // input stream of the upload file
+			if (productPicture != null) {
+	            System.out.println("Name of Image"+productPicture.getName());
+	            System.out.println("Size of Image:"+productPicture.getSize());
+	            System.out.println("Content Type"+productPicture.getContentType());
+	            inputStream = productPicture.getInputStream();
+	        }
+	        if (inputStream != null) {
+	            ps.setBlob(12, inputStream);
+	        }			
+			
+			
 			int result = ps.executeUpdate();
+			if (result > 0) {
+                System.out.println("File uploaded and saved into database");
+            }
 			return result;
 		}catch(Exception e)
 		{
@@ -186,8 +207,9 @@ public class UserDao {
 			{
 				System.out.println("result set useradao");
 				Product product = new Product();
-				product.setProductID(rs.getInt(1));
+				//product.setProductID(rs.getInt(1));
 				product.setProductName(rs.getString("productName"));
+				product.setProductID(rs.getInt("productID"));
 				//System.out.println("name"+product.getProductName());
 				product.setProductDescription(rs.getString("productDescription"));
 				//System.out.println("description"+product.getProductDescription());
