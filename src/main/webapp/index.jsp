@@ -54,14 +54,17 @@
 		  height: 100%; /* Full-height: remove this if you want "auto" height */
 		  width: 15%; /* Set the width of the sidebar */
 		  position: fixed;  /*Fixed Sidebar (stay in place on scroll) */
-		  top: 0; /* Stay at the top */
+		  top:0px; /* Stay at the top */
 		  left: 0;
-		  background-color: #202020; /* Black */
+		  background-color: #333333 ; /* Black */
 		  overflow-x: hidden; /* Disable horizontal scroll */
-		  padding-top: 20px;
+		  padding-top: 10px;
 		  color:white;
 		  padding:1%;
-		  padding-top:5%;
+		  padding-top:1%;
+		  top:55px;
+		  z-index:1;
+		  
 		}
 		.product-info{
 				  	margin-left:15%;
@@ -357,31 +360,40 @@
    				 	
    				    <%
    				    } %> 
-   				 <%} %><br><br>
-   			<label class="sidenav_labels" for="exampleFormControlSelect1">Price</label><br><br>	 
+   				 <%} %><br>
+   			<label class="sidenav_labels" for="exampleFormControlSelect1">Price</label><br>
    				 <div class="slidecontainer tex-center">
 					  <input type="range" min="1" max="100000" value="<%out.print((int)request.getAttribute("filteredPrice"));%>"  id="myRange" name="priceSlider">
 					  <p class="sidenav_names" id="demo" style="color:white"></p>
-					</div><br><br>
+					</div>
 					<div class="text-center">
 					<button class="btn btn-danger">Apply</button>
 					<button class="btn btn-danger" name="clearFilters">Clear</button>
 					</div>
 		</div>
 		
-      <div class="container">
-        <div class="md-form mt-0 searchbutton">
+		<div class="container">
+      <div class="row">
+              <div class="col-12">
+              
+        <div class="md-form mt-0 searchbutton panel-body-form-inline">
         <%if(request.getAttribute("filterNameSearch") != null)
         { %>
-          	<input class="form-control" type="text"placeholder="Search" aria-label="Search" value=<%out.print(request.getAttribute("filteredNameSearch")); %> name="search">
+        
+          	<input class="col-md-10" type="text"placeholder="Search" aria-label="Search" value=<%out.print(request.getAttribute("filteredNameSearch")); %> name="search">
           <%}
         else 
         {%>
-        	<input class="form-control" type="text"placeholder="Search" aria-label="Search" name="search">
+        
+        	<input class="col-md-10 "type="text"placeholder="Search" aria-label="Search" name="search">
         <%
         } %>
-          <button class="btn btn-danger">Search</button>
+        
+          <button class="btn btn-danger ml-2 ">Search</button>
+         
         </div>
+      </div>
+      </div>
       </div>
       </form>
       <div class="product-info">
