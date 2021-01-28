@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix = "c" %>
     <%@ page import="java.util.List" %>
     <%@ page import="dao.UserDao" %>
     <%@ page import="java.util.ArrayList" %>
@@ -247,6 +247,19 @@
                   <input type="text" name="productcol" id="productcol" class="form-control" placeholder="Crimson Red" required>
            </div>
                 <br>
+            <div class="form-group">
+              <div class="col-md-auto custom-file">
+
+                  <label class="custom-file-label" for="imagefile">Choose Product Image...</label>
+                  <input type="file" id="imagefile" name="productpicture"  class=" custom-file-input" required>
+               </div>
+            </div>
+               <br>
+            <div class="form-group">
+                  <label id="previewImageLabel" for="preview" hidden>Selected Image</label>
+                  <img id="previewImage" src="#" alt="product image" height="200px" width="200" hidden/>
+               
+            </div>
 			
             <div class="form-row">
             
@@ -275,18 +288,6 @@
                 </div>
               </div>
                 <br>
-            <div class="form-group">
-              <div class="col-md-auto custom-file">
-
-                  <label class="custom-file-label" for="imagefile">Choose Product Image...</label>
-                  <input type="file" id="imagefile" name="productpicture"  class=" custom-file-input" required>
-               </div>
-            </div>
-            <div class="form-group">
-                  <label id="previewImageLabel" for="preview" hidden>Selected Image</label>
-                  <img id="previewImage" src="#" alt="product image" height="200px" width="200" hidden/>
-               
-            </div>
                 
               
              
