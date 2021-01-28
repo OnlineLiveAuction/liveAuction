@@ -61,7 +61,7 @@
           </div>
           <div class="col-md-3 mb-3">
             <label for="validationDefault04">State</label>
-            <input type="text" name="state" ' class="form-control"  placeholder="State" required>
+            <input type="text" name="state" class="form-control"  placeholder="State" required>
           </div>
           <div class="col-md-3 mb-3">
             <label for="validationDefault05">Pincode</label>

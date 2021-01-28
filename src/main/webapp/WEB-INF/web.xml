@@ -72,6 +72,12 @@
   	<description></description>
   	<servlet-class>controller.ApplyFilter</servlet-class>
   </servlet>
+    <servlet>
+    	<servlet-name>getImage</servlet-name>
+    	<display-name>getImage</display-name>
+    	<description></description>
+    	<servlet-class>controller.getImage</servlet-class>
+    </servlet>
 
   
   
@@ -120,6 +126,10 @@
  <servlet-mapping> 
   	<servlet-name>ApplyFilter</servlet-name>
   	<url-pattern>/ApplyFilter</url-pattern>
+ </servlet-mapping>
+ <servlet-mapping>
+ 	<servlet-name>getImage</servlet-name>
+ 	<url-pattern>/getImage.jsp</url-pattern>
  </servlet-mapping>
 
   	
