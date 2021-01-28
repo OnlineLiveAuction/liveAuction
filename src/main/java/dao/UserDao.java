@@ -18,7 +18,8 @@ import model.User;
 public class UserDao {
 	
 	private Connection con = null;
-	private String JdbcURL = "jdbc:mysql://localhost:3306/onlineauction";
+	private String JdbcURL = "jdbc:mysql://localhost:3307/onlineauction";
+//	private String JdbcURL = "jdbc:mysql://localhost:3306/onlineauction";
 	private String dbusername = "root";
 	private String dbpassword = "";
 	private String driver = "com.mysql.jdbc.Driver";
