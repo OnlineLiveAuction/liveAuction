@@ -211,13 +211,34 @@
 		    						{
 		    							maxBidValue = result[i]["bidAmount"];
 		    						}
-		    						$("#rankTable tbody").html(content)
-		    						$('#highestBidBox').text(maxBidValue);	
+		    						
 								}
+		    					$("#rankTable tbody").html(content)
+	    						$('#highestBidBox').text(maxBidValue);	
 		    					
 		    			 }
 		  			});
+			
 		}
+		
+		function submitBid()
+		{
+			console.log("submitBid ajax call");
+			var productID=<%out.print(productID);%>
+			var userID="<%out.print((String)session.getAttribute("username"));%>";
+			var bidAmount=document.getElementById("bidTextArea").value;
+			$.ajax({
+				method: "POST",
+		    	url: "SubmitBid",
+		    	data:{userID:userID, productID:productID, bidAmount:bidAmount},
+		    	"success": function() {
+		    		loadBidTable();
+		            console.log("submit bid successfull");}
+
+		        });
+			
+		}
+		
 	</script>  
 	
 	
@@ -334,7 +355,6 @@
     
     </script>
     <div  class="btn-toolbar mt-lg-5" >
-				<form method="post" action="SubmitBid">
                 
                         <button type="button" class="btn btn-success " id="percent1" style="width:25%;">+20%</button>
                         <button type="button" class="btn btn-success ml-lg-4 "id="percent2" style="width:25%;" >+50%</button>
@@ -344,10 +364,8 @@
                         <input type="hidden" name="productID" value="<%out.print(productID);%>">
                         <input type="hidden" name="userID" value="<%out.print((String)session.getAttribute("username"));%>">
                         
-                        <button type="submit" id="lockBidButton" class="btn btn-primary " style="width:100%;">Lock your Bid</button>
-              
-                            
-             </form>          
+                        <button type="button" id="lockBidButton" class="btn btn-primary" onclick="submitBid()" style="width:100%;">Lock your Bid</button>
+         
                         
                         
                          
