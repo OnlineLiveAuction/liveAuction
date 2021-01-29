@@ -251,7 +251,7 @@
 						
 						        <script>
 						            document.getElementById("countdown1").innerHTML = "BID COUNTDOWN";
-						            var countdown1Upto = new Date("Jan 27, 2021 18:40:00").getTime(); /*add bid time here*/
+						            var countdown1Upto = new Date("Jan 31, 2021 18:40:00").getTime(); /*add bid time here*/
 						            
 									             var automaticCountdown1 = setInterval(function(){
 										            var currentDate1 = new Date().getTime();  /*current time*/
@@ -274,38 +274,38 @@
                     
                    
                     
-                    <!--  < % if(differenceInDate1 < = 900000){ %>  ----- implementing a hide-able timer 2 -->
-						      <div>
+                     <!-- < % if(differenceInDate1 < = 900000){ %>  ----- implementing a hide-able timer 2 -->
+						      <!-- <div>
 						      		<h4 class="timer-text">Current Bid Slot Countdown</h4>
 						            <p id = "countdown2" class = "timer" style="color:black;">
 						            </p>
-						        </div>
+						        </div> -->
 						
 						        <script>
-						            document.getElementById("countdown2").innerHTML = "BID COUNTDOWN";
-						            var currentTime2 = new Date().getTime();
-						            var countdown2Upto = currentTime2 + 37000; /*add bid time here*/
+						            // document.getElementById("countdown2").innerHTML = "BID COUNTDOWN";
+						            // var currentTime2 = new Date().getTime();
+						            // var countdown2Upto = currentTime2 + 37000; /*add bid time here*/
 						            
 						            
-						            	/* if (((countdownUpto == (new Date("Jan 26, 2021 10:00:00")%30) == 0).getTime())) */
-									             var automaticCountdown2 = setInterval(function(){
-										            var currentDate2 = new Date().getTime();  /*current time*/
-										            var differenceInDate2 = countdown2Upto - currentDate2; /*in milli seconds*/ 
-										            /*console.log(differenceInDate); inspect - console and see */
-										            var cDays2 = Math.floor(differenceInDate2/(1000*60*60*24));
-										            console.log(cDays2);
-										            var cHours2 = Math.floor((differenceInDate2%(1000*60*60*24))/(1000*60*60));
-										            console.log(cHours2);
-										            var cMinutes2 = Math.floor((differenceInDate2%(1000*60*60))/(1000*60));
-										            console.log(cMinutes2);
-										            var cSeconds2 = Math.floor((differenceInDate2%(1000*60))/1000);
-										            console.log(cSeconds2);
-										            document.getElementById("countdown2").innerHTML = cSeconds2 + "s";
+						            	// /* if (((countdownUpto == (new Date("Jan 26, 2021 10:00:00")%30) == 0).getTime())) */
+									        //      var automaticCountdown2 = setInterval(function(){
+										      //       var currentDate2 = new Date().getTime();  /*current time*/
+										      //       var differenceInDate2 = countdown2Upto - currentDate2; /*in milli seconds*/ 
+										      //       /*console.log(differenceInDate); inspect - console and see */
+										      //       var cDays2 = Math.floor(differenceInDate2/(1000*60*60*24));
+										      //       console.log(cDays2);
+										      //       var cHours2 = Math.floor((differenceInDate2%(1000*60*60*24))/(1000*60*60));
+										      //       console.log(cHours2);
+										      //       var cMinutes2 = Math.floor((differenceInDate2%(1000*60*60))/(1000*60));
+										      //       console.log(cMinutes2);
+										      //       var cSeconds2 = Math.floor((differenceInDate2%(1000*60))/1000);
+										      //       console.log(cSeconds2);
+										      //       document.getElementById("countdown2").innerHTML = cSeconds2 + "s";
 										
-										            }, 1000); //to run this function in seconds not milliseconds
+										      //       }, 1000); //to run this function in seconds not milliseconds
 									            
-						        </script> 
-               <!--  < % } %> --> 
+						        // </script> 
+               <!--  < % } %>  -->
                 </div>
 
             
@@ -350,7 +350,7 @@
              </form>          
                         
                         
-                         
+                       </div>  
                           
                     </div>
                     
@@ -387,11 +387,11 @@
                           </div>
                       </div>
                       </div>
-            </div>
           
           
           </div>
-          
+          </div>
+      
             <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
             <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
