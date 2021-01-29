@@ -55,7 +55,7 @@ public class SubmitBid extends HttpServlet {
 			dbcon.makeNewBid(userID, productID, bidAmount);
 		}
 		//dbcon.makeNewBid(userID, productID, bidAmount);
-		response.sendRedirect("biddingPage.jsp?productID="+productID);
+		//response.sendRedirect("biddingPage.jsp?productID="+productID);
 	}
 
 }
