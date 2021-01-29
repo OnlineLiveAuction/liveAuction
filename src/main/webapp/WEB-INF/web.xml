@@ -78,6 +78,12 @@
     	<description></description>
     	<servlet-class>controller.getImage</servlet-class>
     </servlet>
+    <servlet>
+    	<servlet-name>RetrieveBids</servlet-name>
+    	<display-name>RetrieveBids</display-name>
+    	<description></description>
+    	<servlet-class>controller.RetrieveBids</servlet-class>
+    </servlet>
 
   
   
@@ -130,6 +136,10 @@
  <servlet-mapping>
  	<servlet-name>getImage</servlet-name>
  	<url-pattern>/getImage.jsp</url-pattern>
+ </servlet-mapping>
+ <servlet-mapping>
+ 	<servlet-name>RetrieveBids</servlet-name>
+ 	<url-pattern>/RetrieveBids</url-pattern>
  </servlet-mapping>
 
   	

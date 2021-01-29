@@ -8,18 +8,20 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Formatter.BigDecimalLayoutForm;
 import java.util.List;
 
 import javax.servlet.http.Part;
 
+import model.Bid;
 import model.Product;
 import model.User;
 
 public class UserDao {
 	
 	private Connection con = null;
-	private String JdbcURL = "jdbc:mysql://localhost:3307/onlineauction";
-//	private String JdbcURL = "jdbc:mysql://localhost:3306/onlineauction";
+//	private String JdbcURL = "jdbc:mysql://localhost:3307/onlineauction";
+	private String JdbcURL = "jdbc:mysql://localhost:3306/onlineauction";
 	private String dbusername = "root";
 	private String dbpassword = "";
 	private String driver = "com.mysql.jdbc.Driver";
@@ -532,6 +534,33 @@ public class UserDao {
 		}
 		return ans;
 	}
+	
+	
+	
+	public List<Bid> getProductBids(int productID)
+	{
+		String query = "SELECT userName, bidAmount from bidding,userprofile where bidding.userID=userprofile.userID AND bidding.productID="+productID;
+		PreparedStatement ps;
+		List<Bid> bidList = new ArrayList<>();
+		try 
+		{
+			ps = con.prepareStatement(query);
+			ResultSet rs = ps.executeQuery();
+			while(rs.next())
+			{
+				Bid bid =new Bid();
+				bid.setUserName(rs.getString("userName"));
+				bid.setBidAmount(rs.getInt("bidAmount"));
+				bidList.add(bid);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return bidList;
+	}
+	
 	
 }
 

@@ -176,20 +176,64 @@
                 }
                 
                 //Product Info Set
+                
                 var prodName="<%out.print(pName);%>";
                 var prodDesc="<%out.print(pDesc);%>";
                 var prodBasePrice=<%out.print(bBasePrice);%>
+                
                 $('#prodNameBox').text(prodName);
                 $('#prodDescBox').text(prodDesc);
                 $('#basePriceBox').text(prodBasePrice);
                 
                 //alert("<%out.print(pEndTime);%>");
+                loadBidTable();
                
                 
             });
-    
-    
     </script>
+    
+    <script>
+		function loadBidTable()
+		{
+			var prodID=<%out.print(productID);%>
+			$.ajax({
+		    	url: "RetrieveBids",
+		    	data:{sendProductID:prodID},
+		    	success: function(result){
+		    					var l = Object.keys(result).length;
+		    					var maxBidValue = 0;
+		    					var content = '';
+		    					
+		    					
+		    					for (var i = 0; i < l; i++) {
+		    						content += "<tr><td>"+result[i]["userName"]+"</td><td>"+result[i]["bidAmount"]+"</td></tr>";
+		    						if(result[i]["bidAmount"] >= maxBidValue)
+		    						{
+		    							maxBidValue = result[i]["bidAmount"];
+		    						}
+		    						$("#rankTable tbody").html(content)
+		    						$('#highestBidBox').text(maxBidValue);	
+								}
+		    					
+		    			 }
+		  			});
+		}
+	</script>  
+	
+	
+	
+	<script>
+    
+    $(document).ready(function()
+            {
+		    	setInterval(function(){
+		    		loadBidTable();
+		    	}, 5000);           
+            });
+    </script>
+	
+	
+    
     <%@include  file="navbar.html" %>      
        <div class="container">
         
@@ -306,7 +350,7 @@
                           
                     </div>
                     <div  class="mt-lg-3">
-                        <button type="button" class="btn btn-primary " style="width:100%;">Lock your Bid</button></div>
+                        <button type="button" id="lockBidButton" class="btn btn-primary " style="width:100%;">Lock your Bid</button></div>
                 </div>
                   
                 
@@ -317,7 +361,7 @@
                         <label class="category" ><b style = "color: blue; font-size:25 px;" >Base Price:</label> <label id="basePriceBox" class="category">10000</label></b><br>
                         </div><br>
                         <div style=" border-width: 2px;">
-                        <label class="category" ><b style="color: blue;font-size:25 px;">Current Highest Bid:</label> <label class="category">14000</label></b><br>
+                        <label class="category" ><b style="color: blue;font-size:25 px;">Current Highest Bid:</label> <label id="highestBidBox" class="category">14000</label></b><br>
                         </div>
                          <div id="bidRankList " style='overflow:auto; height:400px;' class="mt-md-3">
                             <div>
@@ -326,66 +370,15 @@
                                 <thead class="table-dark">
                                   <tr >
                                     <th scope="col" style="width: 50%">
-                                      Rank
+                                      User
                                     </th>
                                     <th scope="col" data-sortable="true" style="width: 50%">
-                                      Top sunt
+                                      Bid Amount
                                     </th>
                                   </tr>
                                 </thead>
-                                <tbody >
-                                  <tr>
-                                    <th scope="row">#3</th>
-                                    <td>9500</td>
-                                  </tr>
-                                  <tr class="table-success">
-                                    <th scope="row">#4</th>
-                                    <th scope="">9000</th>
-                                  </tr>
-                                  <tr>
-                                    <th scope="row">#5</th>
-                                    <td>9000000000000</td>
-                                  </tr>
-                                  <tr class="table-primary">
-                                    <th scope="row">#1</th>
-                                    <th scope="">10000</th>
-                                  </tr>
-                                  <tr>
-                                    <th scope="row">#2</th>
-                                    <td>9500</td>
-                                  </tr>
-                                  <tr>
-                                    <th scope="row">#3</th>
-                                    <td>9500</td>
-                                  </tr>
-                                  <tr class="table-success">
-                                    <th scope="row">#4</th>
-                                    <th scope="">9000</th>
-                                  </tr>
-                                  <tr>
-                                    <th scope="row">#5</th>
-                                    <td>9000</td>
-                                  </tr>
-                                  <tr class="table-primary">
-                                    <th scope="row">#1</th>
-                                    <th scope="">10000</th>
-                                  </tr>
-                                  <tr>
-                                    <th scope="row">#2</th>
-                                    <td>9500</td>
-                                  </tr>
-                                  <tr>
-                                    <th scope="row">#3</th>
-                                    <td>9500</td>
-                                  </tr>
-                                  <tr class="table-success">
-                                    <th scope="row">#4</th>
-                                    <th scope="">9000</th>
-                                  </tr>
-                                  <tr>
-                                    <th scope="row">#5</th>
-                                    <td>9000</td>
-                                  </tr>
+                                <tbody>
+                                 
                                 </tbody>
                               </table>
                             </div>
@@ -393,7 +386,6 @@
                       </div>
                       </div>
             </div>
-            
           
           
           </div>
@@ -401,7 +393,11 @@
             <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
             <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-                    
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+            
+           
+            
+                 
        
     </body>
      </html>
