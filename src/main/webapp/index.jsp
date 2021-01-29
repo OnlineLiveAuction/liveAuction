@@ -56,10 +56,8 @@
 		  position: fixed;  /*Fixed Sidebar (stay in place on scroll) */
 		  top: 57px; /* Stay at the top */
 		  left: 0;
-		  background-color:  #333333; /* Black */
 		  overflow-x: hidden; /* Disable horizontal scroll */
 		  padding-top: 10px;
-		  color:white;
 		  padding:1%;
 		  padding-top:1%;
 		}
@@ -227,7 +225,7 @@
        %>
       <div style="display:inline"> 
       <form action="ApplyFilter">             
-		<div class="sidenav">
+		<div class="sidenav shadow p-3">
 		  	<h4>Filters</h4>
 		  	
 		   	<label class="sidenav_labels" for="exampleFormControlSelect1">Product Category</label><br><br>
@@ -338,13 +336,7 @@
 					                        				</form>
 					                        			<%
 					                        	}
-					                        	else if((formatter.format(date).toString().compareTo(product.getBiddingDate())) > 0 || ((formatter.format(date).toString().equals(product.getBiddingDate())) && stop.compareTo(currTime) < 0))
-					                        	{
-					                        		%>
-					                        		<button class="btn btn-danger  mt-md-3" disabled="disabled">Auction Ended</button>	
-					                        	<% 
-					                        	}
-					                        	
+					                        
 					                        	else if(regProductList.contains(product.getProductID()))
 					                        	{
 					                        %>
@@ -361,9 +353,8 @@
 					                         		<button class="btn btn-success  mt-md-3" id="<%=product.getProductID()%> ">Register</button>
 					                        		<input type='hidden' name='productID' value="<%=product.getProductID()%>">
 					                        	</form>						                   			
-					                        
-					                        
-					                        <% } else { %>
+					                        <%}else{
+					                        %>
 					                        
 					                        	<button class="btn btn-danger  mt-md-3" disabled="disabled">Register</button>
 					                        

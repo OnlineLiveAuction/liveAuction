@@ -11,8 +11,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.mysql.jdbc.Blob;
-import com.mysql.jdbc.Connection;
+import java.sql.Blob;
+import java.sql.Connection;
 
 /**
  * Servlet implementation class getImage

@@ -333,25 +333,27 @@
     
     
     </script>
-
-                <div  class="btn-toolbar mt-lg-5" >
+    <div  class="btn-toolbar mt-lg-5" >
+				<form method="post" action="SubmitBid">
+                
                         <button type="button" class="btn btn-success " id="percent1" style="width:25%;">+20%</button>
                         <button type="button" class="btn btn-success ml-lg-4 "id="percent2" style="width:25%;" >+50%</button>
                         
                         <button type="button" class="btn btn-success ml-lg-4" id="showTextArea" style="width:25%;">custom</button>
-                        <input type="number" id="bidTextArea" style="display:none;" class="ml-3" placeholder="Enter_bid_amount"></input>
+                        <input type="number" name="bidAmount" id="bidTextArea" style="display:none;" class="ml-3" placeholder="Enter_bid_amount"></input>
+                        <input type="hidden" name="productID" value="<%out.print(productID);%>">
+                        <input type="hidden" name="userID" value="<%out.print((String)session.getAttribute("username"));%>">
                         
+                        <button type="submit" id="lockBidButton" class="btn btn-primary " style="width:100%;">Lock your Bid</button>
+              
                             
-                            
-                            
+             </form>          
                         
                         
                          
                           
                     </div>
-                    <div  class="mt-lg-3">
-                        <button type="button" id="lockBidButton" class="btn btn-primary " style="width:100%;">Lock your Bid</button></div>
-                </div>
+                    
                   
                 
                   </div>

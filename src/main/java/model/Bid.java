@@ -3,7 +3,7 @@ package model;
 public class Bid {
 	private int bidAmount;
 	private String userName;
-	
+
 	
 	
 	public int getBidAmount() {
@@ -12,6 +12,7 @@ public class Bid {
 	public void setBidAmount(int bidAmount) {
 		this.bidAmount = bidAmount;
 	}
+	
 	public String getUserName() {
 		return userName;
 	}

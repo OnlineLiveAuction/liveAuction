@@ -84,6 +84,12 @@
     	<description></description>
     	<servlet-class>controller.RetrieveBids</servlet-class>
     </servlet>
+    <servlet>
+    	<servlet-name>SubmitBid</servlet-name>
+    	<display-name>SubmitBid</display-name>
+    	<description></description>
+    	<servlet-class>controller.SubmitBid</servlet-class>
+    </servlet>
 
   
   
@@ -140,6 +146,10 @@
  <servlet-mapping>
  	<servlet-name>RetrieveBids</servlet-name>
  	<url-pattern>/RetrieveBids</url-pattern>
+ </servlet-mapping>
+ <servlet-mapping>
+ 	<servlet-name>SubmitBid</servlet-name>
+ 	<url-pattern>/SubmitBid</url-pattern>
  </servlet-mapping>
 
   	

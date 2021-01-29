@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.BitSet;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -41,6 +42,14 @@ public class RetrieveBids extends HttpServlet {
 		
 		UserDao dbcon = new UserDao();
 		List<Bid> bidList = dbcon.getProductBids(prodID);
+		Collections.sort(bidList, new Comparator<Bid>() {
+			
+			public int compare(Bid b1, Bid b2)
+			{
+				if(b1.getBidAmount() > b2.getBidAmount()) return 1;
+				else return -1;
+			}
+		});
 		Collections.reverse(bidList);
 		
 		String sendBids = new Gson().toJson(bidList);

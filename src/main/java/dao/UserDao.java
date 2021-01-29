@@ -9,6 +9,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Formatter.BigDecimalLayoutForm;
+import java.util.HashSet;
 import java.util.List;
 
 import javax.servlet.http.Part;
@@ -561,6 +562,62 @@ public class UserDao {
 		return bidList;
 	}
 	
+	public HashSet<Integer> getActiveBidders(int productID)
+	{
+		HashSet<Integer> activeBidders = new HashSet<Integer>();
+		String query = "SELECT * from bidding where productID="+productID;
+		PreparedStatement ps;
+		try 
+		{
+			ps = con.prepareStatement(query);
+			ResultSet rs = ps.executeQuery();
+			while(rs.next())
+			{
+				activeBidders.add(rs.getInt("userID"));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return activeBidders;
+	}
+	
+	public int updateBid(int userID, int productID, int bidAmount)
+	{
+		String query = "UPDATE bidding SET bidAmount=? where userID="+userID+" AND productID="+productID;
+		PreparedStatement ps;
+		try {
+			ps = con.prepareStatement(query);
+			ps.setInt(1, bidAmount);
+			int result = ps.executeUpdate();
+			//add error handling here *******
+			return result;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return -1;
+		}
+	}
+	
+	public int makeNewBid(int userID, int productID, int bidAmount)
+	{
+		String query = "Insert into bidding VALUES (?,?,?)";
+		PreparedStatement ps;
+		try {
+			ps = con.prepareStatement(query);
+			ps.setInt(1, userID);
+			ps.setInt(2, productID);
+			ps.setInt(3, bidAmount);
+			int result = ps.executeUpdate();
+			//add error handling here *******
+			return result;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return -1;
+		}
+	}
 	
 }
 
