@@ -649,13 +649,25 @@ public class UserDao {
 	
 	public List<Bid> getProductBids(int productID)
 	{
-		String query = "SELECT userName, bidAmount from bidding,userprofile where bidding.userID=userprofile.userID AND bidding.productID="+productID+"  order by bidAmount DESC";
+		String query = "SELECT bidding.userID, userName, bidAmount from bidding,userprofile where bidding.userID=userprofile.userID AND bidding.productID="+productID+"  order by bidAmount DESC";
 		PreparedStatement ps;
 		List<Bid> bidList = new ArrayList<>();
 		try 
 		{
 			ps = con.prepareStatement(query);
 			ResultSet rs = ps.executeQuery();
+			// if we want to update the winner at every 5 sec then uncomment this.. rn it is getting updated whenever any user enters a new bid(we are assuming here that the bid is always higher than the current price)
+			//check updatebid and makeNewBid to see where update Winner is called for now.
+			/*if(rs.next())
+			{
+				Bid bid =new Bid();
+				bid.setUserName(rs.getString("userName"));
+				int bidAmount = rs.getInt("bidAmount");
+				bid.setBidAmount(bidAmount);
+				bidList.add(bid);
+				int userID = rs.getInt("userID");
+				updateWinner(userID, productID, bidAmount);
+			}*/
 			while(rs.next())
 			{
 				Bid bid =new Bid();
@@ -669,6 +681,29 @@ public class UserDao {
 		}
 		
 		return bidList;
+	}
+	
+	public int updateWinner(int userID, int productID, int bidAmount)
+	{
+		try
+		{
+			String query = "UPDATE product SET winnerID=?,closingPrice=? where productID=?";
+			PreparedStatement ps = con.prepareStatement(query);
+			ps.setInt(1, userID);
+			ps.setInt(2, bidAmount);
+			ps.setInt(3, productID);
+			int result = ps.executeUpdate();
+			//add error handling here ********
+			if(result > 0)
+			{
+				System.out.println("winner updated");
+			}
+			return result;
+		}catch(Exception e)
+		{
+			e.printStackTrace();
+			return -1;
+		}
 	}
 	
 	public HashSet<Integer> getActiveBidders(int productID)
@@ -701,6 +736,10 @@ public class UserDao {
 			ps.setInt(1, bidAmount);
 			int result = ps.executeUpdate();
 			//add error handling here *******
+			if(result > 0)
+			{
+				updateWinner(userID, productID, bidAmount);
+			}
 			return result;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -720,6 +759,10 @@ public class UserDao {
 			ps.setInt(3, bidAmount);
 			int result = ps.executeUpdate();
 			//add error handling here *******
+			if(result > 0)
+			{
+				updateWinner(userID, productID, bidAmount);
+			}
 			return result;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
