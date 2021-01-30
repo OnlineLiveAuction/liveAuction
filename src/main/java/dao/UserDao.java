@@ -540,7 +540,7 @@ public class UserDao {
 	
 	public List<Bid> getProductBids(int productID)
 	{
-		String query = "SELECT userName, bidAmount from bidding,userprofile where bidding.userID=userprofile.userID AND bidding.productID="+productID;
+		String query = "SELECT userName, bidAmount from bidding,userprofile where bidding.userID=userprofile.userID AND bidding.productID="+productID+"  order by bidAmount DESC";
 		PreparedStatement ps;
 		List<Bid> bidList = new ArrayList<>();
 		try 

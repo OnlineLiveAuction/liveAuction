@@ -42,16 +42,6 @@ public class RetrieveBids extends HttpServlet {
 		
 		UserDao dbcon = new UserDao();
 		List<Bid> bidList = dbcon.getProductBids(prodID);
-		Collections.sort(bidList, new Comparator<Bid>() {
-			
-			public int compare(Bid b1, Bid b2)
-			{
-				if(b1.getBidAmount() > b2.getBidAmount()) return 1;
-				else return -1;
-			}
-		});
-		Collections.reverse(bidList);
-		
 		String sendBids = new Gson().toJson(bidList);
 		System.out.print("Aggregated - " + sendBids);
 		PrintWriter out = response.getWriter();
