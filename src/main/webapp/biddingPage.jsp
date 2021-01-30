@@ -263,7 +263,7 @@
             <div class="row">
                 <div class="col-md-4">
                     <div>
-                    <img class="card-img-top" src="getImage.jsp?id=<% out.print(productID); %>" alt="Card image cap" >
+                    <img class="card-img-top" style = "height:360px;" src="getImage.jsp?id=<% out.print(productID); %>" alt="Card image cap" >
                     </div>
                     <div class = "partition1"></div> <!-- partition between image and timer boxes   -->
                      <p id="some_div">
@@ -383,7 +383,7 @@
                         <input type="number" name="bidAmount" id="bidTextArea" style="display:none;" class="ml-3" placeholder="Enter_bid_amount"></input>
                         <input type="hidden" name="productID" value="<%out.print(productID);%>">
                         <input type="hidden" name="userID" value="<%out.print((String)session.getAttribute("username"));%>">                
-                        <button type="button" id="lockBidButton" class="btn btn-primary" onclick="submitBid()" style="width:100%;">Lock your Bid</button>
+                        <button type="button" id="lockBidButton" class="btn btn-primary" onclick="submitBid()" style="width:100%; margin-top:20px; ">Lock your Bid</button>
          
                         
                         
