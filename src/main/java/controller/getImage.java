@@ -35,8 +35,8 @@ public class getImage extends HttpServlet {
 		// TODO Auto-generated method stub
 		String id = request.getParameter("id");
 		 
-		String connectionURL = "jdbc:mysql://localhost:3307/onlineauction";
-//		String connectionURL = "jdbc:mysql://localhost:3306/onlineauction";
+		//String connectionURL = "jdbc:mysql://localhost:3307/onlineauction";
+		String connectionURL = "jdbc:mysql://localhost:3306/onlineauction";
 		String user = "root";
 		String pass = "";
 
