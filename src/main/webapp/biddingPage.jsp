@@ -4,8 +4,6 @@
     <%@ page import="java.util.List" %>   
     <%@ page import="model.Product" %>
     <%@ page import="java.util.ArrayList" %>
-    <%@ page import="java.time.LocalTime" %>
-     <%@ page import=" static java.time.temporal.ChronoUnit.MINUTES"%>
 <!doctype html>
 <html lang="en">
   <head>
@@ -217,7 +215,7 @@
 								}
 		    					$("#rankTable tbody").html(content)
 	    						$('#highestBidBox').text(maxBidValue);	
-		    					
+		    					$('#currentPrice').text(maxBidValue);	
 		    			 }
 		  			});
 			
@@ -251,10 +249,84 @@
             {
 		    	setInterval(function(){
 		    		loadBidTable();
+					price = parseInt($("#currentPrice").html());
+					$("#bidTextArea").attr("min", Math.trunc(price+1.01) );
 		    	}, 5000);           
-            });
-    </script>
+		    	// checking bid is ended, every second
+		    	setInterval(function(){
+		    		checkBidEnd();
+		    	}, 1000);     
+		    	
 	
+	$("#add20").click(function(){
+    // placing bid 20% higher than the current highest bid
+		console.log("add20 clicked");
+		price = parseInt($("#currentPrice").html());
+		$("#bidTextArea").val( Math.trunc(price*1.2) );
+	});
+    
+	$("#add50").click(function(){
+    // placing bid 50% higher than the current highest bid
+		console.log("add50 clicked");
+		price = parseInt($("#currentPrice").html());
+		$("#bidTextArea").val( Math.trunc(price*1.5) );
+		
+	});
+	
+	function checkBidEnd(){
+    // function to check if the bidding has ended
+		//console.log("bid End time: <% out.print(pEndTime); %>");
+		var today = new Date();
+		var hour = today.getHours();
+		if(hour >= 12){
+			hour = hour - 12;
+		}
+		var minutes =  today.getMinutes();
+		var endtime = "<% out.print(pEndTime); %>";
+		var endhour = parseInt(endtime.slice(0,2));
+		if(endhour > 12){
+			endhour = endhour -12;
+		}
+		var endmin = parseInt(endtime.slice(3,5));
+		//console.log("current time:",hour,minutes);
+		if(hour > endhour){
+				console.log("modal shown 1");
+				$('#bidEndModal').show();
+				console.log("Bidding has ended")
+		}
+		else if (hour == endhour){
+			if(minutes >= endmin){
+				console.log("Bidding has ended");				
+				$('#bidEndModal').show();  			
+			}
+		}
+	};
+	
+	
+		    	
+
+            
+});//ready() function end
+    </script>
+    <!-- modal code for the bidding end -->
+	<div class="modal" id="bidEndModal" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+       
+        <h4 class="modal-title" id="myModalLabel">Bidding Ended</h4>
+      </div>
+      
+      <div class="modal-body">
+        <p>You can no longer access this page.</p>
+      </div>
+      <div class="modal-footer">
+        <a href="index.jsp"><button type="button" class="btn btn-default" data-dismiss="modal">Close</button></a>
+      </div>
+
+    </div>
+  </div>
+</div>
 	
     
     <%@include  file="navbar.html" %>      
@@ -271,45 +343,27 @@
 						      		<h4 class="timer-text">Bid Countdown</h4>
 						            <p id = "countdown1" class = "timer"></p>
 						        </div>
-						<%LocalTime myObj = LocalTime.now();
-  							System.out.println(myObj);	
-  							LocalTime stop = LocalTime.parse(pEndTime);
- 							System.out.println(stop);
- 							int hour = stop.getHour();
-  							int differ = stop.getMinute();
-  							System.out.println(differ);
-  							int differsec = stop.getSecond();
-  							System.out.println(differsec);
-  							//differsec = 1000 * differsec;
-  							differ = (hour*3600*1000)+ (differ * 60000); //+ (differsec*1000);
-  							System.out.println(differ);
-  							//System.out.println(differsec);
- 						 %>
+						
 						        <script>
 						            document.getElementById("countdown1").innerHTML = "BID COUNTDOWN";
-						            var countdownUpto = <%out.print(differ);%>; /*add bid time here*/
-
+						            var countdown1Upto = new Date("Jan 31, 2021 18:40:00").getTime(); /*add bid time here*/
+						            
 									             var automaticCountdown1 = setInterval(function(){
-									            	 var currentDate = new Date();  /*current time*/
-									            	 h = currentDate.getHours(); // =>  30
-									            	 console.log(h);
-									            	 m = currentDate.getMinutes(); // =>  30
-									            	 console.log(m);
-									            	 s = currentDate.getSeconds(); // => 51
-									            	 console.log(s);
-									            	 currentDate = (h*60*60*1000)+(m*60000)+(s*1000);
-									                 var differenceInDate1 = countdownUpto - currentDate; /*in milli seconds*/ 
+										            var currentDate1 = new Date().getTime();  /*current time*/
+										            var differenceInDate1 = countdown1Upto - currentDate1; /*in milli seconds*/ 
 										            /*console.log(differenceInDate); inspect - console and see */
-										            console.log(differenceInDate1);
-										            var cHours = Math.floor((differenceInDate1%(1000*60*60*24))/(1000*60*60));
-										            console.log(cHours);
+										            var cDays1 = Math.floor(differenceInDate1/(1000*60*60*24));
+										            //console.log(cDays1);
+										            var cHours1 = Math.floor((differenceInDate1%(1000*60*60*24))/(1000*60*60));
+										            //console.log(cHours1);
 										            var cMinutes1 = Math.floor((differenceInDate1%(1000*60*60))/(1000*60));
-										            console.log(cMinutes1);
+										            //console.log(cMinutes1);
 										            var cSeconds1 = Math.floor((differenceInDate1%(1000*60))/1000);
-										            console.log(cSeconds1);
-										            //document.getElementById("countdown1").innerHTML =cHours + "hrs: "+ cMinutes1 + "m: "+ cSeconds1 + "s";
-										            document.getElementById("countdown1").innerHTML =cMinutes1 + "m: "+ cSeconds1 + "s";
-										            }, 1000); //to run this function in seconds not milliseconds    
+										            //console.log(cSeconds1);
+										            document.getElementById("countdown1").innerHTML = cDays1 + "d, " + cHours1 + "hrs: " + cMinutes1 + "m: "+ cSeconds1 + "s";
+										
+										            }, 1000); //to run this function in seconds not milliseconds
+									            
 						        </script> 
                
                     
@@ -359,7 +413,8 @@
                 <div id="prodDescBox" style='overflow:auto; width:400px;height:217px;'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magni, explicabo unde! Aliquid, veniam magni tempora nulla ut distinctio ipsam illo ullam incidunt culpa deserunt vel velit nesciunt dolore quasi harum veritatis? Voluptatum ad illum corrupti, illo sequi itaque quae soluta.</div>                
             </div>
                 <div  class="mt-lg-5" style = "font-size:19px;" >
-                    <label class="category"><b>Current-Price:</b></label> <label class="category">14000</label><br>
+                    <label class="category"><b>Current-Price:</b></label> 
+                    <label id="currentPrice" class="category">14000</label><br>
                 </div>
                  <script>
     
@@ -376,14 +431,25 @@
     </script>
     <div  class="btn-toolbar mt-lg-5" >
                 
-                        <button type="button" class="btn btn-success " id="percent1" style="width:25%;">+20%</button>
-                        <button type="button" class="btn btn-success ml-lg-4 "id="percent2" style="width:25%;" >+50%</button>
+                        <div class="input-group mb-3">
                         
-                        <button type="button" class="btn btn-success ml-lg-4" id="showTextArea" style="width:25%;">custom</button>
-                        <input type="number" name="bidAmount" id="bidTextArea" style="display:none;" class="ml-3" placeholder="Enter_bid_amount"></input>
+                        
                         <input type="hidden" name="productID" value="<%out.print(productID);%>">
-                        <input type="hidden" name="userID" value="<%out.print((String)session.getAttribute("username"));%>">                
+                        <input type="hidden" name="userID" value="<%out.print((String)session.getAttribute("username"));%>">
+  							<div class="input-group-prepend">
+    							<span class="input-group-text" id="basic-addon3">Current Price</span>
+  							</div>
+  							<div class="input-group-append">
+                        		<button type="button" id="add20" class="btn btn-success">+20%</button>
+  							</div>
+  							<div class="input-group-append">
+		                        <button type="button" id="add50" class="btn btn-primary">+50%</button>
+  							</div>
+  						<input type="number" class="form-control" name="bidAmount" min="" id="bidTextArea" placeholder="Enter bid amount">
+						</div>
+                        
                         <button type="button" id="lockBidButton" class="btn btn-primary" onclick="submitBid()" style="width:100%;">Lock your Bid</button>
+                        <!--   -->
          
                         
                         
@@ -397,10 +463,12 @@
                   <div class="col-md-3 ">
                     <div class="container">
                         <div style=" border-width: 2px;">
-                        <label class="category" ><b style = "color: blue; font-size:25 px;" >Base Price:</label> <label id="basePriceBox" class="category">10000</label></b><br>
+                        <label class="category" ><b style = "color: blue; font-size:25 px;" >Base Price:</label> 
+                        <label id="basePriceBox" class="category">10000</label></b><br>
                         </div><br>
                         <div style=" border-width: 2px;">
-                        <label class="category" ><b style="color: blue;font-size:25 px;">Current Highest Bid:</label> <label id="highestBidBox" class="category">14000</label></b><br>
+                        <label class="category" ><b style="color: blue;font-size:25 px;">Current Highest Bid:</label> 
+                        <label id="highestBidBox" class="category">14000</label></b><br>
                         </div>
                          <div id="bidRankList " style='overflow:auto; height:400px;' class="mt-md-3">
                             <div>
