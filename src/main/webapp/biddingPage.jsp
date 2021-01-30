@@ -151,6 +151,7 @@
 	          bBasePrice = product.getProductMinPrice();
 	          pEndTime = product.getStopTime();
 	   }
+	   System.out.println("bBasePrice="+bBasePrice);
     	
     %>    
     
@@ -203,7 +204,7 @@
 		    	data:{sendProductID:prodID},
 		    	success: function(result){
 		    					var l = Object.keys(result).length;
-		    					var maxBidValue = 0;
+		    					var maxBidValue =<%out.print(bBasePrice);%>
 		    					var content = '';
 		    					
 		    					
@@ -215,9 +216,20 @@
 		    						}
 		    						
 								}
+		    					console.log(parseInt($("#currentPrice").html()));
+		    					if(maxBidValue!=parseInt($("#currentPrice").html()))
+		    						$('#lockBidButton').prop('disabled', true)
+		    					
 		    					$("#rankTable tbody").html(content)
 	    						$('#highestBidBox').text(maxBidValue);	
-		    					$('#currentPrice').text(maxBidValue);	
+		    					$('#currentPrice').text(maxBidValue);
+		    					$('#add10').text(maxBidValue*0.1);
+		    					$('#add20').text(maxBidValue*0.2);
+		    					$('#add30').text(maxBidValue*0.3);
+		    					$('#add40').text(maxBidValue*0.4);
+		    					$('#add50').text(maxBidValue*0.5);
+		    					
+		    					
 		    			 }
 		  			});
 			
@@ -249,31 +261,73 @@
     
     $(document).ready(function()
             {
-		    	setInterval(function(){
-		    		loadBidTable();
-					price = parseInt($("#currentPrice").html());
-					$("#bidTextArea").attr("min", Math.trunc(price*1.01) );
-		    	}, 5000);           
-		    	// checking bid is ended, every second
-		    	setInterval(function(){
-		    		checkBidEnd();
-		    	}, 1000);     
+		    	   
 		    	
-	
+  	$("#add10").click(function(){
+  	    // placing bid 20% higher than the current highest bid
+  	    	
+  			
+  			$('#lockBidButton').prop('disabled', false);
+  			price = parseInt($("#currentPrice").html());
+  			$("#bidTextArea").val( Math.trunc(price*1.1) );
+  		});
 	$("#add20").click(function(){
     // placing bid 20% higher than the current highest bid
-		console.log("add20 clicked");
+    	
+		
+		$('#lockBidButton').prop('disabled', false);
 		price = parseInt($("#currentPrice").html());
 		$("#bidTextArea").val( Math.trunc(price*1.2) );
 	});
-    
+	$("#add30").click(function(){
+	    // placing bid 20% higher than the current highest bid
+	    	
+			
+			$('#lockBidButton').prop('disabled', false);
+			price = parseInt($("#currentPrice").html());
+			$("#bidTextArea").val( Math.trunc(price*1.3) );
+		});
+	$("#add40").click(function(){
+	    // placing bid 20% higher than the current highest bid
+	    	
+			
+			$('#lockBidButton').prop('disabled', false);
+			price = parseInt($("#currentPrice").html());
+			$("#bidTextArea").val( Math.trunc(price*1.4));
+		});
 	$("#add50").click(function(){
     // placing bid 50% higher than the current highest bid
 		console.log("add50 clicked");
+		$('#lockBidButton').prop('disabled', false);
 		price = parseInt($("#currentPrice").html());
 		$("#bidTextArea").val( Math.trunc(price*1.5) );
 		
 	});
+	$("#mul2").click(function(){
+	    // placing bid 20% higher than the current highest bid
+	    	
+			
+			$('#lockBidButton').prop('disabled', false);
+			price = parseInt($("#currentPrice").html());
+			$("#bidTextArea").val( Math.trunc(price*2) );
+		});
+	$("#mul3").click(function(){
+	    // placing bid 20% higher than the current highest bid
+	    	
+			
+			$('#lockBidButton').prop('disabled', false);
+			price = parseInt($("#currentPrice").html());
+			$("#bidTextArea").val( Math.trunc(price*3) );
+		});
+	$("#mul5").click(function(){
+	    // placing bid 20% higher than the current highest bid
+	    	
+			
+			$('#lockBidButton').prop('disabled', false);
+			price = parseInt($("#currentPrice").html());
+			$("#bidTextArea").val( Math.trunc(price*5) );
+		});
+	
 	
 	function checkBidEnd(){
     // function to check if the bidding has ended
@@ -366,21 +420,21 @@
 									             var automaticCountdown1 = setInterval(function(){
 									            	 var currentDate = new Date();  /*current time*/
 									            	 h = currentDate.getHours(); // =>  30
-									            	 console.log(h);
+									            	// console.log(h);
 									            	 m = currentDate.getMinutes(); // =>  30
-									            	 console.log(m);
+									            	// console.log(m);
 									            	 s = currentDate.getSeconds(); // => 51
-									            	 console.log(s);
+									            //	 console.log(s);
 									            	 currentDate = (h*60*60*1000)+(m*60000)+(s*1000);
 									                 var differenceInDate1 = countdownUpto - currentDate; /*in milli seconds*/ 
 										            /*console.log(differenceInDate); inspect - console and see */
-										            console.log(differenceInDate1);
+										         //   console.log(differenceInDate1);
 										            var cHours = Math.floor((differenceInDate1%(1000*60*60*24))/(1000*60*60));
-										            console.log(cHours);
+										           // console.log(cHours);
 										            var cMinutes1 = Math.floor((differenceInDate1%(1000*60*60))/(1000*60));
-										            console.log(cMinutes1);
+										          //  console.log(cMinutes1);
 										            var cSeconds1 = Math.floor((differenceInDate1%(1000*60))/1000);
-										            console.log(cSeconds1);
+										         //   console.log(cSeconds1);
 										            //document.getElementById("countdown1").innerHTML =cHours + "hrs: "+ cMinutes1 + "m: "+ cSeconds1 + "s";
 										            document.getElementById("countdown1").innerHTML =cMinutes1 + "m: "+ cSeconds1 + "s";
 										            }, 1000); //to run this function in seconds not milliseconds    
@@ -430,22 +484,23 @@
                 <div class="container">
                     <div >
                 <label class="category "><b>Description:</b></label> 
-                <div id="prodDescBox" style='overflow:auto; width:400px;height:217px;'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magni, explicabo unde! Aliquid, veniam magni tempora nulla ut distinctio ipsam illo ullam incidunt culpa deserunt vel velit nesciunt dolore quasi harum veritatis? Voluptatum ad illum corrupti, illo sequi itaque quae soluta.</div>                
+                <div id="prodDescBox" style=' width:200px;height:110px;'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magni, explicabo unde! Aliquid, veniam magni tempora nulla ut distinctio ipsam illo ullam incidunt culpa deserunt vel velit nesciunt dolore quasi harum veritatis? Voluptatum ad illum corrupti, illo sequi itaque quae soluta.</div>                
             </div>
-                <div  class="mt-lg-5" style = "font-size:19px;" >
+                <div  class="mt-lg-2" style = "font-size:19px;" >
                     <label class="category"><b>Current-Price:</b></label> 
-                    <label id="currentPrice" class="category">14000</label><br>
+                    <label id="currentPrice" class="category"><%out.print(bBasePrice);%></label><br>
                 </div>
+                <div  class="mt-lg-2" style = "font-size:19px;" >
+                    <label class="category"><b>Your Bid Price:</b></label> 
+                    <!--   <label id="bidTextArea" class="category"></label><br>-->
+                    
+                </div>
+                  <div>
+              <input type="number" class="form-control" name="bidAmount" min="" id="bidTextArea" placeholder="Enter bid amount" disabled>
+				</div>
                  <script>
     
-    $(document).ready(function()
-            {
-          
-    	$("#showTextArea").click(function() {
-    		document.getElementById("bidTextArea").style.display="inline";
-    		document.getElementById("showTextArea").style.display="none";
-    	  });
-            });
+    
     
     
     </script>
@@ -455,25 +510,58 @@
                         
                         
                         <input type="hidden" name="productID" value="<%out.print(productID);%>">
-                        <input type="hidden" name="userID" value="<%out.print((String)session.getAttribute("username"));%>">
+                        <input type="hidden" name="userID" value="<%out.print((String)session.getAttribute("username"));%>"> 
   							<div class="input-group-prepend">
-    							<span class="input-group-text" id="basic-addon3">Current Price</span>
+                        		<button type="button" id="add10" class="btn btn-primary">+<%out.print((int)(bBasePrice*.1));%></button>
+  							</div>
+  							<div class="input-group-prepend">
+                        		<button type="button" id="add20" class="btn btn-success">+<%out.print((int)(bBasePrice*.2));%></button>
   							</div>
   							<div class="input-group-append">
-                        		<button type="button" id="add20" class="btn btn-success">+20%</button>
+		                        <button type="button" id="add30" class="btn btn-primary">+<%out.print((int)(bBasePrice*.3));%></button>
   							</div>
   							<div class="input-group-append">
-		                        <button type="button" id="add50" class="btn btn-primary">+50%</button>
+                        		<button type="button" id="add40" class="btn btn-success">+<%out.print((int)(bBasePrice*.4));%></button>
   							</div>
-  						<input type="number" class="form-control" name="bidAmount" min="" id="bidTextArea" placeholder="Enter bid amount">
+  							<div class="input-group-append">
+		                        <button type="button" id="add50" class="btn btn-primary">+<%out.print((int)(bBasePrice*.5));%></button>
+  							</div>
+  						
+  						
+  						
 						</div>
                         
-                        <button type="button" id="lockBidButton" class="btn btn-primary" onclick="submitBid()" style="width:100%;">Lock your Bid</button>
+    </div>  
+                
+                       <div  class="  btn-toolbar mt-lg-5" >
+                
+                        <div class="input-group mb-3" style="width:100%">
+                        
+                        
+                        <input type="hidden" name="productID" value="<%out.print(productID);%>">
+                        <input type="hidden" name="userID" value="<%out.print((String)session.getAttribute("username"));%>">
+  							
+  							<div class="input-group-prepend">
+                        		<button type="button" id="mul2" class="btn btn-success">2x</button>
+  							</div>
+  							<div class="input-group-append">
+		                        <button type="button" id="mul3" class="btn btn-primary">3x</button>
+  							</div>
+  							<div class="input-group-append">
+                        		<button type="button" id="mul5" class="btn btn-success">5x</button>
+  							</div>
+  							
+  						
+  						
+						</div>
+                        
+                        <button type="button"   id="lockBidButton" class="btn btn-primary" onclick="submitBid()" style="width:100%;" >Lock your Bid</button>
                         
          
                         
                         
                        </div>  
+    
                           
                     </div>
                     
@@ -482,13 +570,13 @@
                   </div>
                   <div class="col-md-3 ">
                     <div class="container">
-                        <div style=" border-width: 2px;">
-                        <label class="category" ><b style = "color: blue; font-size:25 px;" >Base Price:</label> 
-                        <label id="basePriceBox" class="category">10000</label></b><br>
+                        <div >
+                        <label class="category" ><b style = "color: blue; font-size:25 px;" >Min_bid price:</label> 
+                        <label id="basePriceBox" class="category"><b><%out.print(bBasePrice);%></label></b><br>
                         </div><br>
                         <div style=" border-width: 2px;">
-                        <label class="category" ><b style="color: blue;font-size:25 px;">Current Highest Bid:</label> 
-                        <label id="highestBidBox" class="category">14000</label></b><br>
+                        <label class="category" ><b style="color: blue;font-size:25 px;">Current Highest Bid::</label> 
+                        <label id="highestBidBox" class="category"><b><%out.print(bBasePrice);%></label></b><br>
                         </div>
                          <div id="bidRankList " style='overflow:auto; height:400px;' class="mt-md-3">
                             <div>
