@@ -19,7 +19,7 @@ function readURL(input) {
 // code to change minimun bid date to next day
 function todayDate() {
     var today = new Date(); // get the current date
-    var dd = today.getDate()+1; //get the day from today.
+    var dd = today.getDate(); //get the day from today.
     var mm = today.getMonth()+1; //get the month from today +1 because january is 0!
     var yyyy = today.getFullYear(); //get the year from today
 
