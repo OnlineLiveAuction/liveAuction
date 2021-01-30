@@ -69,6 +69,24 @@ public class registerController extends HttpServlet {
 		UserDao dbcon = new UserDao();
 		int result = dbcon.registeruser(user);
 		
+		String mailSubject = "OnlineAuction: Registration Successful";
+		String mailBody = "Dear " + name 
+        		+ ",<br/><br/>" + "Thank you for"
+        		+ " registering at our <b><i>OnlineAuction</i></b> portal!"
+        		+ "<br/><br/>You can now use this portal to its full potential. Here is how-"
+        		+ "<br/><br/>" + "Interested in buying some of the listed products?"
+        		+ "<br/>" + "You can participate in the auction of the product that you are "
+        		+ "interested in by clicking on the \"Register\" button "
+        		+ "given next to the product description."
+        		+ "<br/><br/>" + "Interested in putting your product(s) on auction?"
+        		+ "<br/>" + "You can click on the \"Add Product\" button visible in the top of the website"
+        		+ " and fill in the necessary product details. This makes your product visible in the "
+        		+ "\"Upcoming Bids\" section of the portal so that the interested buyers can register fot it."
+        		+ "<br/><br/>Should you have any questions or feedback, "
+        		+ "do not hesitate to write us by replying to this mail.";
+		
+		SendEmail regMail = new SendEmail(email, mailSubject, mailBody);
+		
 		HttpSession session = request.getSession();
 		session.setAttribute("username", username);
 		int userID = dbcon.getUserId(username);

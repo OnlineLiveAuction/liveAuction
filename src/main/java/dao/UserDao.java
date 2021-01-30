@@ -81,6 +81,51 @@ public class UserDao {
 	         return -1;
 	      }
 	}
+	
+	public String getUserEmail(int userId)
+	{
+		try {
+	         
+	         Statement stat = con.createStatement();
+	         System.out.println("username");
+	         ResultSet rs = stat.executeQuery("Select email from userprofile where userID = "+ String.valueOf(userId));
+	         if(rs.next())
+	         {
+	        	 return rs.getString("email");
+	         }
+	         else
+	         {
+	        	 return "";
+	         }
+	      }
+	      catch(Exception e) {
+	         e.printStackTrace();
+	         return "";
+	      }
+	}
+	
+	public String getName(int userId)
+	{
+		try {
+	         
+	         Statement stat = con.createStatement();
+	         System.out.println("Name");
+	         ResultSet rs = stat.executeQuery("Select Name from userprofile where userID = "+ String.valueOf(userId));
+	         if(rs.next())
+	         {
+	        	 return rs.getString("Name");
+	         }
+	         else
+	         {
+	        	 return "";
+	         }
+	      }
+	      catch(Exception e) {
+	         e.printStackTrace();
+	         return "";
+	      }
+	}
+	
 	public int getCategoryID(String categoryname)
 	{
 		try {
@@ -199,6 +244,70 @@ public class UserDao {
 			return -1;
 		}
 	}
+	
+	public String getProductName(int productID)
+	{
+		try {
+	         
+	         Statement stat = con.createStatement();
+	         ResultSet rs = stat.executeQuery("Select productName from product where productID = " + String.valueOf(productID));
+	         if(rs.next())
+	         {
+	        	 return rs.getString("productName");
+	         }
+	         else
+	         {
+	        	 return "";
+	         }
+	      }
+	      catch(Exception e) {
+	         e.printStackTrace();
+	         return "";
+	      }
+	}
+	
+	public String getBiddingDate(int productID)
+	{
+		try {
+	         
+	         Statement stat = con.createStatement();
+	         ResultSet rs = stat.executeQuery("Select biddingDate from product where productID = " + String.valueOf(productID));
+	         if(rs.next())
+	         {
+	        	 return rs.getString("biddingDate");
+	         }
+	         else
+	         {
+	        	 return "";
+	         }
+	      }
+	      catch(Exception e) {
+	         e.printStackTrace();
+	         return "";
+	      }
+	}
+	
+	public String getBiddingTime(int productID)
+	{
+		try {
+	         
+	         Statement stat = con.createStatement();
+	         ResultSet rs = stat.executeQuery("Select startTime from product where productID = " + String.valueOf(productID));
+	         if(rs.next())
+	         {
+	        	 return rs.getString("startTime");
+	         }
+	         else
+	         {
+	        	 return "";
+	         }
+	      }
+	      catch(Exception e) {
+	         e.printStackTrace();
+	         return "";
+	      }
+	}
+	
 	public List<Product> getProducts()
 	{
 		List<Product> productList = new ArrayList<>();
