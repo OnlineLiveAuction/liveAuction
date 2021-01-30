@@ -4,6 +4,8 @@
     <%@ page import="java.util.List" %>   
     <%@ page import="model.Product" %>
     <%@ page import="java.util.ArrayList" %>
+    <%@ page import="java.time.LocalTime" %>
+     <%@ page import=" static java.time.temporal.ChronoUnit.MINUTES"%>
 <!doctype html>
 <html lang="en">
   <head>
@@ -269,27 +271,45 @@
 						      		<h4 class="timer-text">Bid Countdown</h4>
 						            <p id = "countdown1" class = "timer"></p>
 						        </div>
-						
+						<%LocalTime myObj = LocalTime.now();
+  							System.out.println(myObj);	
+  							LocalTime stop = LocalTime.parse(pEndTime);
+ 							System.out.println(stop);
+ 							int hour = stop.getHour();
+  							int differ = stop.getMinute();
+  							System.out.println(differ);
+  							int differsec = stop.getSecond();
+  							System.out.println(differsec);
+  							//differsec = 1000 * differsec;
+  							differ = (hour*3600*1000)+ (differ * 60000); //+ (differsec*1000);
+  							System.out.println(differ);
+  							//System.out.println(differsec);
+ 						 %>
 						        <script>
 						            document.getElementById("countdown1").innerHTML = "BID COUNTDOWN";
-						            var countdown1Upto = new Date("Jan 31, 2021 18:40:00").getTime(); /*add bid time here*/
-						            
+						            var countdownUpto = <%out.print(differ);%>; /*add bid time here*/
+
 									             var automaticCountdown1 = setInterval(function(){
-										            var currentDate1 = new Date().getTime();  /*current time*/
-										            var differenceInDate1 = countdown1Upto - currentDate1; /*in milli seconds*/ 
+									            	 var currentDate = new Date();  /*current time*/
+									            	 h = currentDate.getHours(); // =>  30
+									            	 console.log(h);
+									            	 m = currentDate.getMinutes(); // =>  30
+									            	 console.log(m);
+									            	 s = currentDate.getSeconds(); // => 51
+									            	 console.log(s);
+									            	 currentDate = (h*60*60*1000)+(m*60000)+(s*1000);
+									                 var differenceInDate1 = countdownUpto - currentDate; /*in milli seconds*/ 
 										            /*console.log(differenceInDate); inspect - console and see */
-										            var cDays1 = Math.floor(differenceInDate1/(1000*60*60*24));
-										            console.log(cDays1);
-										            var cHours1 = Math.floor((differenceInDate1%(1000*60*60*24))/(1000*60*60));
-										            console.log(cHours1);
+										            console.log(differenceInDate1);
+										            var cHours = Math.floor((differenceInDate1%(1000*60*60*24))/(1000*60*60));
+										            console.log(cHours);
 										            var cMinutes1 = Math.floor((differenceInDate1%(1000*60*60))/(1000*60));
 										            console.log(cMinutes1);
 										            var cSeconds1 = Math.floor((differenceInDate1%(1000*60))/1000);
 										            console.log(cSeconds1);
-										            document.getElementById("countdown1").innerHTML = cDays1 + "d, " + cHours1 + "hrs: " + cMinutes1 + "m: "+ cSeconds1 + "s";
-										
-										            }, 1000); //to run this function in seconds not milliseconds
-									            
+										            //document.getElementById("countdown1").innerHTML =cHours + "hrs: "+ cMinutes1 + "m: "+ cSeconds1 + "s";
+										            document.getElementById("countdown1").innerHTML =cMinutes1 + "m: "+ cSeconds1 + "s";
+										            }, 1000); //to run this function in seconds not milliseconds    
 						        </script> 
                
                     
@@ -362,8 +382,7 @@
                         <button type="button" class="btn btn-success ml-lg-4" id="showTextArea" style="width:25%;">custom</button>
                         <input type="number" name="bidAmount" id="bidTextArea" style="display:none;" class="ml-3" placeholder="Enter_bid_amount"></input>
                         <input type="hidden" name="productID" value="<%out.print(productID);%>">
-                        <input type="hidden" name="userID" value="<%out.print((String)session.getAttribute("username"));%>">
-                        
+                        <input type="hidden" name="userID" value="<%out.print((String)session.getAttribute("username"));%>">                
                         <button type="button" id="lockBidButton" class="btn btn-primary" onclick="submitBid()" style="width:100%;">Lock your Bid</button>
          
                         
