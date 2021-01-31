@@ -141,6 +141,11 @@
         %>
         
     <%
+    	int userID = -1;
+	    if(session.getAttribute("userID") != null)
+	    {
+	 	   userID = (Integer)session.getAttribute("userID");
+	    }
 	    int productID = 0;
     	Product product;
     	String pName="";
@@ -197,6 +202,8 @@
                 //alert("<%out.print(pEndTime);%>");
                 loadBidTable();
                
+                
+                
                 
             });
     </script>
@@ -259,7 +266,19 @@
 			
 		}
 		
-	</script>  
+	</script> 
+	
+	<script>
+    
+    $(document).ready(function()
+            {
+		    	setInterval(function(){
+		    		loadBidTable();
+		    	}, 5000);           
+            });
+    </script> 
+	
+	
 	
 	
 	
@@ -333,6 +352,8 @@
 			price = parseInt($("#currentPrice").html());
 			$("#bidTextArea").val( Math.trunc(price*5) );
 		});
+	
+	
 	
 	
 	function checkBidEnd(){
