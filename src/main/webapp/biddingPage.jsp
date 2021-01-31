@@ -152,6 +152,7 @@
     	String pDesc="";
     	int bBasePrice=0;
     	String pEndTime="";
+    	int sellerID = -1;
 		if (request.getParameter("productID") != null)
 	    {  
 	          productID = Integer.valueOf(request.getParameter("productID"));
@@ -161,6 +162,7 @@
 	          pDesc = product.getProductDescription();
 	          bBasePrice = product.getProductMinPrice();
 	          pEndTime = product.getStopTime();
+	          sellerID = product.getSellerId();
 	   }
 	   System.out.println("bBasePrice="+bBasePrice);
     	
@@ -194,6 +196,13 @@
                 var prodName="<%out.print(pName);%>";
                 var prodDesc="<%out.print(pDesc);%>";
                 var prodBasePrice=<%out.print(bBasePrice);%>
+                var uID=<%out.print(userID);%>
+                var sID=<%out.print(sellerID);%>
+                
+                if(sID == uID)
+                {
+                	disableBiddingButton();
+                }
                 
                 $('#prodNameBox').text(prodName);
                 $('#prodDescBox').text(prodDesc);
@@ -206,12 +215,37 @@
                 
                 
             });
+    
+    function disableBiddingButton()
+    {
+    	$('#add10').prop("disabled", true);
+		$('#add20').prop("disabled", true);
+		$('#add30').prop("disabled", true);
+		$('#add40').prop("disabled", true);
+		$('#add50').prop("disabled", true);
+		
+		$('#mul2').prop("disabled", true);
+		$('#mul3').prop("disabled", true);
+		$('#mul5').prop("disabled", true);
+		
+		$('#bidTextArea').css("visibility", "hidden");
+		$('#bidPriceLabel').css("visibility", "hidden");
+		
+		$('#lockBidButton').text("Can't bid on own product");
+		$('#lockBidButton').addClass('btn btn-danger  mt-md-3');
+		
+		
+		
+    }
     </script>
     
     <script>
 		function loadBidTable()
 		{
 			var prodID=<%out.print(productID);%>
+			var s="HGHG";     
+	        s="<%out.print(session.getAttribute("username"));%>";
+			
 			$.ajax({
 		    	url: "RetrieveBids",
 		    	data:{sendProductID:prodID},
@@ -222,7 +256,15 @@
 		    					
 		    					
 		    					for (var i = 0; i < l; i++) {
-		    						content += "<tr><td>"+result[i]["userName"]+"</td><td>"+result[i]["bidAmount"]+"</td></tr>";
+		    						if(s==result[i]["userName"])
+		    						{
+		    							content += "<tr style='background-color:#ccff99'><td>"+result[i]["userName"]+"</td><td>"+result[i]["bidAmount"]+"</td></tr>";
+		    						}
+		    						else
+		    						{
+		    							content += "<tr><td>"+result[i]["userName"]+"</td><td>"+result[i]["bidAmount"]+"</td></tr>";	
+		    						}
+		    						
 		    						if(result[i]["bidAmount"] >= maxBidValue)
 		    						{
 		    							maxBidValue = result[i]["bidAmount"];
@@ -518,7 +560,7 @@
                     <label id="currentPrice" class="category"><%out.print(bBasePrice);%></label><br>
                 </div>
                 <div  class="mt-lg-2" style = "font-size:19px;" >
-                    <label class="category"><b>Your Bid Price:</b></label> 
+                    <label id="bidPriceLabel" class="category"><b>Your Bid Price:</b></label> 
                     <!--   <label id="bidTextArea" class="category"></label><br>-->
                     
                 </div>
@@ -561,7 +603,7 @@
   						
 						</div>
                         
-                        <button type="button" id="lockBidButton" class="btn btn-primary" onclick="submitBid()" style="width:100%;" >Lock Your Bid! <i class="fa fa-lock"></i></button>
+                        <button type="button" id="lockBidButton" class="btn btn-primary" onclick="submitBid()" style="width:100%;" >Place Your Bid  <i class="fa fa-paper-plane"></i></button>
                   
                           
                     </div>
