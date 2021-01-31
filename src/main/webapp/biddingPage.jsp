@@ -23,6 +23,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" type="text/css">
+    <!-- MDB -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.2.0/mdb.min.css" rel="stylesheet" />
     <style>
         .bd-placeholder-img {
           font-size: 1.125rem;
@@ -46,6 +48,7 @@
                 background-image: linear-gradient(#16bffd, #49c9bd);
                 /* box-shadow: inset 0 0 10px #0000000; */
                 color: white;
+                border: 4x solid black;
                 line-height: 60px;
                 text-align:center;
                 font-size: 40px;
@@ -62,8 +65,9 @@
         	height: 49px;   
         }
         .timer-text{
-        	font-size: 20px;
-        	text-align:center;
+        	font-size: 40px;
+        	margin-left: 40px;
+        	margin-top: 110px;
         }
         
       </style>
@@ -223,11 +227,11 @@
 		    					$("#rankTable tbody").html(content)
 	    						$('#highestBidBox').text(maxBidValue);	
 		    					$('#currentPrice').text(maxBidValue);
-		    					$('#add10').text(maxBidValue*0.1);
-		    					$('#add20').text(maxBidValue*0.2);
-		    					$('#add30').text(maxBidValue*0.3);
-		    					$('#add40').text(maxBidValue*0.4);
-		    					$('#add50').text(maxBidValue*0.5);
+		    					$('#add10').text("+"+Math.trunc(maxBidValue*0.1));
+		    					$('#add20').text("+"+Math.trunc(maxBidValue*0.2));
+		    					$('#add30').text("+"+Math.trunc(maxBidValue*0.3));
+		    					$('#add40').text("+"+Math.trunc(maxBidValue*0.4));
+		    					$('#add50').text("+"+Math.trunc(maxBidValue*0.5));
 		    					
 		    					
 		    			 }
@@ -495,8 +499,8 @@
                     <!--   <label id="bidTextArea" class="category"></label><br>-->
                     
                 </div>
-                  <div>
-              <input type="number" class="form-control" name="bidAmount" min="" id="bidTextArea" placeholder="Enter bid amount" disabled>
+                        <div class="input-group mb-3" style="width:100%">
+                   		<input type="number" class="form-control text-center" style="width:100%" name="bidAmount" min="" id="bidTextArea" placeholder="Enter bid amount" disabled>
 				</div>
                  <script>
     
@@ -504,64 +508,38 @@
     
     
     </script>
-    <div  class="btn-toolbar mt-lg-5" >
+    
                 
-                        <div class="input-group mb-3">
+                        <div class="button-group mb-3 input-group" role="group" style="width:100%">
                         
                         
-                        <input type="hidden" name="productID" value="<%out.print(productID);%>">
-                        <input type="hidden" name="userID" value="<%out.print((String)session.getAttribute("username"));%>"> 
-  							<div class="input-group-prepend">
-                        		<button type="button" id="add10" class="btn btn-primary">+<%out.print((int)(bBasePrice*.1));%></button>
-  							</div>
-  							<div class="input-group-prepend">
-                        		<button type="button" id="add20" class="btn btn-success">+<%out.print((int)(bBasePrice*.2));%></button>
-  							</div>
-  							<div class="input-group-append">
-		                        <button type="button" id="add30" class="btn btn-primary">+<%out.print((int)(bBasePrice*.3));%></button>
-  							</div>
-  							<div class="input-group-append">
-                        		<button type="button" id="add40" class="btn btn-success">+<%out.print((int)(bBasePrice*.4));%></button>
-  							</div>
-  							<div class="input-group-append">
-		                        <button type="button" id="add50" class="btn btn-primary">+<%out.print((int)(bBasePrice*.5));%></button>
+                        		<input type="hidden" name="productID" value="<%out.print(productID);%>">
+                        		<input type="hidden" name="userID" value="<%out.print((String)session.getAttribute("username"));%>"> 
+                        		<button type="button" id="add10" data-mdb-toggle="tooltip" data-mdb-placement="top" title="Add 10%" class="btn btn-info" style="width:20%">+<%out.print((int)(bBasePrice*.1));%></button>
+                        		<button type="button" id="add20" data-mdb-toggle="tooltip" data-mdb-placement="top" title="Add 20%" class="btn btn-info" style="width:20%" >+<%out.print((int)(bBasePrice*.2));%></button>
+		                        <button type="button" id="add30" data-mdb-toggle="tooltip" data-mdb-placement="top" title="Add 30%" class="btn btn-info" style="width:20%" >+<%out.print((int)(bBasePrice*.3));%></button>
+                        		<button type="button" id="add40" data-mdb-toggle="tooltip" data-mdb-placement="top" title="Add 40%" class="btn btn-info" style="width:20%" >+<%out.print((int)(bBasePrice*.4));%></button>
+		                        <button type="button" id="add50" data-mdb-toggle="tooltip" data-mdb-placement="top" title="Add 50%" class="btn btn-info" style="width:20%" >+<%out.print((int)(bBasePrice*.5));%></button>
   							</div>
   						
   						
   						
-						</div>
                         
-    </div>  
-                
-                       <div  class="  btn-toolbar mt-lg-5" >
                 
                         <div class="input-group mb-3" style="width:100%">
-                        
-                        
+                                               
                         <input type="hidden" name="productID" value="<%out.print(productID);%>">
                         <input type="hidden" name="userID" value="<%out.print((String)session.getAttribute("username"));%>">
-  							
-  							<div class="input-group-prepend">
-                        		<button type="button" id="mul2" class="btn btn-success">2x</button>
-  							</div>
-  							<div class="input-group-append">
-		                        <button type="button" id="mul3" class="btn btn-primary">3x</button>
-  							</div>
-  							<div class="input-group-append">
-                        		<button type="button" id="mul5" class="btn btn-success">5x</button>
-  							</div>
+                        		<button type="button" id="mul2" data-mdb-toggle="tooltip" data-mdb-placement="bottom" title="Double the bid amount" class="btn btn-outline-secondary" style="width:33%">2x</button>
+		                        <button type="button" id="mul3" data-mdb-toggle="tooltip" data-mdb-placement="bottom" title="Triple the bid amount" class="btn btn-outline-info" style="width:33%">3x</button>
+                        		<button type="button" id="mul5" data-mdb-toggle="tooltip" data-mdb-placement="bottom" title="Just Give me the Product!" class="btn btn-outline-success" style="width:33%">5x</button>
   							
   						
   						
 						</div>
                         
-                        <button type="button"   id="lockBidButton" class="btn btn-primary" onclick="submitBid()" style="width:100%;" >Lock your Bid</button>
-                        
-         
-                        
-                        
-                       </div>  
-    
+                        <button type="button" id="lockBidButton" class="btn btn-primary" onclick="submitBid()" style="width:100%;" >Lock Your Bid! <i class="fa fa-lock"></i></button>
+                  
                           
                     </div>
                     
@@ -571,12 +549,12 @@
                   <div class="col-md-3 ">
                     <div class="container">
                         <div >
-                        <label class="category" ><b style = "color: blue; font-size:25 px;" >Min_bid price:</label> 
-                        <label id="basePriceBox" class="category"><b><%out.print(bBasePrice);%></label></b><br>
+                        <label class="category" >Min bid price:</label> 
+                        <label id="basePriceBox" class="category"><%out.print(bBasePrice);%></label><br>
                         </div><br>
                         <div style=" border-width: 2px;">
-                        <label class="category" ><b style="color: blue;font-size:25 px;">Current Highest Bid::</label> 
-                        <label id="highestBidBox" class="category"><b><%out.print(bBasePrice);%></label></b><br>
+                        <label class="category" >Current Highest Bid:</label> 
+                        <label id="highestBidBox" ><%out.print(bBasePrice);%></label><br>
                         </div>
                          <div id="bidRankList " style='overflow:auto; height:400px;' class="mt-md-3">
                             <div>
@@ -609,7 +587,8 @@
             <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
             <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-            
+            <!-- MDB -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.2.0/mdb.min.js"></script>
            
             
                  

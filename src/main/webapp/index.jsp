@@ -27,7 +27,9 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" type="text/css">
-    <style>
+    <!-- MDB -->
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.2.0/mdb.min.css" rel="stylesheet" />
+<style>
         .bd-placeholder-img {
           font-size: 1.125rem;
           text-anchor: middle;
@@ -291,7 +293,7 @@
                      	 		
                      	 		Product product = (Product)productList.get(i);
                      	 		%>
-                     	 		<div class="card mt-3 shadow p-3 mb-5 bg-white rounded" >
+                     	 		<div class="card mt-3 ml-3 mr-3 shadow p-3 mb-5 bg-white rounded" >
             <div class="row">
                 <div class="col-md-4">
                     <img class="card-img-top" src="getImage.jsp?id=<% out.print(product.getProductID()); %>" alt="Card image cap" >
@@ -383,6 +385,8 @@
    <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+            <!-- MDB -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.2.0/mdb.min.js"></script>
 
   
  </body>
