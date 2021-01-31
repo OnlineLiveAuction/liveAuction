@@ -194,7 +194,7 @@
 					                        		{
 					                        			%>
 					                        			<form action="biddingPage.jsp">
-					                        				<button class="btn btn-danger  mt-md-3">Enter Auction</button>
+					                        				<button class="btn btn-secondary  mt-md-3">Enter Auction</button>
 					                        				<input type="hidden" value="<%=product.getProductID()%>" name="productID">
 					                        			</form>
 					                        			<%

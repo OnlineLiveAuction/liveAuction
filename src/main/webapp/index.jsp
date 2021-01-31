@@ -256,21 +256,30 @@
 					  <p class="sidenav_names" id="demo" style="color:white"></p>
 					</div><br><br>
 					<div class="text-center">
-					<button class="btn btn-danger">Apply</button>
-					<button class="btn btn-danger" name="clearFilters">Clear</button>
+					<button class="btn btn-secondary">Apply</button>
+					<button class="btn btn-secondary" name="clearFilters">Clear</button>
 					</div>
 		</div>
 		
       <div class="container">
       <div class="row">
               <div class="col-12">
-              
-        <div class="md-form mt-0 searchbutton panel-body-form-inline">  <%if(request.getAttribute("filterNameSearch") != null)
-        { %>          	<input class="col-md-10" type="text"placeholder="Search" aria-label="Search" value=<%out.print(request.getAttribute("filteredNameSearch")); %> name="search"><%}
+        <div class="searchbutton">  
+        <div class="input-group">      
+        <div class="form-outline">
+        <%if(request.getAttribute("filterNameSearch") != null)
+        { %>          	
+        <input class="form-control col-11" style="width: 1000px;" id="form1" type="search" aria-label="Search" value=<%out.print(request.getAttribute("filteredNameSearch")); %> name="search"><%}
         else 
-        {%>	<input class="col-md-10 "type="text"placeholder="Search" aria-label="Search" name="search"><%
+        {%>	
+        	<input class="form-control col-11" style="width: 1000px;" id="form1" type="search"  aria-label="Search" name="search"><%
         } %>
-           <button class="btn btn-danger ml-2 ">Search</button>
+        <label class="form-label" for="form1">Search</label>
+        </div>
+        <button type="button" class="btn btn-secondary">
+    <i class="fa fa-search"></i>
+  </button>
+        </div>
         </div>
       </div>
       </div>
@@ -333,8 +342,8 @@
 					                        		
 					                        			%>
 					                        				<form action="biddingPage.jsp">
-						                        				<button class="btn btn-danger  mt-md-3">Enter Auction</button>
 						                        				<input type="hidden" value="<%=product.getProductID()%>" name="productID">
+						                        				<button class="btn btn-secondary mt-md-3" type="submit">Enter Auction</button>
 					                        				</form>
 					                        			<%
 					                        	}
@@ -343,7 +352,7 @@
 					                        	{
 					                        %>
 					                       
-												<button class="btn btn-danger  mt-md-3" disabled="disabled">Registered</button>					                   			
+												<button class="btn btn-success  mt-md-3" disabled="disabled">Registered</button>					                   			
 					                        
 					                        <% } else if(product.getSellerId() == userID) { %>
 					                        

@@ -70,6 +70,8 @@
         	margin-top: 110px;
         }
         
+        input[type="text"]:disabled{background-color:white;}
+        
       </style>
       <!-- Custom styles for this template -->
       
@@ -484,7 +486,7 @@
             
             <div class="col-md-5 ">
                 
-                <label id="prodNameBox" class="category">Product Name</label>
+                <b><label id="prodNameBox" class="category">Product Name</label></b>
                 <div class="container">
                     <div >
                 <label class="category "><b>Description:</b></label> 
@@ -500,7 +502,7 @@
                     
                 </div>
                         <div class="input-group mb-3" style="width:100%">
-                   		<input type="number" class="form-control text-center" style="width:100%" name="bidAmount" min="" id="bidTextArea" placeholder="Enter bid amount" disabled>
+                   		<input type="button" class="btn btn-outline-primary btn-lg" style="width:100%; font-size:30px" name="bidAmount" min="" id="bidTextArea" value="Place Your Bid">
 				</div>
                  <script>
     
@@ -549,13 +551,10 @@
                   <div class="col-md-3 ">
                     <div class="container">
                         <div >
-                        <label class="category" >Min bid price:</label> 
+                        <label class="category" ><b>Initial Bid Price:</b></label> 
                         <label id="basePriceBox" class="category"><%out.print(bBasePrice);%></label><br>
                         </div><br>
-                        <div style=" border-width: 2px;">
-                        <label class="category" >Current Highest Bid:</label> 
-                        <label id="highestBidBox" ><%out.print(bBasePrice);%></label><br>
-                        </div>
+                        
                          <div id="bidRankList " style='overflow:auto; height:400px;' class="mt-md-3">
                             <div>
                               <table id="rankTable" class="table-sm table-bordered table-hover table-light"
