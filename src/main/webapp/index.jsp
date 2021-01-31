@@ -270,7 +270,7 @@
       <div class = "container">
 	  <!------------------------------------search bar ---------------------------------------------------->
 
-      <div class="row">
+      <div class="row" style="margin-left:5%">
         <div class="col-12">
               
         <div class="md-form mt-0 searchbutton panel-body-form-inline">  <%if(request.getAttribute("filterNameSearch") != null)
@@ -285,7 +285,7 @@
 
       <!------------------------------------search bar ends------------------------------------------------->
       <br>
-      <div class = "col-md-auto reel">
+      <div class = "col-md-auto reel" style="margin-left:18%">
       
       <h1 class = "text-center" style= "font-family: sans-sherrif;"> Featured Products</h1>
       
@@ -302,7 +302,7 @@
               //while((out.print(product.getProductID()))!=(out.print(product.getSellerId()))){
          %>
          
-		<div class = "col-md-4 product-grid">
+		<div class = "col-md-4 product-grid shadow p-2">
 			<div class = "image">
 				
 					<img src="getImage.jsp?id=<% out.print(product.getProductID()); %>" class="w-100" style="width:200px; height:400px; object-fit:contain;">
