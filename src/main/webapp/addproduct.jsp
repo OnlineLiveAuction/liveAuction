@@ -161,7 +161,29 @@
   
     <body>
     
+    <%
+    String n = null;
+    if (request.getParameter("authorize") != null) 
+    {
+        n = request.getParameter("authorize");
+        if (n.equals("yes")) 
+        {
+        	System.out.println("username"+(String)session.getAttribute("username"));
+			 	%>
+				<script>alert("Welcome");</script>
+				
+			 	<%
+    	}
+        else
+        {
+        	%>
+				<script>alert("Incorrect username or password");</script>
+		 		<%
+        }
+	}
     
+    
+    %>
     
 	<div class="modal fade" id="signinmodal">
             <div class="modal-dialog">
@@ -170,7 +192,7 @@
                         <h3 class="text-center text-primary">Login to add a Product</h3>
                     </div>
                     <div class="modal-body">
-                        <form action="checklogin">
+                        <form action="checklogin" method="post">
                             
                             <div class="form-group">
                               <label class="modallabel"><i class="fa fa-user fa-sm"></i> Username:</label>

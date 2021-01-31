@@ -347,12 +347,15 @@
 					                        				</form>
 					                        			<%
 					                        	}
+					                        	
 					                        	else if((formatter.format(date).toString().compareTo(product.getBiddingDate())) > 0 || ((formatter.format(date).toString().equals(product.getBiddingDate())) && stop.compareTo(currTime) < 0))
 					                        	{
 					                        		%>
 					                        		<button class="btn btn-danger  mt-md-3" disabled="disabled">Auction Ended</button>	
 					                        	<% 
 					                        	}
+					                        	
+					                        	
 					                        
 					                        	else if(regProductList.contains(product.getProductID()))
 					                        	{
