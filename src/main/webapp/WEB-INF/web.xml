@@ -90,6 +90,12 @@
     	<description></description>
     	<servlet-class>controller.SubmitBid</servlet-class>
     </servlet>
+    <servlet>
+    	<servlet-name>NotifyWinner</servlet-name>
+    	<display-name>NotifyWinner</display-name>
+    	<description></description>
+    	<servlet-class>controller.NotifyWinner</servlet-class>
+    </servlet>
 
   
   
@@ -150,6 +156,10 @@
  <servlet-mapping>
  	<servlet-name>SubmitBid</servlet-name>
  	<url-pattern>/SubmitBid</url-pattern>
+ </servlet-mapping>
+ <servlet-mapping>
+ 	<servlet-name>NotifyWinner</servlet-name>
+ 	<url-pattern>/NotifyWinner</url-pattern>
  </servlet-mapping>
 
   	

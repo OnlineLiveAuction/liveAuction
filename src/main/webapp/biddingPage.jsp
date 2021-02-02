@@ -201,7 +201,7 @@
                 
                 if(sID == uID)
                 {
-                	disableBiddingButton();
+                	disableBiddingButton("Can't bid on your own product!");
                 }
                 
                 $('#prodNameBox').text(prodName);
@@ -216,7 +216,7 @@
                 
             });
     
-    function disableBiddingButton()
+    function disableBiddingButton(message)
     {
     	$('#add10').prop("disabled", true);
 		$('#add20').prop("disabled", true);
@@ -231,7 +231,8 @@
 		$('#bidTextArea').css("visibility", "hidden");
 		$('#bidPriceLabel').css("visibility", "hidden");
 		
-		$('#lockBidButton').text("Can't bid on own product");
+		$('#lockBidButton').text(message);
+		$('#lockBidButton').prop("disabled", true);
 		$('#lockBidButton').addClass('btn btn-danger  mt-md-3');
 		
 		
@@ -308,7 +309,73 @@
 			
 		}
 		
+		function notifyWinner()
+		{
+			console.log("Before ajax of notify winner");
+			var productID=<%out.print(productID);%>
+			$.ajax({
+				method: "POST",
+		    	url: "NotifyWinner",
+		    	data:{productID:productID},
+		    	"success": function() {
+		    		
+		            console.log("Winner has been notified!");}
+
+		        });
+			
+		}
+		var t = 1;
+		
 	</script> 
+	
+	<script>
+	
+	function checkBidEnd(){
+	    // function to check if the bidding has ended
+			//console.log("bid End time: <% out.print(pEndTime); %>");
+	    	console.log("CheckBidEnd called");
+			var today = new Date();
+			var hour = today.getHours();
+			if(hour >= 12){
+				hour = hour - 12;
+			}
+			var minutes =  today.getMinutes();
+			var endtime = "<% out.print(pEndTime); %>";
+			var endhour = parseInt(endtime.slice(0,2));
+			if(endhour > 12){
+				endhour = endhour -12;
+			}
+			var endmin = parseInt(endtime.slice(3,5));
+			//console.log("current time:",hour,minutes);
+			if(hour > endhour){
+					//t = 2;
+					console.log("modal shown 1");
+					//$('#bidEndModal').show();
+					console.log("Bidding has ended");
+					if (t==1)
+					{ 
+						notifyWinner();
+					  	t = 0;
+					}
+					
+			}
+			else if (hour == endhour){
+				if(minutes >= endmin){
+					//t = 2;
+					console.log("Bidding has ended");				
+					//$('#bidEndModal').show();  
+					if (t==1)
+						{
+							notifyWinner();
+							t = 0;
+						}
+					
+				}
+			}
+		}
+	</script>
+	
+	
 	
 	<script>
     
@@ -316,11 +383,19 @@
             {
 		    	setInterval(function(){
 		    		loadBidTable();
-		    	}, 5000);           
+		    	}, 3000);           
             });
     </script> 
 	
-	
+	<script>
+    
+    $(document).ready(function()
+            {
+		    	setInterval(function(){
+		    		checkBidEnd();
+		    	}, 1000);           
+            });
+    </script> 
 	
 	
 	
@@ -330,12 +405,17 @@
             {
 		    	   
     	var s = "<%out.print(session.getAttribute("username"));%>";
+    	if(s == "null")
+    	{
+    		disableBiddingButton("Can't bid without logging in!");
+    	}
+    	
     	
   	$("#add10").click(function(){
   	    // placing bid 20% higher than the current highest bid
   	    	
   			console.log(s);
-  			if (s != "null")
+  			//if (s != "null")
   				$('#lockBidButton').prop('disabled', false);
   			price = parseInt($("#currentPrice").html());
   			$("#bidTextArea").val( Math.trunc(price*1.1) );
@@ -343,7 +423,7 @@
 	$("#add20").click(function(){
     // placing bid 20% higher than the current highest bid
     	
-		if (s != "null")
+		//if (s != "null")
 			$('#lockBidButton').prop('disabled', false);
 		price = parseInt($("#currentPrice").html());
 		$("#bidTextArea").val( Math.trunc(price*1.2) );
@@ -351,7 +431,7 @@
 	$("#add30").click(function(){
 	    // placing bid 20% higher than the current highest bid
 	    	
-			if (s != "null")
+			//if (s != "null")
 				$('#lockBidButton').prop('disabled', false);
 			price = parseInt($("#currentPrice").html());
 			$("#bidTextArea").val( Math.trunc(price*1.3) );
@@ -359,7 +439,7 @@
 	$("#add40").click(function(){
 	    // placing bid 20% higher than the current highest bid
 	    	
-			if (s != "null")
+			//if (s != "null")
 				$('#lockBidButton').prop('disabled', false);
 			price = parseInt($("#currentPrice").html());
 			$("#bidTextArea").val( Math.trunc(price*1.4));
@@ -368,7 +448,7 @@
     // placing bid 50% higher than the current highest bid
 		console.log("add50 clicked");
     
-		if (s != "null")
+		//if (s != "null")
 			$('#lockBidButton').prop('disabled', false);
 		price = parseInt($("#currentPrice").html());
 		$("#bidTextArea").val( Math.trunc(price*1.5) );
@@ -377,7 +457,7 @@
 	$("#mul2").click(function(){
 	    // placing bid 20% higher than the current highest bid
 	    	
-			if (s != "null")
+			//if (s != "null")
 				$('#lockBidButton').prop('disabled', false);
 			price = parseInt($("#currentPrice").html());
 			$("#bidTextArea").val( Math.trunc(price*2) );
@@ -385,7 +465,7 @@
 	$("#mul3").click(function(){
 	    // placing bid 20% higher than the current highest bid
 	    	
-			if (s != "null")
+			//if (s != "null")
 				$('#lockBidButton').prop('disabled', false);
 			price = parseInt($("#currentPrice").html());
 			$("#bidTextArea").val( Math.trunc(price*3) );
@@ -393,7 +473,7 @@
 	$("#mul5").click(function(){
 	    // placing bid 20% higher than the current highest bid
 	    	
-			if (s != "null")
+			//if (s != "null")
 				$('#lockBidButton').prop('disabled', false);
 			price = parseInt($("#currentPrice").html());
 			$("#bidTextArea").val( Math.trunc(price*5) );
@@ -402,34 +482,7 @@
 	
 	
 	
-	function checkBidEnd(){
-    // function to check if the bidding has ended
-		//console.log("bid End time: <% out.print(pEndTime); %>");
-		var today = new Date();
-		var hour = today.getHours();
-		if(hour >= 12){
-			hour = hour - 12;
-		}
-		var minutes =  today.getMinutes();
-		var endtime = "<% out.print(pEndTime); %>";
-		var endhour = parseInt(endtime.slice(0,2));
-		if(endhour > 12){
-			endhour = endhour -12;
-		}
-		var endmin = parseInt(endtime.slice(3,5));
-		//console.log("current time:",hour,minutes);
-		if(hour > endhour){
-				console.log("modal shown 1");
-				$('#bidEndModal').show();
-				console.log("Bidding has ended")
-		}
-		else if (hour == endhour){
-			if(minutes >= endmin){
-				console.log("Bidding has ended");				
-				$('#bidEndModal').show();  			
-			}
-		}
-	};
+	
 	
 	
 		    	
@@ -607,7 +660,7 @@
   						
 						</div>
                         
-                        <button type="button" id="lockBidButton" class="btn btn-primary" onclick="submitBid()" style="width:100%;" >Place Your Bid  <i class="fa fa-paper-plane"></i></button>
+                        <button type="button" id="lockBidButton" class="btn btn-primary" onclick="submitBid()" style="width:100%;" disabled>Place Your Bid  <i class="fa fa-paper-plane"></i></button>
                   
                           
                     </div>

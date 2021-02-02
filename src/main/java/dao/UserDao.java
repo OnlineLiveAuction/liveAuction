@@ -617,6 +617,7 @@ public class UserDao {
 				product.setStopTime(rs.getString("stopTime"));
 				product.setBiddingDate(rs.getString("biddingDate"));
 				product.setSellerId(rs.getInt("sellerID"));
+				product.setWinnerID(rs.getString("winnerID"));
 				return product;
 			}
 		} catch (SQLException e) {
@@ -705,6 +706,7 @@ public class UserDao {
 			return -1;
 		}
 	}
+	
 	
 	public HashSet<Integer> getActiveBidders(int productID)
 	{

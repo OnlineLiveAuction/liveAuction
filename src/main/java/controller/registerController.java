@@ -69,7 +69,7 @@ public class registerController extends HttpServlet {
 		UserDao dbcon = new UserDao();
 		int result = dbcon.registeruser(user);
 		
-		String mailSubject = "OnlineAuction: Registration Successful";
+		String mailSubject = "Registration Successful";
 		String mailBody = "Dear " + name 
         		+ ",<br/><br/>" + "Thank you for"
         		+ " registering at our <b><i>OnlineAuction</i></b> portal!"
