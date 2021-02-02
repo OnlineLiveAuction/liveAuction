@@ -53,9 +53,11 @@ public class UserController extends HttpServlet {
 			//System.out.println(url[url.length-1]+"?authorize=yes");
 			//System.out.println(url[url.length-1].split("\\?")+" "+url[url.length-1].split("\\?").length);
 			//System.out.println(url[url.length-1]+"?authorize=yes");
+			
 			if(url[url.length-1].split("\\?").length > 1)
 			{
-				response.sendRedirect(url[url.length-1].split("\\&")[0]+"&authorize=yes");
+				String newURL = url[url.length-1].split("\\&")[0].replace("authorize=no", "");
+				response.sendRedirect(newURL+"&authorize=yes");
 			}
 			else
 			{
@@ -66,7 +68,8 @@ public class UserController extends HttpServlet {
 		{
 			if(url[url.length-1].split("\\?").length > 1)
 			{
-				response.sendRedirect(url[url.length-1].split("\\&")[0]+"&authorize=no");
+				String newURL = url[url.length-1].split("\\&")[0].replace("authorize=no", "");
+				response.sendRedirect(newURL+"&authorize=no");
 			}
 			else
 			{
