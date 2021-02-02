@@ -329,12 +329,12 @@
     $(document).ready(function()
             {
 		    	   
-    	var s = "<%out.print(request.getParameter("authorize"));%>";
+    	var s = "<%out.print(session.getAttribute("username"));%>";
     	
   	$("#add10").click(function(){
   	    // placing bid 20% higher than the current highest bid
   	    	
-  			
+  			console.log(s);
   			if (s != "null")
   				$('#lockBidButton').prop('disabled', false);
   			price = parseInt($("#currentPrice").html());
