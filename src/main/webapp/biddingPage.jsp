@@ -329,43 +329,47 @@
     $(document).ready(function()
             {
 		    	   
-		    	
+    	var s = "<%out.print(request.getParameter("authorize"));%>";
+    	
   	$("#add10").click(function(){
   	    // placing bid 20% higher than the current highest bid
   	    	
   			
-  			$('#lockBidButton').prop('disabled', false);
+  			if (s != "null")
+  				$('#lockBidButton').prop('disabled', false);
   			price = parseInt($("#currentPrice").html());
   			$("#bidTextArea").val( Math.trunc(price*1.1) );
   		});
 	$("#add20").click(function(){
     // placing bid 20% higher than the current highest bid
     	
-		
-		$('#lockBidButton').prop('disabled', false);
+		if (s != "null")
+			$('#lockBidButton').prop('disabled', false);
 		price = parseInt($("#currentPrice").html());
 		$("#bidTextArea").val( Math.trunc(price*1.2) );
 	});
 	$("#add30").click(function(){
 	    // placing bid 20% higher than the current highest bid
 	    	
-			
-			$('#lockBidButton').prop('disabled', false);
+			if (s != "null")
+				$('#lockBidButton').prop('disabled', false);
 			price = parseInt($("#currentPrice").html());
 			$("#bidTextArea").val( Math.trunc(price*1.3) );
 		});
 	$("#add40").click(function(){
 	    // placing bid 20% higher than the current highest bid
 	    	
-			
-			$('#lockBidButton').prop('disabled', false);
+			if (s != "null")
+				$('#lockBidButton').prop('disabled', false);
 			price = parseInt($("#currentPrice").html());
 			$("#bidTextArea").val( Math.trunc(price*1.4));
 		});
 	$("#add50").click(function(){
     // placing bid 50% higher than the current highest bid
 		console.log("add50 clicked");
-		$('#lockBidButton').prop('disabled', false);
+    
+		if (s != "null")
+			$('#lockBidButton').prop('disabled', false);
 		price = parseInt($("#currentPrice").html());
 		$("#bidTextArea").val( Math.trunc(price*1.5) );
 		
@@ -373,24 +377,24 @@
 	$("#mul2").click(function(){
 	    // placing bid 20% higher than the current highest bid
 	    	
-			
-			$('#lockBidButton').prop('disabled', false);
+			if (s != "null")
+				$('#lockBidButton').prop('disabled', false);
 			price = parseInt($("#currentPrice").html());
 			$("#bidTextArea").val( Math.trunc(price*2) );
 		});
 	$("#mul3").click(function(){
 	    // placing bid 20% higher than the current highest bid
 	    	
-			
-			$('#lockBidButton').prop('disabled', false);
+			if (s != "null")
+				$('#lockBidButton').prop('disabled', false);
 			price = parseInt($("#currentPrice").html());
 			$("#bidTextArea").val( Math.trunc(price*3) );
 		});
 	$("#mul5").click(function(){
 	    // placing bid 20% higher than the current highest bid
 	    	
-			
-			$('#lockBidButton').prop('disabled', false);
+			if (s != "null")
+				$('#lockBidButton').prop('disabled', false);
 			price = parseInt($("#currentPrice").html());
 			$("#bidTextArea").val( Math.trunc(price*5) );
 		});
