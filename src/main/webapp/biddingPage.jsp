@@ -350,7 +350,7 @@
 			if(hour > endhour){
 					//t = 2;
 					console.log("modal shown 1");
-					//$('#bidEndModal').show();
+					$('#bidEndModal').show();
 					console.log("Bidding has ended");
 					if (t==1)
 					{ 
@@ -363,7 +363,7 @@
 				if(minutes >= endmin){
 					//t = 2;
 					console.log("Bidding has ended");				
-					//$('#bidEndModal').show();  
+					$('#bidEndModal').show();  
 					if (t==1)
 						{
 							notifyWinner();

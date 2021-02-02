@@ -72,6 +72,7 @@
 				  }
 				  .slidecontainer {
 				  width: 100%;
+				  
 				}
 
 
@@ -251,9 +252,9 @@
    				    } %> 
    				 <%} %><br>
    			<label class="sidenav_labels" for="exampleFormControlSelect1">Price</label><br><br>	 
-   				 <div class="slidecontainer tex-center">
+   				 <div class="slidecontainer">
 					  <input type="range" min="1" max="100000" value="<%out.print((int)request.getAttribute("filteredPrice"));%>"  id="myRange" name="priceSlider">
-					  <p class="sidenav_names" id="demo" style="color:white"></p>
+					  <p class="sidenav_names" id="demo" style="color:black"></p>
 					</div><br><br>
 					<div class="text-center">
 					<button class="btn btn-secondary">Apply</button>
@@ -354,7 +355,6 @@
 					                        		<button class="btn btn-danger  mt-md-3" disabled="disabled">Auction Ended</button>	
 					                        	<% 
 					                        	}
-					                        	
 					                        	
 					                        
 					                        	else if(regProductList.contains(product.getProductID()))
