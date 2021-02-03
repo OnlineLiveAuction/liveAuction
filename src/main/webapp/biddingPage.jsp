@@ -357,6 +357,7 @@
 					  	t = 0;
 					}
 					$('#bidEndModal').show();
+					document.getElementById("countdown1").style.display="none";
 					
 			}
 			else if (hour == endhour){
@@ -369,6 +370,7 @@
 							t = 0;
 						}
 					$('#bidEndModal').show();
+					document.getElementById("countdown1").style.display="none";
 				}
 			}
 		}
