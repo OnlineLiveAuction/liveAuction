@@ -70,6 +70,17 @@
         	margin-top: 110px;
         }
         
+        .centerBid
+        {
+        	margin-left:7px;
+        	margin-right:7px;
+        }
+        
+        .sideBox
+        {
+        	background-color:gainsboro;
+        }
+        
         input[type="text"]:disabled{background-color:white;}
         
       </style>
@@ -513,10 +524,10 @@
 	
     
     <%@include  file="navbar.html" %>      
-       <div class="container">
+       <div class="container" >
         
-            <div class="row">
-                <div class="col-md-4">
+            <div class="row" style="margin-left:6%">
+                <div class="col-md-3 shadow p-3" class="sideBox">
                     <div>
                     <img class="card-img-top" src="getImage.jsp?id=<% out.print(productID); %>" alt="Card image cap" >
                     </div>
@@ -605,13 +616,13 @@
                 </div>
 
             
-            <div class="col-md-5 ">
+            <div class="col-md-5 centerBid shadow p-3">
                 
-                <b><label id="prodNameBox" class="category">Product Name</label></b>
-                <div class="container">
+                <b><label id="prodNameBox" style="font-size:30px;" class="category">Product Name</label></b>
+                <!-- <div class="container"> -->
                     <div >
-                <label class="category "><b>Description:</b></label> 
-                <div id="prodDescBox" style=' width:200px;height:110px;'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magni, explicabo unde! Aliquid, veniam magni tempora nulla ut distinctio ipsam illo ullam incidunt culpa deserunt vel velit nesciunt dolore quasi harum veritatis? Voluptatum ad illum corrupti, illo sequi itaque quae soluta.</div>                
+                
+                <div id="prodDescBox" style=' width:200px;'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magni, explicabo unde! Aliquid, veniam magni tempora nulla ut distinctio ipsam illo ullam incidunt culpa deserunt vel velit nesciunt dolore quasi harum veritatis? Voluptatum ad illum corrupti, illo sequi itaque quae soluta.</div>                
             </div>
                 <div  class="mt-lg-2" style = "font-size:19px;" >
                     <label class="category"><b>Current-Price:</b></label> 
@@ -623,7 +634,7 @@
                     
                 </div>
                         <div class="input-group mb-3" style="width:100%">
-                   		<input type="button" class="btn btn-outline-primary btn-lg" style="width:100%; font-size:30px" name="bidAmount" min="" id="bidTextArea" value="Place Your Bid">
+                   		<input type="button" class="btn btn-outline-primary btn-md" style="width:100%; font-size:30px" name="bidAmount" min="" id="bidTextArea" value="Place Your Bid">
 				</div>
                  <script>
     
@@ -664,21 +675,24 @@
                         <button type="button" id="lockBidButton" class="btn btn-primary" onclick="submitBid()" style="width:100%;" disabled>Place Your Bid  <i class="fa fa-paper-plane"></i></button>
                   
                           
-                    </div>
+                    <!--  </div>-->
                     
                   
                 
                   </div>
-                  <div class="col-md-3 ">
+                  <div class="col-md-3 shadow p-3 " class="sideBox">
                     <div class="container">
                         <div >
-                        <label class="category" ><b>Initial Bid Price:</b></label> 
-                        <label id="basePriceBox" class="category"><%out.print(bBasePrice);%></label><br>
-                        </div><br>
+                        <table class="table table-bordered table-hover table-light">
+	                        <tr class="category"> 
+	                        <th class="category" ><b>Initial Bid Price:</b></th> 
+                        	<th id="basePriceBox" class="category"><%out.print(bBasePrice);%></th></tr>
+                        </table>
+                        </div>
                         
                          <div id="bidRankList " style='overflow:auto; height:400px;' class="mt-md-3">
                             <div>
-                              <table id="rankTable" class="table-sm table-bordered table-hover table-light"
+                              <table id="rankTable" class="table table-bordered table-hover table-light"
                                 data-reorderable-rows="true" aria-describedby="Bid Ranking Table">
                                 <thead class="table-dark">
                                   <tr >
