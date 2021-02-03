@@ -277,7 +277,7 @@
         } %>
         <label class="form-label" for="form1">Search</label>
         </div>
-        <button type="button" class="btn btn-secondary">
+        <button type="submit" class="btn btn-secondary">
     <i class="fa fa-search"></i>
   </button>
         </div>
