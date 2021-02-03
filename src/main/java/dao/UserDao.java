@@ -618,6 +618,7 @@ public class UserDao {
 				product.setBiddingDate(rs.getString("biddingDate"));
 				product.setSellerId(rs.getInt("sellerID"));
 				product.setWinnerID(rs.getString("winnerID"));
+				product.setClosingPrice(rs.getString("closingPrice"));
 				return product;
 			}
 		} catch (SQLException e) {

@@ -349,27 +349,26 @@
 			//console.log("current time:",hour,minutes);
 			if(hour > endhour){
 					//t = 2;
-					console.log("modal shown 1");
-					$('#bidEndModal').show();
+					console.log("modal shown 1");					
 					console.log("Bidding has ended");
 					if (t==1)
 					{ 
 						notifyWinner();
 					  	t = 0;
 					}
+					$('#bidEndModal').show();
 					
 			}
 			else if (hour == endhour){
 				if(minutes >= endmin){
 					//t = 2;
-					console.log("Bidding has ended");				
-					$('#bidEndModal').show();  
+					console.log("Bidding has ended");					  
 					if (t==1)
 						{
 							notifyWinner();
 							t = 0;
 						}
-					
+					$('#bidEndModal').show();
 				}
 			}
 		}

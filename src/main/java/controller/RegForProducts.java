@@ -43,7 +43,7 @@ public class RegForProducts extends HttpServlet {
 		
 		int productID = Integer.valueOf(request.getParameter("productID"));
 		int userID = (int) request.getSession().getAttribute("userID");
-		System.out.print(productID + " " + userID);
+		//System.out.print(productID + " " + userID);
 		
 		UserDao dbcon = new UserDao();
 		
