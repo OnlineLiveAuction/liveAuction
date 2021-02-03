@@ -351,7 +351,6 @@
 					//t = 2;
 					console.log("modal shown 1");
 					$('#bidEndModal').show();
-					document.getElementById("countdown1").style.display="none";
 					console.log("Bidding has ended");
 					if (t==1)
 					{ 
@@ -365,7 +364,6 @@
 					//t = 2;
 					console.log("Bidding has ended");				
 					$('#bidEndModal').show();  
-					document.getElementById("countdown1").style.display="none";
 					if (t==1)
 						{
 							notifyWinner();
