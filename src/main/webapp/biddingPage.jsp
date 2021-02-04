@@ -262,6 +262,8 @@
 		    	url: "RetrieveBids",
 		    	data:{sendProductID:prodID},
 		    	success: function(result){
+		    		
+		    					
 		    					var l = Object.keys(result).length;
 		    					var maxBidValue =<%out.print(bBasePrice);%>
 		    					var content = '';
@@ -295,7 +297,7 @@
 		    					$('#add30').text("+"+Math.trunc(maxBidValue*0.3));
 		    					$('#add40').text("+"+Math.trunc(maxBidValue*0.4));
 		    					$('#add50').text("+"+Math.trunc(maxBidValue*0.5));
-		    					
+		    					changeWinnerinModal(result);
 		    					
 		    			 }
 		  			});
@@ -380,11 +382,20 @@
 							notifyWinner();
 							t = 0;
 						}
+					
 					$('#bidEndModal').show();
 					document.getElementById("countdown1").style.display="none";
 				}
 			}
 		}
+	
+	
+	
+	function changeWinnerinModal(result)
+	{
+		$('#winnerName').text("Winner: "+result[0]["userName"]);
+		$('#closingPrice').text("Closing Price "+result[0]["bidAmount"]);
+	}
 	</script>
 	
 	
@@ -511,8 +522,11 @@
         <h4 class="modal-title" id="myModalLabel">Bidding Ended</h4>
       </div>
       
-      <div class="modal-body">
-        <p>You can no longer access this page.</p>
+      <div class="modal-body text-center">
+        
+        <h2 id="winnerName"></h2>
+        <h2 id="closingPrice"></h2>
+        <h4>You no longer have access to this page</h4>
       </div>
       <div class="modal-footer">
         <a href="index.jsp"><button type="button" class="btn btn-default" data-dismiss="modal">Close</button></a>
