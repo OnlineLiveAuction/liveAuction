@@ -57,30 +57,31 @@ public class NotifyWinner extends HttpServlet {
 						+ "details of its seller- "
 						+ "<br/><br/><b>Name: </b>"+ sellerName
 						+ "<br/><b>Email-ID: </b>"+ sellerMailID
+						+ "<br/><b>Bid Amount: </b>Rs. "+ productClosingPrice
 				+ "<br/><br/>You can get in touch with the seller mentioned above and "
-				+ "arrange for the further transactions. <b><i>OnlineAuction</i></b> shall not "
-				+ "be responsible after this point for any further inconveniences encountered by "
+				+ "arrange for the further transactions. <b><i>OnlineAuction</i></b> shall <b>not "
+				+ "be responsible</b> after this point for any further inconveniences encountered by "
 				+ "either of the selling or buying parties."
 				+ "<br/><br/>We hope you had a good experience bidding with us and we will try our best"
 				+ " to just improve it more and more. For any suggestions or feedback, do not hesitate"
-				+ " to write to us on this mail ID- onlineauctionooad@gmail.com";
+				+ " to write to us on this mail ID- onlineauctionooad@gmail.com.";
 		
 		String mailSubjectSeller = "You sold it!";	
 		
 		String mailBodySeller = "Congratulations "+sellerName+"!"
-				+ "<br/><br/>We are happy to infrom you that your <b><i>"+ productName+ "</i></b> that you had put on auction "
+				+ "<br/><br/>We are happy to inform you that your <b><i>"+ productName+ "</i></b> that you had put on auction "
 						+ "just got sold! Here are the "
 						+ "details of its winner- "
 						+ "<br/><br/><b>Name: </b>"+ winnerName
 						+ "<br/><b>Email-ID: </b>"+ winnerMailID
-						+ "<br/><b>Bid Amount: </b>"+ "Rs. "+productClosingPrice
+						+ "<br/><b>Bid Amount: </b>"+ "Rs. "+ productClosingPrice
 				+ "<br/><br/>You can get in touch with the winner mentioned above and "
-				+ "arrange for the further transactions. <b><i>OnlineAuction</i></b> shall not "
-				+ "be responsible after this point for any further inconveniences encountered by "
+				+ "arrange for the further transactions. <b><i>OnlineAuction</i></b> shall <b>not "
+				+ "be responsible</b> after this point for any further inconveniences encountered by "
 				+ "either of the selling or buying parties."
 				+ "<br/><br/>We hope you had a good experience bidding with us and we will try our best"
 				+ " to just improve it more and more. For any suggestions or feedback, do not hesitate"
-				+ "to write back to us on this ID";
+				+ "to write to us on this mail ID- onlineauctionooad@gmail.com.";
 		
 		SendEmail winMailToSeller = new SendEmail(sellerMailID, mailSubjectSeller, mailBodySeller);
 		SendEmail winMailToWinner = new SendEmail(winnerMailID, mailSubjectWinner, mailBodyWinner);
