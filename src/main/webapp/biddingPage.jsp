@@ -65,8 +65,8 @@
         	height: 49px;   
         }
         .timer-text{
-        	font-size: 40px;
-        	margin-left: 40px;
+        	font-size: 35px;
+        	margin-left: 10px;
         	margin-top: 110px;
         }
         
@@ -534,8 +534,8 @@
                     <div class = "partition1"></div> <!-- partition between image and timer boxes   -->
                      <p id="some_div">
 						      <div>
-						      		<h4 class="timer-text">Bid Countdown</h4>
-						            <p id = "countdown1" class = "timer"></p>
+						      		<h4 class="timer-text col-md-12">Bid Countdown</h4>
+						            <p id = "countdown1" class = "timer col-md-12"></p>
 						        </div>
 						<%LocalTime myObj = LocalTime.now();
   							System.out.println(myObj);	

@@ -61,7 +61,8 @@ public class productController extends HttpServlet {
 		int bidCount = 0;
 		String startTime = (String)request.getParameter("starttime");
 		LocalTime start = LocalTime.parse(startTime);
-		String stopTime = start.plusMinutes(10).toString();
+		int auctionDuration = Integer.parseInt((String)request.getParameter("auctionDuration"));
+		String stopTime = start.plusMinutes(auctionDuration).toString();
 	    System.out.println("stopTime"+stopTime);
 		String productDescription = (String)request.getParameter("productdescription");
 		String productName = (String)request.getParameter("productname");

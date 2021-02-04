@@ -308,17 +308,26 @@
                   <label id="previewImageLabel" for="preview" hidden="hidden">Selected Image</label>
                   <img id="previewImage" src="#" alt="product image" height="200px" width="200" hidden="hidden"/>
             </div>
-                
-              <div class="form-group">
-                <label for="exampleFormControlSelect1"> Select Bidding time (bidding will be for 10 minutes)</label>
+              
+              <div class="col-md-12"> 
+              <div class="row">
+              <div class="form-group  col-md-6">
+                <label for="exampleFormControlSelect1"> Select Bidding time</label>
                 <input type="time" name="starttime" id="starttime" class="form-control" value="18:00">
-                  
-              </div>
-              <div class="form-group">
-                <label> Select Bidding date</label>
-                <input type="date" name="biddingdate" id="biddingdate" class="form-control" required>    
+                </div>   
+                
+                <div class="form-group  col-md-6">
+                <label for="exampleFormControlSelect1">Duration(in minutes)</label>
+                <input type="number" name="auctionDuration" id="auctionDuration" class="form-control" value="10">
+                </div> 
+                </div> 
               </div>
               
+	              <div class="form-group">
+	                <label> Select Bidding date</label>
+	                <input type="date" name="biddingdate" id="biddingdate" class="form-control" required>    
+	              </div>
+             
               
               <input type="hidden" name="username" value="<%out.print((String)session.getAttribute("username")); %>">
             <button type="submit" class="btn btn-primary">Add the Product <i class="fa fa-plus-circle"></i></button>
