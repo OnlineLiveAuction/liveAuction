@@ -43,15 +43,16 @@
         
         .timer{
         		
-        		height: 60px;
-                width: 360px;
+        		height: 40px;
+                width: 280px;
                 background-image: linear-gradient(#16bffd, #49c9bd);
                 /* box-shadow: inset 0 0 10px #0000000; */
                 color: white;
                 border: 4x solid black;
-                line-height: 60px;
+                line-height: 40px;
                 text-align:center;
-                font-size: 40px;
+                font-size: 27px;
+                border-radius: 4px;
                 /* margin-top: 0px; */
                 /* box-shadow: 1px 1px 0px #000,
                 2px 2px 0px #000,
@@ -62,11 +63,11 @@
         }
         
         .partition1{
-        	height: 49px;   
+        	height: 40px;   
         }
         .timer-text{
-        	font-size: 35px;
-        	margin-left: 10px;
+        	font-size: 16px;
+        	text-align:left;
         	margin-top: 110px;
         }
         
@@ -543,12 +544,12 @@
             <div class="row" style="margin-left:6%">
                 <div class="col-md-3 shadow p-3" class="sideBox">
                     <div>
-                    <img class="card-img-top" src="getImage.jsp?id=<% out.print(productID); %>" alt="Card image cap" >
+                    <img class="card-img-top" src="getImage.jsp?id=<% out.print(productID); %>" alt="Card image cap" style="width:280px; height:250px; object-fit:cover;">
                     </div>
                     <div class = "partition1"></div> <!-- partition between image and timer boxes   -->
                      <p id="some_div">
 						      <div>
-						      		<h4 class="timer-text col-md-12">Bid Countdown</h4>
+						      		<h4 class="timer-text">Time Remaining:</h4>
 						            <p id = "countdown1" class = "timer col-md-12"></p>
 						        </div>
 						<%LocalTime myObj = LocalTime.now();
@@ -591,42 +592,8 @@
 										            document.getElementById("countdown1").innerHTML =cMinutes1 + "m: "+ cSeconds1 + "s";
 										            }, 1000); //to run this function in seconds not milliseconds    
 						        </script> 
-               
-                    
-                   
-                    
-                     <!-- < % if(differenceInDate1 < = 900000){ %>  ----- implementing a hide-able timer 2 -->
-						      <!-- <div>
-						      		<h4 class="timer-text">Current Bid Slot Countdown</h4>
-						            <p id = "countdown2" class = "timer" style="color:black;">
-						            </p>
-						        </div> -->
-						
-						        <script>
-						            // document.getElementById("countdown2").innerHTML = "BID COUNTDOWN";
-						            // var currentTime2 = new Date().getTime();
-						            // var countdown2Upto = currentTime2 + 37000; /*add bid time here*/
-						            
-						            
-						            	// /* if (((countdownUpto == (new Date("Jan 26, 2021 10:00:00")%30) == 0).getTime())) */
-									        //      var automaticCountdown2 = setInterval(function(){
-										      //       var currentDate2 = new Date().getTime();  /*current time*/
-										      //       var differenceInDate2 = countdown2Upto - currentDate2; /*in milli seconds*/ 
-										      //       /*console.log(differenceInDate); inspect - console and see */
-										      //       var cDays2 = Math.floor(differenceInDate2/(1000*60*60*24));
-										      //       console.log(cDays2);
-										      //       var cHours2 = Math.floor((differenceInDate2%(1000*60*60*24))/(1000*60*60));
-										      //       console.log(cHours2);
-										      //       var cMinutes2 = Math.floor((differenceInDate2%(1000*60*60))/(1000*60));
-										      //       console.log(cMinutes2);
-										      //       var cSeconds2 = Math.floor((differenceInDate2%(1000*60))/1000);
-										      //       console.log(cSeconds2);
-										      //       document.getElementById("countdown2").innerHTML = cSeconds2 + "s";
-										
-										      //       }, 1000); //to run this function in seconds not milliseconds
-									            
-						        // </script> 
-               <!--  < % } %>  -->
+
+                     
                 </div>
 
             
