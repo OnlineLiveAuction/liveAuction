@@ -267,7 +267,7 @@
 <div class="container">
        <div style="display:inline"> 
                   
-		<div class="sidenav shadow p-3" style="background-color: #a3ddcb;">
+		<div class="sidenav shadow p-3" style="background-color: #262626; color:white;">
 		
 		  	<h4>Filters</h4>
 		  	
@@ -291,14 +291,14 @@
    				    <%
    				    } %> 
    				 <%} %><br>
-   			<label class="sidenav_labels" for="exampleFormControlSelect1">Price</label><br> 
+   			<label class="sidenav_labels" for="exampleFormControlSelect1" >Price</label><br> 
    				 <div class="slidecontainer">
 					  <input type="range" min="1" max="100000" value="<%out.print((int)request.getAttribute("filteredPrice"));%>"  id="myRange" name="priceSlider">
-					  <p class="sidenav_names" id="demo" style="color:black;"></p>
+					  <p class="sidenav_names" id="demo" style="color:white;"></p>
 					</div><br><br>
 					<div class="text-center">
-					<button class="btn btn-secondary" style="background-color: #03506f;">Apply</button>
-					<button class="btn btn-secondary" name="clearFilters" style="background-color: #03506f;">Clear</button>
+					<button class="btn btn-outline-info" >Apply</button>
+					<button class="btn btn-outline-info" name="clearFilters">Clear</button>
 					</div>
 		</div>
 		
@@ -370,6 +370,7 @@
 			<h5 class="text-center pbdate"><label class="category mt-md-3"><b>Bidding Starts On:</b></label> <label class="category"><% out.print(product.getBiddingDate()); %></label>
 			<label class="category mt-md-3"><b>, </b></label> <label class="category"><% out.print(product.getStartTime()); %></label><br>
 			</h5>
+			<h5 class="text-center" style="	font-size:13px; opacity: .8; color:#660928;"><label class="category"></label> <label ><b><%=newUser.getProductRegistrationCount(product.getProductID())%></label> people already registered</b></h5>
 			
 
 
