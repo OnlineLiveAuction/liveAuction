@@ -399,7 +399,24 @@
 					                        			<%
 					                        	}
 					                        	
-					                        	
+					                        	else if((formatter.format(date).toString().compareTo(product.getBiddingDate())) > 0 || ((formatter.format(date).toString().equals(product.getBiddingDate())) && stop.compareTo(currTime) < 0))
+					                        	{
+					                        		%>
+					                        		<%
+					                        			if(product.getClosingPrice()==null)
+					                        			{
+					                        		%>
+					                        		<button class="btn btn-danger  mt-md-3 bid" disabled="disabled">Auction Ended without any bids</b></button>	
+					                        		<%		
+					                        			}
+					                        			else
+					                        			{
+					                        		%>
+					                        		<button class="btn btn-danger  mt-md-3 bid" disabled="disabled">Auction Ended at <b><u>&#8377 <%=product.getClosingPrice()%></u></b></button>
+					                			
+					                        	<%
+					                        			} 
+					                        	}
 					                        
 					                        	else if(regProductList.contains(product.getProductID()))
 					                        	{
