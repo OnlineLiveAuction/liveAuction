@@ -331,6 +331,7 @@ public class UserDao {
 				product.setStopTime(rs.getString("stopTime"));
 				product.setBiddingDate(rs.getString("biddingDate"));
 				product.setSellerId(rs.getInt("sellerID"));
+				product.setClosingPrice(rs.getString("closingPrice"));
 				//System.out.println("minprice"+product.getProductMinPrice());
 				int categoryID = rs.getInt("categoryID");
 				PreparedStatement psCat = con.prepareStatement("Select categoryname from category where categoryID = '"+ categoryID +"'");
