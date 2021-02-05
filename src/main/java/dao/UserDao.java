@@ -775,6 +775,26 @@ public class UserDao {
 		}
 	}
 	
+	public ArrayList<String> getRegisteredUsers(int userID, int productID)
+	{
+		ArrayList<String> registeredUsers = new ArrayList<>();
+		String query = "select userName from userprofile,productregistration WHERE productregistration.bidderID=userprofile.userID AND productID = "+productID;
+		PreparedStatement ps;
+		try 
+		{
+			ps = con.prepareStatement(query);
+			ResultSet rs = ps.executeQuery();
+			while(rs.next())
+			{
+				registeredUsers.add(rs.getString("userName"));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return registeredUsers;
+	}
+	
 }
 
 

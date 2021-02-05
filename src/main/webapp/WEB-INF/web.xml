@@ -96,6 +96,12 @@
     	<description></description>
     	<servlet-class>controller.NotifyWinner</servlet-class>
     </servlet>
+    <servlet>
+    	<servlet-name>GetRegisteredUsers</servlet-name>
+    	<display-name>GetRegisteredUsers</display-name>
+    	<description></description>
+    	<servlet-class>controller.GetRegisteredUsers</servlet-class>
+    </servlet>
 
   
   
@@ -160,6 +166,10 @@
  <servlet-mapping>
  	<servlet-name>NotifyWinner</servlet-name>
  	<url-pattern>/NotifyWinner</url-pattern>
+ </servlet-mapping>
+ <servlet-mapping>
+ 	<servlet-name>GetRegisteredUsers</servlet-name>
+ 	<url-pattern>/GetRegisteredUsers</url-pattern>
  </servlet-mapping>
 
   	
