@@ -124,12 +124,7 @@
 	      output.innerHTML = val;
 	    }
 	    
-	    // Fix the navbar on top
-	    $("nav").addClass('fixed-top')
-	    }
 	    
-	    
-	    );
     </script>
     
     
