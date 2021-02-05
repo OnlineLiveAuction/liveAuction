@@ -132,9 +132,10 @@
 	    slider.oninput = function() {
 	      var val="0 - "+this.value;	
 	      output.innerHTML = val;
+	      console.log(val);
 	    }
 	    
-	    
+	    } ); 
     </script>
     
     
@@ -405,6 +406,7 @@
 					                        			<%
 					                        	}
 					                        	
+					                        	
 					                        	else if((formatter.format(date).toString().compareTo(product.getBiddingDate())) > 0 || ((formatter.format(date).toString().equals(product.getBiddingDate())) && stop.compareTo(currTime) < 0))
 					                        	{
 					                        		%>
@@ -423,7 +425,6 @@
 					                        	<%
 					                        			} 
 					                        	}
-					                        	
 					                        	
 					                        	
 					                        	else if(regProductList.contains(product.getProductID()))
