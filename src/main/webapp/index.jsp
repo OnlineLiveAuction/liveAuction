@@ -232,9 +232,10 @@
        %>
        
        <!-- UI -->
+       <form action="ApplyFilter">  
 <div class="container">
        <div style="display:inline"> 
-       <form action="ApplyFilter">             
+                  
 		<div class="sidenav shadow p-3" style="background-color: #a3ddcb;">
 		
 		  	<h4>Filters</h4>
@@ -269,7 +270,7 @@
 					<button class="btn btn-secondary" name="clearFilters" style="background-color: #03506f;">Clear</button>
 					</div>
 		</div>
-		</form>
+		
 		</div>
        </div>
       
@@ -301,6 +302,7 @@
         </div>
       </div>
       </div>
+      </form>
 
       <!------------------------------------search bar ends------------------------------------------------->
       <br>
