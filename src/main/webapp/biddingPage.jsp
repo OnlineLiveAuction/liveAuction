@@ -298,7 +298,10 @@
 		    					$('#add30').text("+"+Math.trunc(maxBidValue*0.3));
 		    					$('#add40').text("+"+Math.trunc(maxBidValue*0.4));
 		    					$('#add50').text("+"+Math.trunc(maxBidValue*0.5));
-		    					changeWinnerinModal(result);
+		    					
+		    					
+		    					if(l > 0)
+		    						changeWinnerinModal(result);
 		    					
 		    			 }
 		  			});
