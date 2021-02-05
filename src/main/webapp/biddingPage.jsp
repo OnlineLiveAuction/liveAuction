@@ -45,7 +45,7 @@
         		
         		height: 40px;
                 width: 280px;
-                background-image: linear-gradient(#16bffd, #49c9bd);
+                background-image: linear-gradient(#1266f1, #1266f1);
                 /* box-shadow: inset 0 0 10px #0000000; */
                 color: white;
                 border: 4x solid black;
@@ -81,6 +81,10 @@
         .sideBox
         {
         	background-color:gainsboro;
+        }
+        #prodDescBox{
+        min-height:110px;
+        
         }
         
         input[type="text"]:disabled{background-color:white;}
@@ -614,7 +618,7 @@
                     <label id="currentPrice" class="category"><%out.print(bBasePrice);%></label><br>
                 </div>
                 <div  class="mt-lg-2" style = "font-size:19px; text-align:center" >
-                    <label id="bidPriceLabel" class="category"><b>Your Bid Price:</b></label> 
+                    <label id="bidPriceLabel" class="category"><b>Your Bid Price: &#8377</b></label> 
                     <!--   <label id="bidTextArea" class="category"></label><br>-->
                     
                 </div>
