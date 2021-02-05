@@ -603,13 +603,13 @@
                 <!-- <div class="container"> -->
                     <div >
                 
-                <div id="prodDescBox" style=' width:200px;'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magni, explicabo unde! Aliquid, veniam magni tempora nulla ut distinctio ipsam illo ullam incidunt culpa deserunt vel velit nesciunt dolore quasi harum veritatis? Voluptatum ad illum corrupti, illo sequi itaque quae soluta.</div>                
+                <div id="prodDescBox">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magni, explicabo unde! Aliquid, veniam magni tempora nulla ut distinctio ipsam illo ullam incidunt culpa deserunt vel velit nesciunt dolore quasi harum veritatis? Voluptatum ad illum corrupti, illo sequi itaque quae soluta.</div>                
             </div>
                 <div  class="mt-lg-2" style = "font-size:19px;" >
                     <label class="category"><b>Current-Price: &#8377</b></label> 
                     <label id="currentPrice" class="category"><%out.print(bBasePrice);%></label><br>
                 </div>
-                <div  class="mt-lg-2" style = "font-size:19px;" >
+                <div  class="mt-lg-2" style = "font-size:19px; text-align:center" >
                     <label id="bidPriceLabel" class="category"><b>Your Bid Price:</b></label> 
                     <!--   <label id="bidTextArea" class="category"></label><br>-->
                     
