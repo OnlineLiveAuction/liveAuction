@@ -309,7 +309,6 @@
                   <img id="previewImage" src="#" alt="product image" height="200px" width="200" hidden="hidden"/>
             </div>
               
-              <div class="col-md-12"> 
               <div class="row">
               <div class="form-group  col-md-6">
                 <label for="exampleFormControlSelect1"> Select Bidding time</label>
@@ -320,8 +319,7 @@
                 <label for="exampleFormControlSelect1">Duration(in minutes)</label>
                 <input type="number" name="auctionDuration" id="auctionDuration" class="form-control" value="10">
                 </div> 
-                </div> 
-              </div>
+                </div>
               
 	              <div class="form-group">
 	                <label> Select Bidding date</label>
@@ -331,6 +329,7 @@
               
               <input type="hidden" name="username" value="<%out.print((String)session.getAttribute("username")); %>">
             <button type="submit" class="btn btn-primary">Add the Product <i class="fa fa-plus-circle"></i></button>
+                        <a href="index.jsp" style="float:right;"><button type="button" class="btn btn-info">Go Back<i class="fa fa-arrow-left"></i></button></a>
           </form>
           
           
