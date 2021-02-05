@@ -489,7 +489,7 @@ public class UserDao {
 	}
 	public List<Product> applyFilter(List<String> selectedCategories, int price, String search)
 	{
-		
+		String searchnew = "%"+search+"%";
 		List<Product> productList = new ArrayList<>();
 		try
 		{
@@ -523,11 +523,11 @@ public class UserDao {
 			{
 				if(flag == 0)
 				{
-					query = query + "where productName='"+ search +"'";
+					query = query + "where productName LIKE '"+ searchnew +"'";
 				}
 				else
 				{
-					query = query + "AND productName='"+ search +"'";
+					query = query + "AND productName LIKE '"+ searchnew +"'";
 				}
 			}
 			System.out.println("categories"+categories);
