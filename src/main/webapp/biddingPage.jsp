@@ -66,9 +66,10 @@
         	height: 40px;   
         }
         .timer-text{
-        	font-size: 16px;
-        	text-align:left;
+        	font-size: 18px;
+        	text-align: center;
         	margin-top: 110px;
+        	font-weight: bold;
         }
         
         .centerBid
@@ -675,7 +676,7 @@
                         
                          <div id="bidRankList " style='overflow:auto; height:400px;' class="mt-md-3">
                             <div>
-                              <table id="rankTable" class="table table-bordered table-hover table-light"
+                              <table id="rankTable" class="table table-bordered "
                                 data-reorderable-rows="true" aria-describedby="Bid Ranking Table">
                                 <thead class="table-dark">
                                   <tr >

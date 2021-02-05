@@ -48,6 +48,31 @@
             font-size: 3.5rem;
           }
         }
+        
+        .animated{
+        animation: 1.8s infinite beatHeart
+        }
+        
+        @keyframes beatHeart {
+  	        0% {
+    transform: scale(1);
+  }
+  5% {
+    transform: scale(1.1);
+  }
+  10% {
+    transform: scale(1);
+  }
+  15% {
+    transform: scale(1.2);
+  }
+  50% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1);
+  }
+	}
       </style>
       <!-- Custom styles for this template -->
       
@@ -98,7 +123,13 @@
 	      var val="0 - "+this.value;	
 	      output.innerHTML = val;
 	    }
-	    });
+	    
+	    // Fix the navbar on top
+	    $("nav").addClass('fixed-top')
+	    }
+	    
+	    
+	    );
     </script>
     
     
@@ -347,7 +378,7 @@
 					                        </jsp:include>
 					                        
 					                       
-					                        <button  style="display:none" class ="btn btn-primary mt-md-3">Enter Auction</button>
+					                        <button  style="display:none" class ="btn btn-primary mt-md-3 animated">Enter Auction</button>
 					                        
 					                        
 					                        <%
@@ -362,7 +393,7 @@
 					                        				<form action="biddingPage.jsp">
 						                        				
 						                        				<input type="hidden" value="<%=product.getProductID()%>" name="productID">
-						                        				<button class="btn btn-secondary mt-md-3 bid" type="submit" style="background-color: #03506f;">Enter Auction</button>
+						                        				<button class="btn btn-secondary mt-md-3 bid animated" type="submit" style="background-color: #03506f;">Enter Auction</button>
 					                        				</form>
 					                        			<%
 					                        	}
