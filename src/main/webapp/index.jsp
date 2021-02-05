@@ -25,8 +25,12 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-    
+    <link rel = "stylesheet" type = "text/css" href = "css/bootstrap.min.css">
+   
+    <!-- Style CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" type="text/css">
+    <link rel = "stylesheet" type = "text/css" href = "css/style.css">
+
     <!-- MDB -->
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.2.0/mdb.min.css" rel="stylesheet" />
 <style>
@@ -226,9 +230,13 @@
  		System.out.println("current time "+currTime);
        	
        %>
-      <div style="display:inline"> 
-      <form action="ApplyFilter">             
-		<div class="sidenav shadow p-3">
+       
+       <!-- UI -->
+<div class="container">
+       <div style="display:inline"> 
+       <form action="ApplyFilter">             
+		<div class="sidenav shadow p-3" style="background-color: #a3ddcb;">
+		
 		  	<h4>Filters</h4>
 		  	
 		   	<label class="sidenav_labels" for="exampleFormControlSelect1">Product Category</label><br><br>
@@ -251,29 +259,38 @@
    				    <%
    				    } %> 
    				 <%} %><br>
-   			<label class="sidenav_labels" for="exampleFormControlSelect1">Price</label><br><br>	 
+   			<label class="sidenav_labels" for="exampleFormControlSelect1">Price</label><br> 
    				 <div class="slidecontainer">
 					  <input type="range" min="1" max="100000" value="<%out.print((int)request.getAttribute("filteredPrice"));%>"  id="myRange" name="priceSlider">
-					  <p class="sidenav_names" id="demo" style="color:black"></p>
+					  <p class="sidenav_names" id="demo" style="color:black;"></p>
 					</div><br><br>
 					<div class="text-center">
-					<button class="btn btn-secondary">Apply</button>
-					<button class="btn btn-secondary" name="clearFilters">Clear</button>
+					<button class="btn btn-secondary" style="background-color: #03506f;">Apply</button>
+					<button class="btn btn-secondary" name="clearFilters" style="background-color: #03506f;">Clear</button>
 					</div>
 		</div>
-		
-      <div class="container">
-      <div class="row">
+		</form>
+		</div>
+       </div>
+      
+      
+      <div class = "container">
+	  <!------------------------------------search bar ---------------------------------------------------->
+
+
+      
+      
+            <div class="row" style="margin-left:5%">
               <div class="col-12">
         <div class="searchbutton">  
         <div class="input-group">      
         <div class="form-outline">
         <%if(request.getAttribute("filterNameSearch") != null)
         { %>          	
-        <input class="form-control col-11" style="width: 1000px;" id="form1" type="search" aria-label="Search" value=<%out.print(request.getAttribute("filteredNameSearch")); %> name="search"><%}
+        <input class="form-control col-11" style="width: 980px;" id="form1" type="search" aria-label="Search" value=<%out.print(request.getAttribute("filteredNameSearch")); %> name="search"><%}
         else 
         {%>	
-        	<input class="form-control col-11" style="width: 1000px;" id="form1" type="search"  aria-label="Search" name="search"><%
+        	<input class="form-control col-11" style="width: 980px;" id="form1" type="search"  aria-label="Search" name="search"><%
         } %>
         <label class="form-label" for="form1">Search</label>
         </div>
@@ -284,48 +301,46 @@
         </div>
       </div>
       </div>
-      </div>
-      </form>
-      <div class="product-info">
-        <div class="container">
-            <div class="row">
-              <div class="col-12">
-                  
-                    
-                    
-                    
-                   
-                   
-                   		<%
+
+      <!------------------------------------search bar ends------------------------------------------------->
+      <br>
+      <div class = "col-md-auto reel" style="margin-left:18%">
+      
+      <h1 class = "text-center" style= "font-family: sans-sherrif;"> Featured Products</h1>
+      
+		<div class = "row">
+		 <!--Products-->
+		 
+		 <%
                      	 	
                      	 	for(int i = 0; i < productList.size(); i++)
                      	 	{
                      	 		
                      	 		Product product = (Product)productList.get(i);
-                     	 		%>
-                     	 		<div class="card mt-3 ml-3 mr-3 shadow p-3 mb-5 bg-white rounded" >
-            <div class="row">
-                <div class="col-md-4">
-                    <img class="card-img-top" src="getImage.jsp?id=<% out.print(product.getProductID()); %>" alt="Card image cap" >
-                </div>
-            
-            <div class="col-md-5 ">
-                <div class="container">
-                    <label class="category"><b>Name:</b></label> <label ><% out.print(product.getProductName()); %></label><br>
-                    <label class="category"><b>Category:</b></label> <label class="category"><% out.print(product.getCategoryName()); %></label><br>
-                    <label class="category"><b>Registered Users:</b></label> <label class="category"><%=newUser.getProductRegistrationCount(product.getProductID())%></label><br>
-                    <label class="category "><b>Description:</b></label> <div style='overflow:auto; width:400px;height:80px;'><% out.print(product.getProductDescription()); %></div>
-                                    
-                  </div>
-                  </div>
-                  <div class="col-md-3 ">
-                    <div class="container">
-                   
-                        <label class="category" ><b>Bid-price:</b></label> <label class="category"><% out.print(product.getProductMinPrice()); %></label><br>
-                        <label class="category mt-md-3"><b>Bidding date:</b></label> <label class="category"><% out.print(product.getBiddingDate()); %></label><br>
-                        <label class="category mt-md-3"><b>Start Time:</b></label> <label class="category"><% out.print(product.getStartTime()); %></label><br>
-                        
-                        <jsp:include page="/RegisteredProductList">
+
+              //while((out.print(product.getProductID()))!=(out.print(product.getSellerId()))){
+         %>
+         
+		<div class = "col-md-4 product-grid shadow p-2">
+			<div class = "image">
+				
+					<img src="getImage.jsp?id=<% out.print(product.getProductID()); %>" class="w-100" style="width:200px; height:400px; object-fit:contain;">
+					<div class="overlay">
+						<div class="detail"><% out.print(product.getProductDescription()); %></div>
+					</div>
+				
+			</div>
+			<br>
+			<h5 class="text-center pnam"><label class="category"></label> <label ><% out.print(product.getProductName()); %></label></h5>
+			<h5 class="text-center ppri"><label class="category" ><b>Bid-Price: &#8377</b></label> <label class="category"><% out.print(product.getProductMinPrice()); %></label></h5>
+			<h5 class="text-center pcat"><label class="category"></label><label class="category lcol"><%out.print(product.getCategoryName());%></label></h5>
+			<h5 class="text-center pbdate"><label class="category mt-md-3"><b>Bidding Starts On:</b></label> <label class="category"><% out.print(product.getBiddingDate()); %></label>
+			<label class="category mt-md-3"><b>, </b></label> <label class="category"><% out.print(product.getStartTime()); %></label><br>
+			</h5>
+			
+
+
+                              <jsp:include page="/RegisteredProductList">
 					                        	<jsp:param name="userID" value="<%=session.getAttribute(\"username\")%>" />
 					                        </jsp:include>
 					                        
@@ -343,8 +358,9 @@
 					                        		
 					                        			%>
 					                        				<form action="biddingPage.jsp">
+						                        				
 						                        				<input type="hidden" value="<%=product.getProductID()%>" name="productID">
-						                        				<button class="btn btn-secondary mt-md-3" type="submit">Enter Auction</button>
+						                        				<button class="btn btn-secondary mt-md-3 bid" type="submit" style="background-color: #03506f;">Enter Auction</button>
 					                        				</form>
 					                        			<%
 					                        	}
@@ -352,50 +368,49 @@
 					                        	else if((formatter.format(date).toString().compareTo(product.getBiddingDate())) > 0 || ((formatter.format(date).toString().equals(product.getBiddingDate())) && stop.compareTo(currTime) < 0))
 					                        	{
 					                        		%>
-					                        		<button class="btn btn-danger  mt-md-3" disabled="disabled">Auction Ended</button>	
+					                        		<button class="btn btn-danger  mt-md-3 bid" disabled="disabled">Auction Ended</button>	
 					                        	<% 
 					                        	}
-					                        	
 					                        
 					                        	else if(regProductList.contains(product.getProductID()))
 					                        	{
 					                        %>
 					                       
-												<button class="btn btn-success  mt-md-3" disabled="disabled">Registered</button>					                   			
+												<button class="btn btn-success  mt-md-3 bid" style="background-color: #03506f;" disabled="disabled">Registered</button>					                   			
 					                        
 					                        <% } else if(product.getSellerId() == userID) { %>
 					                        
-												<button class="btn btn-primary  mt-md-3" disabled="disabled">Own Product</button>					                   			
+												<button class="btn btn-primary  mt-md-3 bid" style="background-color: #03506f;" disabled="disabled">Own Product</button>					                   			
 					                        
 					                        <% } else if(session.getAttribute("username") != null) { %>
 					                        	
 												<form action = "RegForProducts" method="post">
-					                         		<button class="btn btn-success  mt-md-3" id="<%=product.getProductID()%> ">Register</button>
+					                         		<button class="btn btn-success  mt-md-3 bid" style="background-color: #03506f;" id="<%=product.getProductID()%> ">Register</button>
 					                        		<input type='hidden' name='productID' value="<%=product.getProductID()%>">
 					                        	</form>						                   			
 					                        <%}else{
 					                        %>
 					                        
-					                        	<button class="btn btn-danger  mt-md-3" disabled="disabled">Register</button>
+					                        	<button class="btn btn-danger  mt-md-3 bid" disabled="disabled" style="background-color: #03506f;">Register</button>
 					                        
 					                        <% } %>
 					        
                       </div>
-                      </div>
-            </div>
-            
-          </div>
-                     	 		
-                     	 		<% 
+      
+      
+      
+      
+      
+       		<% 
+              // }
                      	 	}
                      	 %>
-                     	 
-                     	
-                   
-                      
-              </div>
-            </div>
-          </div></div></div>
+      		</div>
+      </div>
+      </div>
+      <!---------------------------------------------------------------------------------------------------->
+          
+          <!-- UI -->
 
   
    <!-- Optional JavaScript; choose one of the two! -->

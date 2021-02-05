@@ -606,7 +606,7 @@
                 <div id="prodDescBox" style=' width:200px;'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magni, explicabo unde! Aliquid, veniam magni tempora nulla ut distinctio ipsam illo ullam incidunt culpa deserunt vel velit nesciunt dolore quasi harum veritatis? Voluptatum ad illum corrupti, illo sequi itaque quae soluta.</div>                
             </div>
                 <div  class="mt-lg-2" style = "font-size:19px;" >
-                    <label class="category"><b>Current-Price:</b></label> 
+                    <label class="category"><b>Current-Price: &#8377</b></label> 
                     <label id="currentPrice" class="category"><%out.print(bBasePrice);%></label><br>
                 </div>
                 <div  class="mt-lg-2" style = "font-size:19px;" >
@@ -629,7 +629,7 @@
                         
                         
                         		<input type="hidden" name="productID" value="<%out.print(productID);%>">
-                        		<input type="hidden" name="userID" value="<%out.print((String)session.getAttribute("username"));%>"> 
+                        		<input type="hidden" name="userID" value="<%out.print((String)session.getAttribute("username"));%>">
                         		<button type="button" id="add10" data-mdb-toggle="tooltip" data-mdb-placement="top" title="Add 10%" class="btn btn-info" style="width:20%">+<%out.print((int)(bBasePrice*.1));%></button>
                         		<button type="button" id="add20" data-mdb-toggle="tooltip" data-mdb-placement="top" title="Add 20%" class="btn btn-info" style="width:20%" >+<%out.print((int)(bBasePrice*.2));%></button>
 		                        <button type="button" id="add30" data-mdb-toggle="tooltip" data-mdb-placement="top" title="Add 30%" class="btn btn-info" style="width:20%" >+<%out.print((int)(bBasePrice*.3));%></button>
@@ -655,8 +655,7 @@
                         
                         <button type="button" id="lockBidButton" class="btn btn-primary" onclick="submitBid()" style="width:100%;" disabled>Place Your Bid  <i class="fa fa-paper-plane"></i></button>
                   
-                          
-                    <!--  </div>-->
+                         
                     
                   
                 
@@ -666,7 +665,7 @@
                         <div >
                         <table class="table table-bordered table-hover table-light">
 	                        <tr class="category"> 
-	                        <th class="category" ><b>Initial Bid Price:</b></th> 
+	                        <th class="category" ><b>Initial Bid Price:  &#8377</b></th> 
                         	<th id="basePriceBox" class="category"><%out.print(bBasePrice);%></th></tr>
                         </table>
                         </div>
